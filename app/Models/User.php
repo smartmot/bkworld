@@ -17,9 +17,17 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'created_by',
         'name',
         'email',
+        "birth_date",
+        "photo",
+        "gender",
+        'email_verified_at',
         'password',
+        'token',
+        'status',
+        'options',
     ];
 
     /**
@@ -30,6 +38,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'token',
     ];
 
     /**
@@ -40,4 +49,23 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function creater(){
+        return $this->belongsTo(User::class, "created_by");
+    }
+
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
+
+    public function pages(){
+        return $this->hasMany(Page::class);
+    }
+
+    public function events(){
+        return $this->hasMany(Event::class);
+    }
+
+
+
 }

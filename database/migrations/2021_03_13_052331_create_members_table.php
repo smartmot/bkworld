@@ -15,6 +15,14 @@ class CreateMembersTable extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("user_id");
+            $table->foreignId("updated_by")->nullable();
+            $table->string("name");
+            $table->string("photo");
+            $table->string("facebook")->nullable();
+            $table->string("instagram")->nullable();
+            $table->string("youtube")->nullable();
+            $table->string("twitter")->nullable();
             $table->timestamps();
         });
     }

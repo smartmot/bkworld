@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Partner extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        "user_id",
+        "updated_by",
+        "name",
+        "website",
+        "email",
+        "phone",
+        "address",
+    ];
+
 }
