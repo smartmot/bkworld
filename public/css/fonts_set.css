@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Khmfh';
+    src: url('../fonts/Kh-MPS-Fasthand.eot');
+    src: url('../fonts/Kh-MPS-Fasthand.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Kh-MPS-Fasthand.woff2') format('woff2'),
+    url('../fonts/Kh-MPS-Fasthand.woff') format('woff'),
+    url('../fonts/Kh-MPS-Fasthand.ttf')  format('truetype'),
+    url('../fonts/Kh-MPS-Fasthand.svg#Kh MPS Fasthand') format('svg');
+}

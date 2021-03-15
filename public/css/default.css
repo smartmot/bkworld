@@ -1,0 +1,131 @@
+.df_greeting{
+    top: calc(40%); left: calc(45%)
+}
+.df_gt1{
+    font-size: 15px;
+}
+.df_gt2{
+    font-size: 12px;
+}
+.df_blog_title{
+    font-size: 18px;
+}
+.df_about_text{
+    left: 10%;
+    top: 10%;
+    font-size: 30px;
+}
+@media (min-width:576px){
+    .df_gt1{
+        font-size: 18px;
+    }
+    .df_gt2{
+        font-size: 16px;
+    }
+}
+@media (min-width:768px){
+    .df_gt1{
+        font-size: 24px;
+    }
+    .df_gt2{
+        font-size: 18px;
+    }
+}
+@media (min-width:992px){
+    .df_gt1{
+        font-size: 30px;
+    }
+    .df_gt2{
+        font-size: 24px;
+    }
+    .df_blog_title{
+        font-size: 20px;
+    }
+}
+@media (min-width:1200px){
+    .df_gt1{
+        font-size: 35px;
+    }
+    .df_gt2{
+        font-size: 30px;
+    }
+    .df_blog_title{
+        font-size: 24px;
+    }
+}
+
+.mm-er{
+    border-color: rgb(165, 165, 165);
+}
+
+.df_mb:hover .mm-er{
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.df_mb:hover .mm-er{
+    border-color: red blue red blue;
+}
+
+.effect2
+{
+    position: relative;
+}
+
+.effect2:before, .effect2:after
+{
+    z-index: -1;
+    position: absolute;
+    content: "";
+    bottom: 15px;
+    left: 10px;
+    width: 50%;
+    top: 80%;
+    max-width:300px;
+    background: #777;
+    -webkit-box-shadow: 0 15px 10px #777;
+    -moz-box-shadow: 0 15px 10px #777;
+    box-shadow: 0 15px 10px #777;
+    -webkit-transform: rotate(-3deg);
+    -moz-transform: rotate(-3deg);
+    -o-transform: rotate(-3deg);
+    -ms-transform: rotate(-3deg);
+    transform: rotate(-3deg);
+}
+.effect2:after
+{
+    -webkit-transform: rotate(3deg);
+    -moz-transform: rotate(3deg);
+    -o-transform: rotate(3deg);
+    -ms-transform: rotate(3deg);
+    transform: rotate(3deg);
+    right: 10px;
+    left: auto;
+}
+
+.df_card {
+    position: relative;
+}
+
+.df_card-1 {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.df_card-1:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.df_card-2 {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.df_card-3 {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.df_card-4 {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.df_card-5 {
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
