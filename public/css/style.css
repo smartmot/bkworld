@@ -1036,6 +1036,10 @@ a.ccpost:hover .pptitle{
     display: none;
 }
 .bc-a{background-color: #012980}
+.bc-gd{
+    background: linear-gradient(to bottom, #603A17 0%, #FAAF3B 50%,#603A17 100%)
+}
+.bc-bk{background-color: #FAAF3B}
 .bc1{background-color: #EE5326}
 .bc2{background-color: #3e3935}
 .bc3{background-color: #004aa3}
