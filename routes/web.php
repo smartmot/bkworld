@@ -15,3 +15,8 @@ use App\Http\Controllers;
 */
 
 Route::get("/", [Controllers\HomeController::class, "home"])->name("home");
+Route::middleware("auth")->group(function (){
+
+});
+
+Route::get("/login")

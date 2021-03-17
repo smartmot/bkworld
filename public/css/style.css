@@ -1810,3 +1810,41 @@ input.phc-1::placeholder{color: #c3c3c3}
     font-family: "Khmfh";
     color: darkblue;
 }
+.uplink a{
+    line-height: 20px;
+    text-decoration: none;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.t_slogan{
+    top: 50%;
+    left: 0;
+}
+.t_slogan .titlex{
+    font-size: 40px;
+}
+.t_slogan .sloganx{
+    font-size: 30px;
+}
+.ttimg2{
+    display: none;
+}
+@media (max-width: 768px) {
+    .ttimg2{
+        display: block;
+    }
+    .ttimg1{
+        display: none;
+    }
+    .t_slogan{
+        top: 70%;
+        left: 0;
+        width: 100%;
+    }
+    .t_slogan .titlex{
+        font-size: 25px;
+    }
+    .t_slogan .sloganx{
+        font-size: 18px;
+    }
+}
