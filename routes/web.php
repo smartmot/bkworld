@@ -19,4 +19,4 @@ Route::middleware("auth")->group(function (){
 
 });
 
-Route::get("/login")
+Route::get("/login", [Controllers\LoginController::class, "login"])->middleware("guest")->name("login");
