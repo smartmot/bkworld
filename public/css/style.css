@@ -1039,7 +1039,7 @@ a.ccpost:hover .pptitle{
 .bc-gd{
     background: linear-gradient(to bottom, #603A17 0%, #FAAF3B 50%,#603A17 100%)
 }
-.bc-bk{background-color: #FAAF3B}
+.bc-bk{background-color: #CC8C31}
 .bc1{background-color: #EE5326}
 .bc2{background-color: #3e3935}
 .bc3{background-color: #004aa3}
@@ -1847,4 +1847,9 @@ input.phc-1::placeholder{color: #c3c3c3}
     .t_slogan .sloganx{
         font-size: 18px;
     }
+}
+.header_links a{
+    text-decoration: none;
+    padding: 0 10px;
+    font-size: 16px;
 }

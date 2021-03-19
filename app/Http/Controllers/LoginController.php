@@ -18,7 +18,7 @@ class LoginController extends Controller
             "password" => ["required"]
         ]);
         $login= $validator->validate();
-        $login["status"] = "activated";
+        $login["status"] = "active";
         $pass = Validator::make($request->only("password"),[
             "password" => ["required"]
         ]);

@@ -15,8 +15,10 @@ use App\Http\Controllers;
 */
 
 Route::get("/", [Controllers\HomeController::class, "home"])->name("home");
+Route::get("/soft/{soft}", [Controllers\AdminController::class, "home"])->name("home");
 Route::middleware("auth")->group(function (){
-
+    Route::get("/admin", [Controllers\AdminController::class, "index"])->name("admin.index");
 });
 
 Route::get("/login", [Controllers\LoginController::class, "login"])->middleware("guest")->name("login");
+Route::post("/login", [Controllers\LoginController::class, "login_check"])->middleware("guest")->name("login.check");

@@ -1,11 +1,11 @@
 @extends("layouts.default")
 @section("header")
-    @include("inc.header")
+    @include("inc.header_ii")
 @endsection
 
 @section("content")
     <div class="cw">
-        <div class="pr_10 pl_10">
+        <div class="pr_10 pl_10 pt_10">
             <div class="p-r">
                 <img class="wp_100 ttimg1" src="{{ asset("images/003.jpg") }}" alt="">
                 <img class="wp_100 ttimg2" src="{{ asset("images/005.jpg") }}" alt="">
