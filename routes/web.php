@@ -15,7 +15,10 @@ use App\Http\Controllers;
 */
 
 Route::get("/", [Controllers\HomeController::class, "home"])->name("home");
-Route::get("/soft/{soft}", [Controllers\AdminController::class, "home"])->name("home");
+Route::get("/abc", function (){
+    return view("abc");
+});
+Route::get("/soft/{soft}", [Controllers\SoftController::class, "index"])->name("soft");
 Route::middleware("auth")->group(function (){
     Route::get("/admin", [Controllers\AdminController::class, "index"])->name("admin.index");
 });

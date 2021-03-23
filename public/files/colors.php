@@ -1,9 +1,9 @@
 <?php
-header("Content-type: text/css", true);
-$color1 = 'red';
+header("Content-type: text/css; charset: UTF-8");
+$color1 = "red";
 $color2 = 'red';
 $color3 = 'red';
-$color4 = 'red';
+$color4 = "red";
 echo "
 .color_1{color: $color1;}
 .color_2{color: $color2;}
@@ -57,3 +57,4 @@ echo "
     .hbcolor_4:hover{background-color: $color4;}
 }
 ";
+?>
