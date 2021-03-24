@@ -19,9 +19,15 @@ Route::get("/abc", function (){
     return view("abc");
 });
 Route::get("/soft/{soft}", [Controllers\SoftController::class, "index"])->name("soft");
-Route::middleware("auth")->group(function (){
+Route::middleware("auth")
+    ->group(function ()
+{
     Route::get("/admin", [Controllers\AdminController::class, "index"])->name("admin.index");
 });
 
-Route::get("/login", [Controllers\LoginController::class, "login"])->middleware("guest")->name("login");
-Route::post("/login", [Controllers\LoginController::class, "login_check"])->middleware("guest")->name("login.check");
+Route::get("/login", [Controllers\LoginController::class, "login"])
+    ->middleware("guest")
+    ->name("login");
+Route::post("/login", [Controllers\LoginController::class, "login_check"])
+    ->middleware("guest")
+    ->name("login.check");

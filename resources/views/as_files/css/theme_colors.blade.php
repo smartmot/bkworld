@@ -1,10 +1,10 @@
 <?php
 header("Content-type: text/css; charset: UTF-8");
-$color1 = config("settings.colors")[0];
-$color2 = config("settings.colors")[1];
-$color3 = config("settings.colors")[2];
-$color4 = config("settings.colors")[3];
-$color5 = config("settings.colors")[4];
+$color1 = config("settings.theme_color")[0];
+$color2 = config("settings.theme_color")[1];
+$color3 = config("settings.theme_color")[2];
+$color4 = config("settings.theme_color")[3];
+$color5 = config("settings.theme_color")[4];
 echo "
 .color_1{color: $color1;}
 .color_2{color: $color2;}
