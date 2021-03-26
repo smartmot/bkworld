@@ -6,7 +6,7 @@ return [
     "admin_header" => "header_1",
     "colors" => [
         "white",
-        "#009A3E",
+        "#f1f1f1",
         "#FFD300",
         "#EC2227",
         "black",

@@ -12,6 +12,44 @@ echo "
 .color_4{color: $color4;}
 .color_5{color: $color5;}
 
+.b4color_1:before{color: $color1;}
+.b4color_2:before{color: $color2;}
+.b4color_3:before{color: $color3;}
+.b4color_4:before{color: $color4;}
+.b4color_5:before{color: $color5;}
+
+@media (hover: hover) {
+    .hcolor_1:hover{color: $color1;}
+    .hcolor_2:hover{color: $color2;}
+    .hcolor_3:hover{color: $color3;}
+    .hcolor_4:hover{color: $color4;}
+    .hcolor_5:hover{color: $color5;}
+
+    .hbcolor_1:hover{background-color: $color1;}
+    .hbcolor_2:hover{background-color: $color2;}
+    .hbcolor_3:hover{background-color: $color3;}
+    .hbcolor_4:hover{background-color: $color4;}
+    .hbcolor_5:hover{background-color: $color5;}
+}
+
+.afcolor_1:after{color: $color1;}
+.afcolor_2:after{color: $color2;}
+.afcolor_3:after{color: $color3;}
+.afcolor_4:after{color: $color4;}
+.afcolor_5:after{color: $color5;}
+
+.b4bcolor_1:before{background-color: $color1;}
+.b4bcolor_2:before{background-color: $color2;}
+.b4bcolor_3:before{background-color: $color3;}
+.b4bcolor_4:before{background-color: $color4;}
+.b4bcolor_5:before{background-color: $color5;}
+
+.afbcolor_1:after{background-color: $color1;}
+.afbcolor_2:after{background-color: $color2;}
+.afbcolor_3:after{background-color: $color3;}
+.afbcolor_4:after{background-color: $color4;}
+.afbcolor_5:after{background-color: $color5;}
+
 .fcolor_1:focus{color: $color1;}
 .fcolor_2:focus{color: $color2;}
 .fcolor_3:focus{color: $color3;}
@@ -54,18 +92,5 @@ echo "
 .dbcolor_4:disabled{background-color: $color4;}
 .dbcolor_5:disabled{background-color: $color5;}
 
-@media (hover: hover) {
-    .hcolor_1:hover{color: $color1;}
-    .hcolor_2:hover{color: $color2;}
-    .hcolor_3:hover{color: $color3;}
-    .hcolor_4:hover{color: $color4;}
-    .hcolor_5:hover{color: $color5;}
-
-    .hbcolor_1:hover{background-color: $color1;}
-    .hbcolor_2:hover{background-color: $color2;}
-    .hbcolor_3:hover{background-color: $color3;}
-    .hbcolor_4:hover{background-color: $color4;}
-    .hbcolor_5:hover{background-color: $color5;}
-}
 ";
 ?>

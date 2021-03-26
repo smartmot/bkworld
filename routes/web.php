@@ -23,6 +23,14 @@ Route::middleware("auth")
     ->group(function ()
 {
     Route::get("/admin", [Controllers\AdminController::class, "index"])->name("admin.index");
+    Route::resource("/admin/user", Controllers\UserController::class);
+    Route::resource("/admin/post", Controllers\PostController::class);
+    Route::resource("/admin/page", Controllers\PageController::class);
+    Route::resource("/admin/member", Controllers\MemberController::class);
+    Route::resource("/admin/partner", Controllers\PartnerController::class);
+    Route::resource("/admin/setting", Controllers\SettingController::class);
+    Route::resource("/admin/event", Controllers\EventController::class);
+    Route::resource("/admin/message", Controllers\MessageController::class);
 });
 
 Route::get("/login", [Controllers\LoginController::class, "login"])
