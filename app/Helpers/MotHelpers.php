@@ -39,6 +39,12 @@ if (!function_exists("act_route")){
     }
 }
 
+if (!function_exists("route_is")){
+    function route_is(){
+        return request()->route()->getName();
+    }
+}
+
 if (!function_exists("make_thumbnail")){
     function make_thumbnail($image_dir, $new_image="_thumb.jpg" ,$canvas=[150,150]){
         $image = Image::make($image_dir);
@@ -69,3 +75,49 @@ if (!function_exists("fx_numeric")){
         return number_format($number, 0, "", "");
     }
 }
+
+if (!function_exists("tab_name")){
+    function tab_name(){
+        $tabs = [
+            "admin.index" => "Admin",
+
+            "user.index" => "Users",
+            "user.create" => "Add new User",
+            "user.edit" => "Edit User",
+            "user.show" => "User",
+
+            "post.index" => "Posts",
+            "post.create" => "Add new Post",
+            "post.edit" => "Edit Post",
+            "post.show" => "Post",
+
+            "page.index" => "Pages",
+            "page.create" => "Add new Page",
+            "page.edit" => "Edit Page",
+            "page.show" => "Page",
+
+            "event.index" => "Events",
+            "event.create" => "Add new Event",
+            "event.edit" => "Edit Event",
+            "event.show" => "Event",
+
+            "message.index" => "Messages",
+            "message.show" => "Read Message",
+
+            "member.index" => "Members",
+            "member.create" => "Add new Member",
+            "member.edit" => "Edit Member",
+            "member.show" => "Member",
+
+            "partner.index" => "Partners",
+            "partner.create" => "Add new Partner",
+            "partner.edit" => "Edit Partner",
+            "partner.show" => "Partner",
+
+            "setting.index" => "Settings",
+            "setting.edit" => "Update Setting",
+        ];
+        return (isset($tabs[route_is()]) ? $tabs[route_is()] : config("setting.name"));
+    }
+}
+
