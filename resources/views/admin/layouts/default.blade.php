@@ -65,7 +65,9 @@
                     </div>
                 </div>
                 <div class="pr_10 pl_15 pt_10 pb_20">
-                    @yield("content")
+                    <div>
+                        @yield("content")
+                    </div>
                     <div class="wp_100 h_30"></div>
                 </div>
             </div>
