@@ -59,9 +59,13 @@
                 </div>
             </div>
             <div class="xl-8 bcolor_2 prt_right afbcolor_4 hp_100 box-s1">
-                <div class="wp_100 box-s1 h_60">
+                <div class="wp_100 box-s1 h_60 ds_f">
                     <div class="pl_30 fm-ubt fs_24 lh_60 color_5">
                         {{ tab_name() }}
+                    </div>
+                    <div class="fx"></div>
+                    <div class="lh_60">
+                        @yield("head_link")
                     </div>
                 </div>
                 <div class="pr_10 pl_15 pt_10 pb_20">
