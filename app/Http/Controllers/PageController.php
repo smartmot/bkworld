@@ -14,7 +14,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        return view("admin.post")->with([
+        return view("admin.page")->with([
 
         ]);
     }

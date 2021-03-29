@@ -1,27 +1,7 @@
 @extends("admin.layouts/".config("settings.admin"))
 
 @section("content")
-    <div>Aahgshgashhsahsghasgh</div>
-    <div>Aahgshgashhsahsghasgh</div>
-    <div>Aahgshgashhsahsghasgh</div>
-    <div>Aahgshgashhsahsghasgh</div>
-    <div>Aahgshgashhsahsghasgh</div>
-    <div>Aahgshgashhsahsghasgh</div>
-    <div>Aahgshgashhsahsghasgh</div>
-    <div>Aahgshgashhsahsghasgh</div>
-    <div>Aahgshgashhsahsghasgh</div>
-    <div>Aahgshgashhsahsghasgh</div>
-    <div>Aahgshgashhsahsghasgh</div>
-    <div>Aahgshgashhsahsghasgh</div>
-    <div>Aahgshgashhsahsghasgh</div>
-    <div>Aahgshgashhsahsghasgh</div>
-    <div>Aahgshgashhsahsghasgh</div>
-    <div>Aahgshgashhsahsghasgh</div>
-    <div>Aahgshgashhsahsghasgh</div>
-    <div>Aahgshgashhsahsghasgh</div>
-    <div>Aahgshgashhsahsghasgh</div>
-    <div>Aahgshgashhsahsghasgh</div>
-    <div>Aahgshgashhsahsghasgh</div>
-    <div>Aahgshgashhsahsghasgh</div>
-    <div>Aahgshgashhsahsghasgh</div>
+    <div>
+        A
+    </div>
 @endsection

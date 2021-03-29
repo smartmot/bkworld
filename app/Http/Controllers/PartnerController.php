@@ -14,7 +14,7 @@ class PartnerController extends Controller
      */
     public function index()
     {
-        return view("admin.post")->with([
+        return view("admin.partner")->with([
 
         ]);
     }

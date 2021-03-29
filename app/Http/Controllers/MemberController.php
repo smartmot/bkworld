@@ -14,8 +14,8 @@ class MemberController extends Controller
      */
     public function index()
     {
-        return view("admin.post")->with([
-
+        return view("admin.member")->with([
+            "members" => Member::all()
         ]);
     }
 

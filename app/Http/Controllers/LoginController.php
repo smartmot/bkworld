@@ -24,7 +24,7 @@ class LoginController extends Controller
         ]);
         if (Auth::attempt($login)) {
             // Authentication passed...
-            return redirect(route("home"));
+            return redirect(route("admin.index"));
         }else{
             return $pass->after(function ($pass){
                 $pass->errors()->add("password","Incorrect Password!");
