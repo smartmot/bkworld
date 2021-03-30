@@ -15,22 +15,22 @@
 
                        <label for="name" class="fm-popp fw_b">Full Name</label>
                        <div class="pb_10 ds_f">
-                           <input onchange="$('#sname').text($(this).attr('value'))" class="wp_100 pd-5x15 oln_n bd_n fm-popp bcolor_1 color_5 box-s1 input-2" id="name" type="text" name="name" placeholder="Full name" required>
+                           <input onchange="$('#sname').html($(this).val())" class="wp_100 pd-5x15 oln_n bd_n fm-popp bcolor_1 color_5 box-s1 input-2" id="name" type="text" name="name" placeholder="Full name" required>
                        </div>
 
                        <label for="email" class="fm-popp fw_b">E-mail</label>
                        <div class="pb_10 ds_f">
-                           <input class="wp_100 pd-5x15 oln_n bd_n fm-popp bcolor_1 color_5 box-s1 input-2" id="email" type="text" name="email" placeholder="E-mail" required>
+                           <input onchange="$('#semail').html($(this).val())" class="wp_100 pd-5x15 oln_n bd_n fm-popp bcolor_1 color_5 box-s1 input-2" id="email" type="text" name="email" placeholder="E-mail" required>
                        </div>
 
-                       <label for="password" class="fm-popp fw_b">Password</label>
+                       <label for="password" class="fm-popp fw_b">Create Password</label>
                        <div class="pb_10 ds_f">
                            <input class="wp_100 pd-5x15 oln_n bd_n fm-popp bcolor_1 color_5 box-s1 input-2" id="password" type="password" name="password" placeholder="Password" required>
                        </div>
 
                        <label for="role" class="fm-popp fw_b">Role</label>
                        <div class="pb_10 ds_f">
-                           <select class="wp_100 pd-5x15 oln_n bd_n fm-popp bcolor_1 color_5 box-s1 input-2" id="role" name="role" required>
+                           <select onchange="$('#srole').html($(this).val())" class="wp_100 pd-5x15 oln_n bd_n fm-popp bcolor_1 color_5 box-s1 input-2" id="role" name="role" required>
                                <option value="admin">Admin</option>
                                <option value="editor">Editor</option>
                                <option value="moderator">Moderator</option>
@@ -49,7 +49,8 @@
                        <img class="w_100 b_r_c" src="{{ asset("icon/member.svg") }}" alt="">
                    </div>
                    <div>
-                       <div id="sname"></div>
+                       <div class="t_a_c fm-popp"><span id="sname" class="fw_b fs_16">Full Name</span>(<span id="srole" class="t_t_c fs_14">Admin</span>)</div>
+                       <div id="semail" class="t_a_c fs_16 fm-popp"></div>
                    </div>
                </div>
            </div>
