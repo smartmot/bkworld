@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -14,18 +15,20 @@ class UserController extends Controller
     public function index()
     {
         return view("admin.user")->with([
-
+            "user" => User::query()
+                ->orderBy("created_at", "desc")
+                ->get()
         ]);
     }
 
-    /**
+    /*
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return view("admin.user_create")->with([]);
     }
 
     /**

@@ -45,6 +45,19 @@ if (!function_exists("route_is")){
     }
 }
 
+if (!function_exists("route_parent")){
+    function route_parent(){
+        $route = request()->route()->getName();
+        return explode(".", $route)[0];
+    }
+}
+
+if (!function_exists("item_first")){
+    function item_first($array=[]){
+        return explode(".", $array);
+    }
+}
+
 if (!function_exists("make_thumbnail")){
     function make_thumbnail($image_dir, $new_image="_thumb.jpg" ,$canvas=[150,150]){
         $image = Image::make($image_dir);

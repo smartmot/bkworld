@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="http://bkworld.proj/bkworld.svg">
     <link rel="stylesheet" href="{{ route("soft", "css.colors?ver=".config("settings.color_ver")) }}" type="text/css">
     <link rel="stylesheet" href="{{ asset("css/style.css") }}" type="text/css">
+    <script type="text/javascript" src="{{ asset("js/app.js") }}"></script>
 </head>
 <body>
 <div class="wp_100 h_70 p-r">
@@ -33,28 +34,28 @@
                         <a href="{{ route("admin.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ act_route("admin.index") ? " bcolor_4 color_1":" color_5" }}">Home</a>
                     </div>
                     <div class="">
-                        <a href="{{ route("user.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ act_route("user.index") ? " bcolor_4 color_1" : " color_5" }}">Users</a>
+                        <a href="{{ route("user.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ route_parent()=="user" ? " bcolor_4 color_1" : " color_5" }}">Users</a>
                     </div>
                     <div>
-                        <a href="{{ route("post.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ act_route("post.index") ? " bcolor_4 color_1" : " color_5" }}">Posts</a>
+                        <a href="{{ route("post.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ route_parent()=="post" ? " bcolor_4 color_1" : " color_5" }}">Posts</a>
                     </div>
                     <div>
-                        <a href="{{ route("page.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ act_route("page.index") ? " bcolor_4 color_1" : " color_5" }}">Pages</a>
+                        <a href="{{ route("page.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ route_parent()=="page" ? " bcolor_4 color_1" : " color_5" }}">Pages</a>
                     </div>
                     <div>
-                        <a href="{{ route("event.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ act_route("event.index") ? " bcolor_4 color_1" : " color_5" }}">Events</a>
+                        <a href="{{ route("event.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ route_parent()=="event" ? " bcolor_4 color_1" : " color_5" }}">Events</a>
                     </div>
                     <div>
-                        <a href="{{ route("message.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ act_route("message.index") ? " bcolor_4 color_1" : " color_5" }}">Messages</a>
+                        <a href="{{ route("message.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ route_parent()=="message" ? " bcolor_4 color_1" : " color_5" }}">Messages</a>
                     </div>
                     <div>
-                        <a href="{{ route("member.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ act_route("member.index") ? " bcolor_4 color_1" : " color_5" }}">Members</a>
+                        <a href="{{ route("member.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ route_parent()=="member" ? " bcolor_4 color_1" : " color_5" }}">Members</a>
                     </div>
                     <div>
-                        <a href="{{ route("partner.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ act_route("partner.index") ? " bcolor_4 color_1" : " color_5" }}">Partners</a>
+                        <a href="{{ route("partner.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ route_parent()=="partner" ? " bcolor_4 color_1" : " color_5" }}">Partners</a>
                     </div>
                     <div>
-                        <a href="{{ route("setting.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ act_route("setting.index") ? " bcolor_4 color_1" : " color_5" }}">Settings</a>
+                        <a href="{{ route("setting.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ route_parent()=="setting" ? " bcolor_4 color_1" : " color_5" }}">Settings</a>
                     </div>
                 </div>
             </div>
@@ -64,7 +65,7 @@
                         {{ tab_name() }}
                     </div>
                     <div class="fx"></div>
-                    <div class="lh_60">
+                    <div class="lh_60 pr_15">
                         @yield("head_link")
                     </div>
                 </div>
