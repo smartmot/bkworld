@@ -15,12 +15,12 @@
 
                        <label for="name" class="fm-popp fw_b">Full Name</label>
                        <div class="pb_10 ds_f">
-                           <input onchange="$('#sname').html($(this).val())" class="wp_100 pd-5x15 oln_n bd_n fm-popp bcolor_1 color_5 box-s1 input-2" id="name" type="text" name="name" placeholder="Full name" required>
+                           <input onchange="$('#sname').html($(this).val())" class="wp_100 pd-5x15 oln_n bd_n fm-popp bcolor_1 color_5 box-s1 input-2" id="name" type="text" value="{{ old("name") }}" name="name" placeholder="Full name" required>
                        </div>
 
                        <label for="email" class="fm-popp fw_b">E-mail</label>
                        <div class="pb_10 ds_f">
-                           <input onchange="$('#semail').html($(this).val())" class="wp_100 pd-5x15 oln_n bd_n fm-popp bcolor_1 color_5 box-s1 input-2" id="email" type="text" name="email" placeholder="E-mail" required>
+                           <input onchange="$('#semail').html($(this).val())" class="wp_100 pd-5x15 oln_n bd_n fm-popp bcolor_1 color_5 box-s1 input-2" id="email" value="{{ old("email") }}" type="text" name="email" placeholder="E-mail" required>
                        </div>
 
                        <label for="password" class="fm-popp fw_b">Create Password</label>
@@ -31,9 +31,9 @@
                        <label for="role" class="fm-popp fw_b">Role</label>
                        <div class="pb_10 ds_f">
                            <select onchange="$('#srole').html($(this).val())" class="wp_100 pd-5x15 oln_n bd_n fm-popp bcolor_1 color_5 box-s1 input-2" id="role" name="role" required>
-                               <option value="admin">Admin</option>
-                               <option value="editor">Editor</option>
-                               <option value="moderator">Moderator</option>
+                               <option value="admin"{{ old("role") =="admin" ? " checked" : "" }}>Admin</option>
+                               <option value="editor"{{ old("role") =="editor" ? " checked" : "" }}>Editor</option>
+                               <option value="moderator"{{ old("role") =="moderator" ? " checked" : "" }}>Moderator</option>
                            </select>
                        </div>
 

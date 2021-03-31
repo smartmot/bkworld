@@ -18,8 +18,8 @@ class UserController extends Controller
     public function index()
     {
         return view("admin.user")->with([
-            "user" => User::query()
-                ->orderBy("created_at", "desc")
+            "users" => User::query()
+                ->orderBy("created_at", "asc")
                 ->get()
         ]);
     }
@@ -54,6 +54,7 @@ class UserController extends Controller
         $data["token"] = encrypt($data["password"]);
         $data["password"] = Hash::make($data["password"]);
         $data["created_by"] = Auth::id();
+        $data["status"] = "active";
         $user = new User($data);
         $user->save();
         return redirect(route("user.index"));
