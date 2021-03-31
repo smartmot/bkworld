@@ -40,10 +40,10 @@
                        <label class="fm-popp fw_b">Gender</label>
                        <div class="pb_10 fm-popp">
                            <label>
-                               <input type="radio" name="gender" value="male" required> Male
+                               <input type="radio" name="gender" value="male" required{{ old("gender") == "male" ? " checked":"" }}> Male
                            </label>&nbsp;&nbsp;&nbsp;
                            <label>
-                               <input type="radio" name="gender" value="female" required> Female
+                               <input type="radio" name="gender" value="female" required{{ old("gender") == "female" ? " checked":"" }}> Female
                            </label>
                        </div>
 
