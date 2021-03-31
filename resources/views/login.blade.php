@@ -17,7 +17,7 @@
                     <div class="pb_5 fm-ubt4 c_yel fs_14">{{ $message }}</div>
                     @enderror
                     <label class="ds_f pb_10">
-                        <input class="input-3 pd-10x15 wp_100 fm-ubt5 fs_16 b_r_5" type="text" placeholder="Email" name="email">
+                        <input class="input-3 pd-10x15 wp_100 fm-ubt5 fs_16 b_r_5" value="{{ old("email") }}" type="text" placeholder="Email" name="email">
                     </label>
 
                     @error("password")
