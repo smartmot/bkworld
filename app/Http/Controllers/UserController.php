@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -50,7 +51,9 @@ class UserController extends Controller
         ]);
 
         $data = $validator->validate();
+        $data["token"] = encrypt($data["password"]);
         $data["password"] = Hash::make($data["password"]);
+        $data["created_by"] = Auth::id();
         $user = new User($data);
         $user->save();
         return redirect(route("user.index"));
