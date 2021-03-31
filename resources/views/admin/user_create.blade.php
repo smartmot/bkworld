@@ -37,6 +37,16 @@
                            </select>
                        </div>
 
+                       <label class="fm-popp fw_b">Gender</label>
+                       <div class="pb_10 fm-popp">
+                           <label>
+                               <input type="radio" name="gender" value="male" required> Male
+                           </label>&nbsp;&nbsp;&nbsp;
+                           <label>
+                               <input type="radio" name="gender" value="female" required> Female
+                           </label>
+                       </div>
+
                        <div class="t_a_c pt_5">
                            <button class="oln_n bd_n bcolor_5 color_1 hbcolor_4 abcolor_4 pd-5x20 csr-p input-2">Create</button>
                        </div>

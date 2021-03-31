@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -31,7 +33,7 @@ class UserController extends Controller
         return view("admin.user_create")->with([]);
     }
 
-    /**
+    /*
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -39,7 +41,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            "name" => ["required", "max:200"],
+            "email" => ["required", "unique:users,email", "max:200", "email"],
+            "gender" => ["required", "in:male,female"],
+            "role" => ["required", "in:admin,editor,moderator"],
+            "password" => ["required", "min:8", "max:16"]
+        ]);
+
+        $data = $validator->validate();
+        $data["password"] = Hash::make($data["password"]);
+        $user = new User($data);
+        $user->save();
+        return redirect(route("user.index"));
     }
 
     /**
