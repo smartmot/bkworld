@@ -6,23 +6,22 @@
 
 @section("content")
     <div>
-        <div class="rowc pt_10">
+        <div class="pt_10">
             @foreach($users as $user)
-                <div class="xl-4">
-                    <div class="pr_10 pl_10 pb_10">
-                        <div class="bcolor_1 pr_10 pl_10 pt_20 pb_10 box-s1 p-r">
-                            <div class="p-a t_10 r_10">
-                                <a class="t_d_n color_5 hcolor_4 acolor_4" href="{{ route("user.edit", $user["id"]) }}">
-                                    <span class="fa fa-edit"></span>
-                                </a>
-                            </div>
-                            <div class="w_100 _0auto">
-                                <img class="w_100 box-s1 b_r_c" src="{{ asset("icon/member.svg") }}" alt="">
-                            </div>
-                            <div class="fm-popp t_a_c">
-                                <span class="fs_18">{{ $user["name"] }}</span>
-                            </div>
-                            <div class="fm-popp t_a_c pb_10">{{ $user["email"] }}</div>
+                <div class="pr_10 pl_10 pb_10">
+                    <div class="ds_f bcolor_1 box-s2 pr_10 pl_10 pt_10 pb_10">
+                        <div class="w_50">
+                            <img class="w_50 box-s2 b_r_c" src="{{ asset("icon/member.svg") }}" alt="">
+                        </div>
+                        <div class="lh_20">
+                            <div class="fm-popp pl_10 fs_18 pt_5">{{ $user["name"] }}</div>
+                            <div class="fm-popp fs_14 pl_10 t_t_c">{{ $user["role"] }}</div>
+                        </div>
+                        <div class="flx"></div>
+                        <div class="lh_50">
+                            <a class="t_d_n color_5 hcolor_4 acolor_4" href="{{ route("user.edit", $user["id"]) }}">
+                                <span class="fa fa-edit"></span>
+                            </a>
                         </div>
                     </div>
                 </div>
