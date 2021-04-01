@@ -60,26 +60,28 @@ class UserController extends Controller
         return redirect(route("user.index"));
     }
 
-    /**
+    /*
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return 1;
     }
 
-    /**
+    /*
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view("admin.user_edit")->with([
+            "user" => $user
+        ]);
     }
 
     /**
