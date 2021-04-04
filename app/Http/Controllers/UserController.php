@@ -84,16 +84,33 @@ class UserController extends Controller
         ]);
     }
 
-    /**
+    /*
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            "name" => ["required", "max:200"],
+            "email" => ["required", "max:200", "email"],
+            "gender" => ["required", "in:male,female"],
+            "role" => ["required", "in:admin,editor,moderator"],
+        ]);
+        $data = $validator->validate();
+
+        if ($user->email != $data["email"]){
+            $email = Validator::make($request->only("email"), [
+                "email" => ["unique:users,email"]
+            ]);
+            $email->validate();
+        }
+        $data["updated_by"] = Auth::id();
+        $user->update($data);
+        $user->save();
+        return $data;//redirect(route("user.index"));
     }
 
     /**

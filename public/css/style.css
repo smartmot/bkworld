@@ -1866,3 +1866,9 @@ input.phc-1::placeholder{color: #c3c3c3}
     width: 5px;
     height: 100%;
 }
+.ask{
+    position: fixed;
+    top: 30%;
+    width: 320px;
+    right: calc(50% - 160px);
+}

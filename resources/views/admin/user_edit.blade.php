@@ -26,9 +26,9 @@
                         <label for="role" class="fm-popp fw_b">Role</label>
                         <div class="pb_10 ds_f">
                             <select onchange="$('#srole').html($(this).val())" class="wp_100 pd-5x15 oln_n bd_n fm-popp bcolor_1 color_5 box-s1 input-2" id="role" name="role" required>
-                                <option value="admin"{{ old("role") =="" ? ($user["role"] == "admin" ? " checked":"") : (old("role") == "admin" ? "checked" : "") }}>Admin</option>
-                                <option value="editor"{{ old("role") =="" ? ($user["role"] == "editor" ? " checked":"") : (old("role") == "editor" ? "checked" : "") }}>Editor</option>
-                                <option value="moderator"{{ old("role") =="" ? ($user["role"] == "moderator" ? " checked":"") : (old("role") == "moderator" ? "checked" : "") }}>Moderator</option>
+                                <option value="admin" {{ old("role") =="" ? ($user["role"] == "admin" ? " checked":"") : (old("role") == "admin" ? " checked" : "") }}>Admin</option>
+                                <option value="editor" {{ old("role") =="" ? ($user["role"] == "editor" ? " checked":"") : (old("role") == "editor" ? " checked" : "") }}>Editor</option>
+                                <option value="moderator" {{ old("role") =="" ? ($user["role"] == "moderator" ? " checked":"") : (old("role") == "moderator" ? " checked" : "") }}>Moderator</option>
                             </select>
                         </div>
 
@@ -43,21 +43,27 @@
                         </div>
 
                         <div class="t_a_c pt_5">
-                            <button class="oln_n bd_n bcolor_5 color_1 hbcolor_4 abcolor_4 pd-5x20 csr-p input-2">Update</button>
+                            <input id="update" type="submit" hidden>
                         </div>
                     </form>
                     <div class="wp_100 h_10"></div>
                     <div class="wp_100 bdbtm_1_gra"></div>
-                    <div class="pt_10 t_a_c">
-                        <form action="{{ route("user.destroy", $user["id"]) }}" method="post">
-                            @method("delete")
-                            @csrf
-
-                            <button class="oln_n bd_n bcolor_5 color_1 hbcolor_4 abcolor_4 pd-5x20 csr-p input-2">Delete</button>
-                        </form>
+                    <div class="pt_10 ds_f">
+                        <div>
+                            <label onclick="$('.ask').fadeIn().focus()" class="bcolor_5 color_1 hbcolor_4 abcolor_4 pd-5x20 csr-p input-2 us_n ds_b fm-popp fs_14">Delete</label>
+                        </div>
+                        <div  class="flx"></div>
+                        <div>
+                            <label for="update" class="bcolor_5 color_1 hbcolor_4 abcolor_4 pd-5x20 csr-p input-2 us_n ds_b fm-popp fs_14">Update</label>
+                        </div>
                     </div>
                 </div>
             </div>
+            <form action="{{ route("user.destroy", $user["id"]) }}" method="post">
+                @method("delete")
+                @csrf
+                <input id="answer" type="submit" hidden>
+            </form>
             <div class="xl-6">
                 <div class="pr_10 pl_10">
                     <div class="_0auto w_100 pt_10">
@@ -71,4 +77,5 @@
             </div>
         </div>
     </div>
+    @include("admin.components.ask", ["head" => "Delete ".$user["name"] . " ?","body" => "Are you sure ?"])
 @endsection
