@@ -15,24 +15,32 @@
 
                         <label for="name" class="fm-popp fw_b">Full Name</label>
                         <div class="pb_10 ds_f">
-                            <input onchange="$('#sname').html($(this).val())" class="wp_100 pd-5x15 oln_n bd_n fm-popp bcolor_1 color_5 box-s1 input-2" id="name" type="text" value="{{ old("name") == "" ? $user["name"] : old("name") }}" name="name" placeholder="Full name" required>
+                            <input onchange="$('#sname').html($(this).val())" class="wp_100 pd-5x15 oln_n bd_n fm-popp bcolor_1 color_5 box-s1 input-2" id="name" type="text" value="{{ $user["name"] }}" placeholder="Full name" disabled>
                         </div>
 
                         <label for="email" class="fm-popp fw_b">E-mail</label>
                         <div class="pb_10 ds_f">
-                            <input onchange="$('#semail').html($(this).val())" class="wp_100 pd-5x15 oln_n bd_n fm-popp bcolor_1 color_5 box-s1 input-2" id="email" value="{{ old("email") == "" ? $user["email"] : old("email") }}" type="text" name="email" placeholder="E-mail" required>
+                            <input onchange="$('#semail').html($(this).val())" class="wp_100 pd-5x15 oln_n bd_n fm-popp bcolor_1 color_5 box-s1 input-2" id="email" value="{{ $user["email"] }}" type="text" placeholder="E-mail" disabled>
                         </div>
 
                         <label for="role" class="fm-popp fw_b">Role</label>
+                        @error("role")
+                        &nbsp;:
+                        <span class="color_4 fm-popp fs_14">{{ $message }}</span>
+                        @enderror
                         <div class="pb_10 ds_f">
                             <select onchange="$('#srole').html($(this).val())" class="wp_100 pd-5x15 oln_n bd_n fm-popp bcolor_1 color_5 box-s1 input-2" id="role" name="role" required>
-                                <option value="admin" {{ old("role") =="" ? ($user["role"] == "admin" ? " checked":"") : (old("role") == "admin" ? " checked" : "") }}>Admin</option>
-                                <option value="editor" {{ old("role") =="" ? ($user["role"] == "editor" ? " checked":"") : (old("role") == "editor" ? " checked" : "") }}>Editor</option>
-                                <option value="moderator" {{ old("role") =="" ? ($user["role"] == "moderator" ? " checked":"") : (old("role") == "moderator" ? " checked" : "") }}>Moderator</option>
+                                <option value="admin" {{ old("role") =="" ? ($user["role"] == "admin" ? " selected":"") : (old("role") == "admin" ? " selected" : "") }}>Admin</option>
+                                <option value="editor" {{ old("role") =="" ? ($user["role"] == "editor" ? " selected":"") : (old("role") == "editor" ? " selected" : "") }}>Editor</option>
+                                <option value="moderator" {{ old("role") =="" ? ($user["role"] == "moderator" ? " selected":"") : (old("role") == "moderator" ? " selected" : "") }}>Moderator</option>
                             </select>
                         </div>
 
                         <label class="fm-popp fw_b">Gender</label>
+                        @error("gender")
+                        &nbsp;:
+                        <span class="color_4 fm-popp fs_14">{{ $message }}</span>
+                        @enderror
                         <div class="pb_10 fm-popp">
                             <label>
                                 <input type="radio" name="gender" value="male" required{{ old("gender") == "" ? ($user["gender"] == "male" ? " checked" : ""): (old("gender") == "male" ? " checked" : "")}}> Male
