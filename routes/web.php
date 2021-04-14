@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
+use Intervention\Image\Facades\Image;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,9 @@ use App\Http\Controllers;
 
 Route::get("/", [Controllers\HomeController::class, "home"])->name("home");
 Route::get("/abc", function (){
-    $name = "http://bkworld.proj/photo/cache/post_1.jpg";
-    $file = \Intervention\Image\Facades\Image::make($name);
-    return $file->response();
+    $name = "photo/cache/post_1.jpg";
+    $file = Image::make($name);
+    return $file->dirname."/".$file->filename.".".$file->extension;
 });
 Route::get("/soft/{soft}", [Controllers\SoftController::class, "index"])->name("soft");
 Route::middleware("auth")

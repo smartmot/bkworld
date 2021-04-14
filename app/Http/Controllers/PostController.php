@@ -59,7 +59,7 @@ class PostController extends Controller
             Storage::move($image, $foler.$cover);
             $photo = Image::make("photo/".$cover);
             $photo->resize(300, 255);
-            $photo->save($photo->basePath());
+            $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
         }else{
             $validator
                 ->after(function ($validator){
