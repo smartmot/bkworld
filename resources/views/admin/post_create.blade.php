@@ -16,6 +16,7 @@
                                 </label>
                             </div>
                         </div>
+                        <div class="t_a_c pt_4 fs_13 fm-popp color_4" id="error"></div>
                     </div>
                 </div>
                 <div class="xl-6 lg-6 md-12 sm-12 fx_12">
@@ -84,7 +85,7 @@
                     $("input[name='thumbnail']").attr("value",'{{ asset("public").'/' }}'+data.url);
                     $("#error").text("");
                     $("#newimg")
-                        .attr("src", '{{ asset("public").'/' }}'+data.url)
+                        .attr("src", '{{ asset("photo").'/' }}'+data.url)
                         .fadeIn();
                 }else{
                     $("#error").text("Choose 4:3 ratio image maximum size 2MB");

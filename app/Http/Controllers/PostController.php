@@ -117,7 +117,7 @@ class PostController extends Controller
 
     public function thumbnail(Request $request){
         $validator = Validator::make($request->all(),[
-            "thumbnail" => ["required", "image", "mimes:jpeg", "max:5000", "min:1"]
+            "thumbnail" => ["required", "image", "mimes:jpeg", "max:5000", "min:1", "dimensions:ratio=4/3"]
         ]);
         if ($validator->fails()){
             $error = $validator->errors()->add("error", true);
@@ -125,7 +125,7 @@ class PostController extends Controller
         }else{
             $name = "cache/post_". Auth::id() . ".jpg";
             $url = $request->thumbnail->storeAs('images', $name, 'local');
-            return response(["url"=>$url."?ver=".date("his"), "error"=>false]);
+            return response(["url"=>$name."?ver=".date("his"), "error"=>false]);
         }
     }
 }
