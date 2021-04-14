@@ -8,7 +8,7 @@
     <title>@yield("title", config("settings.name"))</title>
     <link rel="shortcut icon" href="http://bkworld.proj/bkworld.svg">
     <link rel="stylesheet" href="{{ route("soft", "css.colors?ver=".config("settings.color_ver")) }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset("css/style.css") }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset("css/style.css")."?ver=".date('y.m.d.his') }}" type="text/css">
     <script type="text/javascript" src="{{ asset("js/app.js") }}"></script>
 </head>
 <body>
@@ -28,7 +28,7 @@
 <div style="height: calc(100% - 70px)">
     <div class="cw hp_100">
         <div class="rowc hp_100">
-            <div class="xl-4 hp_100">
+            <div class="xl-4 lg-4 md-4 sm-12 fx_12 hp_100">
                 <div class="">
                     <div class="">
                         <a href="{{ route("admin.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ act_route("admin.index") ? " bcolor_4 color_1":" color_5" }}">Home</a>
@@ -59,7 +59,7 @@
                     </div>
                 </div>
             </div>
-            <div class="xl-8 bcolor_2 prt_right afbcolor_4 hp_100 box-s1 ovfy_a scb-1">
+            <div class="xl-8 lg-8 md-8 sm-12 fx_12 bcolor_2 prt_right afbcolor_4 hp_100 box-s1 ovfy_a scb-1">
                 <div class="wp_100 box-s1 h_60 ds_f">
                     <div class="pl_30 fm-ubt fs_24 lh_60 color_5">
                         {{ tab_name() }}

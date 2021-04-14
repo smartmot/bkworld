@@ -7,7 +7,7 @@
 @section("content")
     <div>
        <div class="rowc">
-           <div class="xl-6 lg-6">
+           <div class="xl-6 lg-6 md-12 sm-12 order-1">
                <div class="pr_10 pl_10">
                    <form action="{{ route("user.store") }}" method="post" autocomplete="off">
                        @method("post")
@@ -53,7 +53,7 @@
                    </form>
                </div>
            </div>
-           <div class="xl-6">
+           <div class="xl-6 lg-6 md-12 sm-12 order-0">
                <div class="pr_10 pl_10">
                    <div class="_0auto w_100 pt_10">
                        <img class="w_100 b_r_c" src="{{ asset("icon/member.svg") }}" alt="">

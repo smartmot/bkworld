@@ -7,7 +7,7 @@
 @section("content")
     <div>
         <div class="rowc">
-            <div class="xl-6 lg-6">
+            <div class="xl-6 lg-6 md-12 sm-12 order-1">
                 <div class="pr_10 pl_10">
                     <form action="{{ route("user.update", $user["id"]) }}" method="post" autocomplete="off">
                         @method("put")
@@ -67,12 +67,7 @@
                     </div>
                 </div>
             </div>
-            <form action="{{ route("user.destroy", $user["id"]) }}" method="post">
-                @method("delete")
-                @csrf
-                <input id="answer" type="submit" hidden>
-            </form>
-            <div class="xl-6">
+            <div class="xl-6 lg-6 md-12 sm-12 order-0">
                 <div class="pr_10 pl_10">
                     <div class="_0auto w_100 pt_10">
                         <img class="w_100 b_r_c" src="{{ asset("icon/member.svg") }}" alt="">
@@ -84,6 +79,11 @@
                 </div>
             </div>
         </div>
+        <form action="{{ route("user.destroy", $user["id"]) }}" method="post">
+            @method("delete")
+            @csrf
+            <input id="answer" type="submit" hidden>
+        </form>
     </div>
     @include("admin.components.ask", ["head" => "Delete ".$user["name"] . " ?","body" => "Are you sure ?"])
 @endsection
