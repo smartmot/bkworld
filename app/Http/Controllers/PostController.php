@@ -72,11 +72,12 @@ class PostController extends Controller
 
         $post = new Post($data);
         $post->thumbnail = $cover;
+        $post->description = $data["description"];
         $post->save();
         return redirect(route("post.index"));
     }
 
-    /**
+    /*
      * Display the specified resource.
      *
      * @param  \App\Models\Post  $post
@@ -84,10 +85,10 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+
     }
 
-    /**
+    /*
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Post  $post
@@ -95,7 +96,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view("admin.post_edit")->with([
+            "post" => $post
+        ]);
     }
 
     /**
