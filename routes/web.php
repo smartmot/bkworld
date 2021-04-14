@@ -16,7 +16,9 @@ use App\Http\Controllers;
 
 Route::get("/", [Controllers\HomeController::class, "home"])->name("home");
 Route::get("/abc", function (){
-    return view("abc");
+    $name = "http://bkworld.proj/photo/cache/post_1.jpg";
+    $file = \Intervention\Image\Facades\Image::make($name);
+    return $file->response();
 });
 Route::get("/soft/{soft}", [Controllers\SoftController::class, "index"])->name("soft");
 Route::middleware("auth")

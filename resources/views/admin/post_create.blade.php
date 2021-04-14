@@ -2,7 +2,7 @@
 
 @section("content")
     <div class="pt_10">
-        <form action="{{ route("post.store") }}" method="post" spellcheck="false">
+        <form action="{{ route("post.store") }}" method="post" spellcheck="false" autocomplete="off">
             @csrf
             @method("post")
             <div class="rowc">

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
 {
@@ -51,10 +52,14 @@ class PostController extends Controller
         ]);
         $image = "images/cache/post_". Auth::id() . ".jpg";
 
-        $cover = "photo/".date("Y/mdhis") . ".jpg";
+        $cover = date("Y/m/d/his") . ".jpg";
+        $foler = "images/";
 
         if (Storage::disk("local")->exists($image)) {
-            Storage::move($image, $cover);
+            Storage::move($image, $foler.$cover);
+            $photo = Image::make("photo/".$cover);
+            $photo->resize(300, 255);
+            $photo->save($photo->basePath());
         }else{
             $validator
                 ->after(function ($validator){
