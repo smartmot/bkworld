@@ -73,7 +73,7 @@
                     <div>
                         @yield("content")
                     </div>
-                    <div class="wp_100 h_30"></div>
+                    <div class="wp_100 h_20"></div>
                 </div>
             </div>
         </div>
