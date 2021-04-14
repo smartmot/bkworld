@@ -1865,6 +1865,7 @@ input.phc-1::placeholder{color: #c3c3c3}
     left: 0;
     width: 5px;
     height: 100%;
+    display: none;
 }
 .ask{
     position: fixed;
