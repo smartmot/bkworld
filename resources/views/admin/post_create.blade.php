@@ -5,6 +5,7 @@
         <form action="{{ route("post.store") }}" method="post" spellcheck="false" autocomplete="off">
             @csrf
             @method("post")
+            <input type="hidden" name="thumbnail" value="{{ old("thumbnail") }}">
             <div class="rowc">
                 <div class="xl-6 lg-6 md-12 sm-12 fx_12 us_n">
                     <div class="pr_5 pl_5 pb_10">
@@ -17,6 +18,9 @@
                             </div>
                         </div>
                         <div class="t_a_c pt_4 fs_13 fm-popp color_4" id="error"></div>
+                        @error("thumbnail")
+                        <div class="t_a_c pt_4 fs_13 fm-popp color_4">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <div class="xl-6 lg-6 md-12 sm-12 fx_12">

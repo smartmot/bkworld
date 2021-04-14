@@ -22,7 +22,7 @@
                         <div>
                             <a class="c3 ac1 hc1 fs_12 t_d_n" href="{{ route("post.edit", $post["id"]) }}">Edit</a>&nbsp;.&nbsp;
                             <a class="c3 ac1 hc1 fs_12 t_d_n" href="javascript:fck_post('{{ route("post.destroy", $post["id"]) }}', '{{ $post["title"] }}')">Delete</a>&nbsp;.&nbsp;
-                            <a href="{{ route("public.single_news", $post["id"]) }}" class="c3 ac1 hc1 fs_12 t_d_n">View</a>
+                            <a href="{{ "" }}" class="c3 ac1 hc1 fs_12 t_d_n">View</a>
                         </div>
                     </div>
                 </div>

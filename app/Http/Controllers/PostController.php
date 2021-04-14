@@ -52,12 +52,12 @@ class PostController extends Controller
         ]);
         $image = "images/cache/post_". Auth::id() . ".jpg";
 
-        $cover = date("Y/m/d/his") . ".jpg";
+        $cover = date("Y/m/d/his");
         $foler = "images/";
 
         if (Storage::disk("local")->exists($image)) {
-            Storage::move($image, $foler.$cover);
-            $photo = Image::make("photo/".$cover);
+            Storage::move($image, $foler.$cover. ".jpg");
+            $photo = Image::make("photo/".$cover. ".jpg");
             $photo->resize(300, 255);
             $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
         }else{
@@ -71,6 +71,7 @@ class PostController extends Controller
         $data["thumbnail"] = $cover;
 
         $post = new Post($data);
+        $post->thumbnail = $cover;
         $post->save();
         return redirect(route("post.index"));
     }
