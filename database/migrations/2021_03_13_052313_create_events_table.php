@@ -15,7 +15,7 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->string("user_id");
+            $table->foreignId("user_id");
             $table->foreignId("updated_by")->nullable();
             $table->string("title");
             $table->date("start");
@@ -23,6 +23,7 @@ class CreateEventsTable extends Migration
             $table->longText("content");
             $table->string("thumbnail");
             $table->string("keyword")->nullable();
+            $table->string("description")->nullable();
             $table->timestamps();
         });
     }

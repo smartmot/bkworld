@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class EventController extends Controller
 {
@@ -31,7 +33,7 @@ class EventController extends Controller
         ]);
     }
 
-    /**
+    /*
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -39,7 +41,18 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            "title" => ["required"],
+            "start" => ["required"],
+            "end" => ["required"],
+            "content" => ["required"],
+            "thumbnail" => ["required"],
+            "keyword" => ["nullable"],
+            "description" => ["nullable"],
+        ]);
+        $data = $validator->validate();
+        $data["user_id"] = Auth::id();
+
     }
 
     /**

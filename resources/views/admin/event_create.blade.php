@@ -5,15 +5,19 @@
 
 
 @section("content")
-    <div class="pt_10">
-        <form action="{{ route("post.store") }}" method="post" spellcheck="false" autocomplete="off">
+    <div class="pt_5">
+        <form action="{{ route("event.store") }}" method="post" spellcheck="false" autocomplete="off">
             @csrf
             @method("post")
             <input type="hidden" name="thumbnail" value="{{ old("thumbnail") }}">
             <div class="rowc">
                 <div class="xl-6 lg-6 md-12 sm-12 fx_12 us_n">
                     <div class="pr_5 pl_5 pb_10">
-                        <div class="fm-popp">Thumbnail</div>
+                        <div class="fm-popp lh_xn fs_16">Thumbnail
+                            @error("thumbnail")
+                            <span class="fs_14">&nbsp;:<span class="color_4"> {{ $message }}</span></span>
+                            @enderror
+                        </div>
                         <div class="p-r">
                             <img id="newimg" class="wp_100 box-s1" src="{{ asset("icon/blank2.svg") }}" alt="">
                             <div class="p-a" style="right: calc(50% - 25px); top: calc(50% - 25px)">
@@ -23,61 +27,73 @@
                             </div>
                         </div>
                         <div class="t_a_c pt_4 fs_13 fm-popp color_4" id="error"></div>
-                        @error("thumbnail")
-                        <div class="t_a_c pt_4 fs_13 fm-popp color_4">{{ $message }}</div>
-                        @enderror
                     </div>
                 </div>
                 <div class="xl-6 lg-6 md-12 sm-12 fx_12">
                     <div class="pr_5 pl_5">
                         <div class="pb_5">
-                            <div class="fm-popp">Title</div>
+                            <div class="fm-popp lh_xn fs_16">Title
+                                @error("title")
+                                <span class="fs_14">&nbsp;:<span class="color_4"> {{ $message }}</span></span>
+                                @enderror
+                            </div>
                             <label class="ds_f p-r">
                                 <input type="text" name="title" value="{{ old("title") }}" class="input-1 box-s1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3" placeholder="Event title">
-                                @error("title")
-                                <span class="p-a b-9 ds_b pr_10 pl_10 bcolor_1 ml_20 b_r_5 fm-popp fs_14 color_4">{{ $message }}</span>
-                                @enderror
                             </label>
                         </div>
                         <div class="pb_5">
-                            <div class="fm-popp">Start date</div>
-                            <label class="ds_f p-r">
-                                <input type="date" name="start" value="{{ old("start") }}" class="input-1 box-s1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3">
+                            <div class="fm-popp lh_xn fs_16">Start date
                                 @error("start")
-                                <span class="p-a b-9 ds_b pr_10 pl_10 bcolor_1 ml_20 b_r_5 fm-popp fs_14 color_4">{{ $message }}</span>
+                                <span class="fs_14">&nbsp;:<span class="color_4"> {{ $message }}</span></span>
                                 @enderror
+                            </div>
+                            <label class="ds_f p-r">
+                                <input type="datetime-local" name="start" value="{{ old("start") }}" class="input-1 box-s1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3">
                             </label>
                         </div>
                         <div class="pb_5">
-                            <div class="fm-popp">End date</div>
-                            <label class="ds_f p-r">
-                                <input type="date" name="end" value="{{ old("end") }}" class="input-1 box-s1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3">
+                            <div class="fm-popp lh_xn fs_16">End date
                                 @error("end")
-                                <span class="p-a b-9 ds_b pr_10 pl_10 bcolor_1 ml_20 b_r_5 fm-popp fs_14 color_4">{{ $message }}</span>
+                                <span class="fs_14">&nbsp;:<span class="color_4"> {{ $message }}</span></span>
                                 @enderror
+                            </div>
+                            <label class="ds_f p-r">
+                                <input type="datetime-local" name="end" value="{{ old("end") }}" class="input-1 box-s1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3">
                             </label>
                         </div>
                         <div class="pb_5">
-                            <div class="fm-popp">Description</div>
-                            <label class="ds_f p-r">
-                                <textarea type="text" name="description" class="input-1 box-s1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3 haxy" placeholder="Description">{{ old("description") }}</textarea>
-                                @error("description")
-                                <span class="p-a b-9 ds_b pr_10 pl_10 bcolor_1 ml_20 b_r_5 fm-popp fs_14 color_4">{{ $message }}</span>
+                            <div class="fm-popp lh_xn fs_16">Keywords
+                                @error("keyword")
+                                <span class="fs_14">&nbsp;:<span class="color_4"> {{ $message }}</span></span>
                                 @enderror
+                            </div>
+                            <label class="ds_f p-r">
+                                <input type="text" name="keyword" value="{{ old("keyword") }}" class="input-1 box-s1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3" placeholder="Keywords">
                             </label>
                         </div>
                     </div>
                 </div>
-                <div class="fx_12 pb_15">
+                <div class="fx_12 pb_5">
                     <div class="pr_5 pl_5">
+                        <div class="pb_5">
+                            <label class="fm-popp fs_16 pb_5 ds_b" for="desc">Description
+                                @error("description")
+                                <span class="fs_14">&nbsp;:<span class="color_4"> {{ $message }}</span></span>
+                                @enderror
+                            </label>
+                            <div class="ds_f">
+                                <textarea rows="2" id="desc" type="text" name="description" class="input-1 box-s1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3" placeholder="Description">{{ old("description") }}</textarea>
+                            </div>
+                        </div>
+
                         <label class="fm-popp fs_16 pb_5 ds_b" for="content">
                             Contents
+                            @error("content")
+                            <span class="fs_14">&nbsp;:<span class="color_4"> {{ $message }}</span></span>
+                            @enderror
                         </label>
                         <div class="ds_f p-r">
                             <textarea id="content" name="content" rows="5" class="input-1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3 box-s1" placeholder="Content">{{ old("content") }}</textarea>
-                            @error("content")
-                            <span class="p-a b-9 ds_b pr_10 pl_10 bcolor_1 ml_20 b_r_5 fm-popp fs_14 color_4">{{ $message }}</span>
-                            @enderror
                         </div>
                     </div>
                     <div>
