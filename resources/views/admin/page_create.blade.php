@@ -66,7 +66,7 @@
             </div>
 
             <div class="t_a_r">
-                <button class="oln_n bd_n pd-5x20 box-s1 b_r_3 csr-p fm-popp fs_16 color_1 bcolor_5 hbcolor_4 abcolor_4">Create</button>
+                <button type="submit" class="oln_n bd_n pd-5x20 box-s1 b_r_3 csr-p fm-popp fs_16 color_1 bcolor_5 hbcolor_4 abcolor_4">Create</button>
             </div>
         </form>
     </div>

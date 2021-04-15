@@ -41,7 +41,7 @@ class PageController extends Controller
     {
         $validator = Validator::make($request->all(), [
             "title" => ["required", "max:255"],
-            "slug" => ["required", "unique:pages,slug"],
+            "slug" => ["required", "unique:pages,slug", "regex:/^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$/"],
             "keyword" => ["nullable","max:200"],
             "description" => ["nullable", "max:255"],
             "content" => ["required"],
@@ -53,7 +53,7 @@ class PageController extends Controller
         return redirect(route("page.index"));
     }
 
-    /**
+    /*
      * Display the specified resource.
      *
      * @param  \App\Models\Page  $page
@@ -64,7 +64,7 @@ class PageController extends Controller
         //
     }
 
-    /**
+    /*
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Page  $page
@@ -72,10 +72,12 @@ class PageController extends Controller
      */
     public function edit(Page $page)
     {
-        //
+        return view("admin.page_edit")->with([
+            "page" => $page
+        ]);
     }
 
-    /**
+    /*
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -84,7 +86,22 @@ class PageController extends Controller
      */
     public function update(Request $request, Page $page)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            "title" => ["required", "max:255"],
+            "slug" => ["required", "regex:/^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$/"],
+            "keyword" => ["nullable","max:200"],
+            "description" => ["nullable", "max:255"],
+            "content" => ["required"],
+        ]);
+        $data = $validator->validate();
+        $data["updated_by"] = Auth::id();
+        if ($data["slug"] != $page->slug){
+            $slug = Validator::make($request->only("slug"), [
+                "slug" => ["unique:pages,slug"]
+            ])->validate();
+        }
+        $page->update($data);
+        return redirect(route("page.index"));
     }
 
     /*
