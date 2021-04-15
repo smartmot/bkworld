@@ -85,7 +85,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-
+        return view("admin.post_show")->with([
+            "post" => $post
+        ]);
     }
 
     /*
