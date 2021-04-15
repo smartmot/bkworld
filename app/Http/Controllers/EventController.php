@@ -74,7 +74,7 @@ class EventController extends Controller
         return redirect(route("page.index"));
     }
 
-    /**
+    /*
      * Display the specified resource.
      *
      * @param  \App\Models\Event  $event
