@@ -68,6 +68,7 @@ class EventController extends Controller
                     $validator->errors()->add("thumbnail","Please upload a thumbnail");
                 })->validate();
         }
+        $data["thumbnail"] = $cover;
         $data["user_id"] = Auth::id();
         $event = new Event($data);
         $event->save();
