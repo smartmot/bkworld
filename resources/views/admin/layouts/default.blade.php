@@ -79,5 +79,9 @@
         </div>
     </div>
 </div>
+@yield("script")
+@yield("script1")
+@yield("script2")
+@yield("script3")
 </body>
 </html>

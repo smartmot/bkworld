@@ -79,6 +79,9 @@
         <input id="thumb" onchange="$('#coverf').submit()" type="file" name="thumbnail" accept="image/jpeg" hidden>
         <input type="reset" hidden>
     </form>
+@endsection
+
+@section("script")
     <script>
         $("#coverf").submit(function () {
             let upload = new FormData(this);
@@ -97,5 +100,4 @@
             });
         });
     </script>
-
 @endsection

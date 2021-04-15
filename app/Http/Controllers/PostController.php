@@ -58,7 +58,7 @@ class PostController extends Controller
         if (Storage::disk("local")->exists($image)) {
             Storage::move($image, $foler.$cover. ".jpg");
             $photo = Image::make("photo/".$cover. ".jpg");
-            $photo->resize(300, 255);
+            $photo->resize(300, 225);
             $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
         }else{
             $validator
@@ -110,6 +110,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        $old_thumb = $post->thumbnail;
         $validator = Validator::make($request->all(), [
             "title" => ["required","max:255"],
             "content" => ["required"],
@@ -133,9 +134,14 @@ class PostController extends Controller
         if ($post->isDirty("thumbnail")){
             if (Storage::disk("local")->exists($image)) {
                 Storage::move($image, $foler.$cover. ".jpg");
+                Storage::disk("local")->delete([
+                    "images/".$old_thumb.".jpg",
+                    "images/".$old_thumb."_thumb.jpg",
+                ]);
                 $photo = Image::make("photo/".$cover. ".jpg");
-                $photo->resize(300, 255);
+                $photo->resize(300, 225);
                 $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
+                $post->thumbnail = $cover;
             }else{
                 $validator
                     ->after(function ($validator){
@@ -162,9 +168,19 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         if (Auth::id() == $post->user_id){
-            return $post->delete();
+            Storage::disk("local")->delete([
+                "images/".$post->thumbnail.".jpg",
+                "images/".$post->thumbnail."_thumb.jpg",
+            ]);
+            $post->delete();
+            return redirect(route("post.index"));
         }elseif (Auth::user()->role == "admin"){
-            return $post->delete();
+            Storage::disk("local")->delete([
+                "images/".$post->thumbnail.".jpg",
+                "images/".$post->thumbnail."_thumb.jpg",
+            ]);
+            $post->delete();
+            return redirect(route("post.index"));
         }else{
             return redirect(route("post.index"));
         }

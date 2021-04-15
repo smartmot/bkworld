@@ -2,9 +2,9 @@
 
 @section("content")
     <div class="pt_10">
-        <form action="{{ route("post.store") }}" method="post" spellcheck="false" autocomplete="off">
+        <form action="{{ route("post.update", $post->id) }}" method="post" spellcheck="false" autocomplete="off">
             @csrf
-            @method("post")
+            @method("put")
             <input type="hidden" name="thumbnail" value="{{ old("thumbnail") == "" ? $post->thumbnail : old("thumbnail") }}">
             <div class="rowc">
                 <div class="xl-6 lg-6 md-12 sm-12 fx_12 us_n">
@@ -79,6 +79,8 @@
         <input id="thumb" onchange="$('#coverf').submit()" type="file" name="thumbnail" accept="image/jpeg" hidden>
         <input type="reset" hidden>
     </form>
+@endsection
+@section("script")
     <script>
         $("#coverf").submit(function () {
             let upload = new FormData(this);
@@ -97,5 +99,4 @@
             });
         });
     </script>
-
 @endsection

@@ -50,6 +50,10 @@
         @method("delete")
         <input type="submit" id="confirm" hidden>
     </form>
+
+@endsection
+
+@section("script")
     <script>
         function fck_post(page, msg) {
             $("#targ").attr("action", page);
@@ -57,5 +61,4 @@
             $("#title").text(msg);
         }
     </script>
-
 @endsection
