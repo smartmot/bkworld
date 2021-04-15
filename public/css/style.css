@@ -621,9 +621,8 @@ input.oln_g:focus{outline: 1px solid gray;}
     .notefw,.note_form{
         width: 620px;
     }
-    .haxx{
-        height: 84px;
-    }
+    .haxx{height: 84px;}
+    .haxy{height: 84px;}
 }
 @media (min-width:1200px){
     .xl{-ms-flex-preferred-size:0;flex-basis:0;-ms-flex-positive:1;flex-grow:1;max-width:100%}
@@ -646,9 +645,8 @@ input.oln_g:focus{outline: 1px solid gray;}
     .notefw,.note_form{
         width: 780px;
     }
-    .haxx{
-        height: 144px;
-    }
+    .haxx{height: 144px;}
+    .haxy{height: 40px;}
 }
 #menu{list-style: none;margin: 0;padding: 0;display: block;}
 #menu li{display: inline-block;}

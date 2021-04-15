@@ -15,18 +15,20 @@ class EventController extends Controller
     public function index()
     {
         return view("admin.event")->with([
-
+            "events" => Event::query()->orderBy("created_at", "desc")->paginate()
         ]);
     }
 
-    /**
+    /*
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        return view("admin.event_create")->with([
+
+        ]);
     }
 
     /**
