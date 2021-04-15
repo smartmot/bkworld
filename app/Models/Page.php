@@ -12,10 +12,11 @@ class Page extends Model
     protected $fillable = [
         "user_id",
         "updated_by",
-        "page_title",
-        "page_slug",
-        "page_content",
-        "page_keyword",
+        "title",
+        "slug",
+        "content",
+        "keyword",
+        "description",
     ];
 
     public function user(){

@@ -65,7 +65,7 @@
                     </div>
                     <div>
                         <div class="t_a_r pr_5 pl_5 pt_15 pb_5">
-                            <button class="oln_n bd_n pd-5x20 box-s1 b_r_3 csr-p fm-popp fs_16 color_1 bcolor_5 hbcolor_4 abcolor_4">Post</button>
+                            <button class="oln_n bd_n pd-5x20 box-s1 b_r_3 csr-p fm-popp fs_16 color_1 bcolor_5 hbcolor_4 abcolor_4">Update</button>
                         </div>
                     </div>
                 </div>

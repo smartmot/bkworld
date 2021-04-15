@@ -19,9 +19,9 @@ class CreatePagesTable extends Migration
             $table->foreignId("updated_by")->nullable();
             $table->string("title");
             $table->string("slug");
-            $table->longText("content");
             $table->string("keyword")->nullable();
             $table->string("description")->nullable();
+            $table->longText("content");
             $table->timestamps();
         });
     }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Page;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class PageController extends Controller
 {
@@ -15,7 +17,7 @@ class PageController extends Controller
     public function index()
     {
         return view("admin.page")->with([
-
+            "pages" => Page::query()->orderBy("created_at","DESC")->paginate()
         ]);
     }
 
@@ -29,7 +31,7 @@ class PageController extends Controller
         return view("admin.page_create");
     }
 
-    /**
+    /*
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -37,7 +39,18 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            "title" => ["required", "max:255"],
+            "slug" => ["required", "unique:pages,slug"],
+            "keyword" => ["nullable","max:200"],
+            "description" => ["nullable", "max:255"],
+            "content" => ["required"],
+        ]);
+        $data = $validator->validate();
+        $data["user_id"] = Auth::id();
+        $page = new Page($data);
+        $page->save();
+        return redirect(route("page.index"));
     }
 
     /**
@@ -74,7 +87,7 @@ class PageController extends Controller
         //
     }
 
-    /**
+    /*
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Page  $page
@@ -82,6 +95,9 @@ class PageController extends Controller
      */
     public function destroy(Page $page)
     {
-        //
+        return redirect(route("page.index"))->withErrors([
+            "alert" => "Delete Failed",
+            "alert_message" => "You are not admin"
+        ])->withInput();
     }
 }
