@@ -105,7 +105,7 @@ if (!function_exists("tab_name")){
             "post.show" => "Post",
 
             "page.index" => "Pages",
-            "page.create" => "Add new Page",
+            "page.create" => "Create new Page",
             "page.edit" => "Edit Page",
             "page.show" => "Page",
 

@@ -16,6 +16,7 @@ class Post extends Model
         "content",
         "keyword",
         "thumbnial",
+        "description",
     ];
 
     public function user(){
