@@ -101,7 +101,7 @@ class PostController extends Controller
         ]);
     }
 
-    /**
+    /*
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -110,10 +110,50 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            "title" => ["required","max:255"],
+            "content" => ["required"],
+            "keyword" => ["nullable","max:150"],
+            "description" => ["required","max:255"],
+            "thumbnail" => ["required","max:255"]
+        ]);
+        $image = "images/cache/post_". Auth::id() . ".jpg";
+
+        $cover = date("Y/m/d/his");
+        $foler = "images/";
+
+        $data = $validator->validate();
+        $post->title = $data["title"];
+        $post->content = $data["content"];
+        $post->keyword = $data["keyword"];
+        $post->updated_by = Auth::id();
+        $post->thumbnail = $data["thumbnail"];
+        $post->description = $data["description"];
+
+        if ($post->isDirty("thumbnail")){
+            if (Storage::disk("local")->exists($image)) {
+                Storage::move($image, $foler.$cover. ".jpg");
+                $photo = Image::make("photo/".$cover. ".jpg");
+                $photo->resize(300, 255);
+                $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
+            }else{
+                $validator
+                    ->after(function ($validator){
+                        $validator->errors()->add("thumbnail","Please upload a thumbnail");
+                    })->validate();
+            }
+        }
+
+        if (count($post->getDirty()) == 0){
+            return redirect(route("post.index"));
+        }else{
+            $post->updated_by = Auth::id();
+            $post->update($post->getDirty());
+            return redirect(route("post.index"));
+        }
     }
 
-    /**
+    /*
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Post  $post
@@ -121,7 +161,13 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        if (Auth::id() == $post->user_id){
+            return $post->delete();
+        }elseif (Auth::user()->role == "admin"){
+            return $post->delete();
+        }else{
+            return redirect(route("post.index"));
+        }
     }
 
     public function thumbnail(Request $request){
