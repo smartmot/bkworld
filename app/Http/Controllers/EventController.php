@@ -71,7 +71,7 @@ class EventController extends Controller
         $data["user_id"] = Auth::id();
         $event = new Event($data);
         $event->save();
-        return redirect(route("page.index"));
+        return redirect(route("event.index"));
     }
 
     /*
