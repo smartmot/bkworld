@@ -88,7 +88,7 @@
                 $("#coverf").find("input[type='reset']").click();
                 let data = response.data;
                 if (!data.error){
-                    $("input[name='thumbnail']").attr("value",'{{ asset("public").'/' }}'+data.url);
+                    $("input[name='thumbnail']").attr("value",'{{ asset("photo").'/' }}'+data.url);
                     $("#error").text("");
                     $("#newimg")
                         .attr("src", '{{ asset("photo").'/' }}'+data.url)

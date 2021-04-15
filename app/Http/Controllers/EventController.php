@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image;
 
 class EventController extends Controller
 {
@@ -43,16 +45,33 @@ class EventController extends Controller
     {
         $validator = Validator::make($request->all(),[
             "title" => ["required"],
-            "start" => ["required"],
-            "end" => ["required"],
+            "start" => ["required", "after:now"],
+            "end" => ["required", "after:start"],
             "content" => ["required"],
             "thumbnail" => ["required"],
             "keyword" => ["nullable"],
             "description" => ["nullable"],
         ]);
-        $data = $validator->validate();
-        $data["user_id"] = Auth::id();
+        $image = "images/cache/post_". Auth::id() . ".jpg";
 
+        $cover = date("Y/m/d/his");
+        $foler = "images/";
+        $data = $validator->validate();
+        if (Storage::disk("local")->exists($image)) {
+            Storage::move($image, $foler.$cover. ".jpg");
+            $photo = Image::make("photo/".$cover. ".jpg");
+            $photo->resize(300, 225);
+            $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
+        }else{
+            $validator
+                ->after(function ($validator){
+                    $validator->errors()->add("thumbnail","Please upload a thumbnail");
+                })->validate();
+        }
+        $data["user_id"] = Auth::id();
+        $event = new Event($data);
+        $event->save();
+        return redirect(route("page.index"));
     }
 
     /**

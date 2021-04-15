@@ -19,7 +19,7 @@
                             @enderror
                         </div>
                         <div class="p-r">
-                            <img id="newimg" class="wp_100 box-s1" src="{{ asset("icon/blank2.svg") }}" alt="">
+                            <img id="newimg" class="wp_100 box-s1" src="{{ old("thumbnail") == "" ? asset("icon/blank2.svg") : old("thumbnail") }}" alt="">
                             <div class="p-a" style="right: calc(50% - 25px); top: calc(50% - 25px)">
                                 <label for="thumb" class="fs_30 ds_b w_50 lh_50 h_50 t_a_c color_5 hcolor_4 acolor_4 csr-p">
                                     <span class="fa fa-camera"></span>
@@ -98,7 +98,7 @@
                     </div>
                     <div>
                         <div class="t_a_r pr_5 pl_5 pt_15 pb_5">
-                            <button class="oln_n bd_n pd-5x20 box-s1 b_r_3 csr-p fm-popp fs_16 color_1 bcolor_5 hbcolor_4 abcolor_4">Post</button>
+                            <button class="oln_n bd_n pd-5x20 box-s1 b_r_3 csr-p fm-popp fs_16 color_1 bcolor_5 hbcolor_4 abcolor_4" type="submit">Create</button>
                         </div>
                     </div>
                 </div>
@@ -122,7 +122,7 @@
                 $("#coverf").find("input[type='reset']").click();
                 let data = response.data;
                 if (!data.error){
-                    $("input[name='thumbnail']").attr("value",'{{ asset("public").'/' }}'+data.url);
+                    $("input[name='thumbnail']").attr("value",'{{ asset("photo").'/' }}'+data.url);
                     $("#error").text("");
                     $("#newimg")
                         .attr("src", '{{ asset("photo").'/' }}'+data.url)

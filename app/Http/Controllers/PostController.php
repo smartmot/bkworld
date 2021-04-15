@@ -54,25 +54,19 @@ class PostController extends Controller
 
         $cover = date("Y/m/d/his");
         $foler = "images/";
-
+        $data = $validator->validate();
         if (Storage::disk("local")->exists($image)) {
             Storage::move($image, $foler.$cover. ".jpg");
             $photo = Image::make("photo/".$cover. ".jpg");
             $photo->resize(300, 225);
             $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
         }else{
-            $validator
-                ->after(function ($validator){
-                    $validator->errors()->add("thumbnail","Please upload a thumbnail");
-                })->validate();
+            $validator->errors()->add("thumbnail", "Please upload your thumbnail");
         }
-        $data = $validator->validate();
         $data["user_id"] = Auth::id();
         $data["thumbnail"] = $cover;
 
         $post = new Post($data);
-        $post->thumbnail = $cover;
-        $post->description = $data["description"];
         $post->save();
         return redirect(route("post.index"));
     }
