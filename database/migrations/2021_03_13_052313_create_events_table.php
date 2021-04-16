@@ -18,8 +18,8 @@ class CreateEventsTable extends Migration
             $table->foreignId("user_id");
             $table->foreignId("updated_by")->nullable();
             $table->string("title");
-            $table->date("start");
-            $table->date("end");
+            $table->dateTime("start");
+            $table->dateTime("end");
             $table->longText("content");
             $table->string("thumbnail");
             $table->string("keyword")->nullable();
