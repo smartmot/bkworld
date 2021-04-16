@@ -110,6 +110,7 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
+        $old_thumb = $event->thumbnail;
         $validator = Validator::make($request->all(),[
             "title" => ["required"],
             "start" => ["required", "after:now"],
@@ -124,19 +125,33 @@ class EventController extends Controller
         $cover = date("Y/m/d/his");
         $foler = "images/";
         $data = $validator->validate();
-        if (Storage::disk("local")->exists($image)) {
-            Storage::move($image, $foler.$cover. ".jpg");
-            $photo = Image::make("photo/".$cover. ".jpg");
-            $photo->resize(300, 225);
-            $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
-        }else{
-            $validator
-                ->after(function ($validator){
-                    $validator->errors()->add("thumbnail","Please upload a thumbnail");
-                })->validate();
+        $event->title = $data["title"];
+        $event->start = $data["start"];
+        $event->end = $data["end"];
+        $event->content = $data["content"];
+        $event->keyword = $data["keyword"];
+        $event->description = $data["description"];
+        $event->thumbnail = $cover;
+        $event->updated_by = Auth::id();
+
+        if ($event->isDirty("thumbnail")){
+            if (Storage::disk("local")->exists($image)) {
+                Storage::move($image, $foler.$cover. ".jpg");
+                Storage::disk("local")->delete([
+                    "images/".$old_thumb.".jpg",
+                    "images/".$old_thumb."_thumb.jpg",
+                ]);
+                $photo = Image::make("photo/".$cover. ".jpg");
+                $photo->resize(300, 225);
+                $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
+            }else{
+                $validator
+                    ->after(function ($validator){
+                        $validator->errors()->add("thumbnail","Please upload a thumbnail");
+                    })->validate();
+            }
         }
-        $data["thumbnail"] = $cover;
-        $data["updated_by"] = Auth::id();
+
         $event->update($data);
         $event->save();
         return redirect(route("event.index"));
