@@ -83,10 +83,12 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        //
+        return view("admin.event_show")->with([
+            "event" => $event
+        ]);
     }
 
-    /**
+    /*
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Event  $event
@@ -94,10 +96,12 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        return view("admin.event_edit")->with([
+            "event" => $event
+        ]);
     }
 
-    /**
+    /*
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -106,7 +110,36 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            "title" => ["required"],
+            "start" => ["required", "after:now"],
+            "end" => ["required", "after:start"],
+            "content" => ["required"],
+            "thumbnail" => ["required"],
+            "keyword" => ["nullable"],
+            "description" => ["nullable"],
+        ]);
+        $image = "images/cache/post_". Auth::id() . ".jpg";
+
+        $cover = date("Y/m/d/his");
+        $foler = "images/";
+        $data = $validator->validate();
+        if (Storage::disk("local")->exists($image)) {
+            Storage::move($image, $foler.$cover. ".jpg");
+            $photo = Image::make("photo/".$cover. ".jpg");
+            $photo->resize(300, 225);
+            $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
+        }else{
+            $validator
+                ->after(function ($validator){
+                    $validator->errors()->add("thumbnail","Please upload a thumbnail");
+                })->validate();
+        }
+        $data["thumbnail"] = $cover;
+        $data["updated_by"] = Auth::id();
+        $event->update($data);
+        $event->save();
+        return redirect(route("event.index"));
     }
 
     /**
