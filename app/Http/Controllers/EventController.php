@@ -131,7 +131,7 @@ class EventController extends Controller
         $event->content = $data["content"];
         $event->keyword = $data["keyword"];
         $event->description = $data["description"];
-        $event->thumbnail = $cover;
+        $event->thumbnail = $data["thumbnail"];
         $event->updated_by = Auth::id();
 
         if ($event->isDirty("thumbnail")){
@@ -144,6 +144,7 @@ class EventController extends Controller
                 $photo = Image::make("photo/".$cover. ".jpg");
                 $photo->resize(300, 225);
                 $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
+                $event->thumbnail = $cover;
             }else{
                 $validator
                     ->after(function ($validator){
@@ -152,9 +153,13 @@ class EventController extends Controller
             }
         }
 
-        $event->update($data);
-        $event->save();
-        return redirect(route("event.index"));
+        if (count($event->getDirty()) == 0){
+            return redirect(route("event.index"));
+        }else{
+            $event->updated_by = Auth::id();
+            $event->update($event->getDirty());
+            return redirect(route("event.index"));
+        }
     }
 
     /**

@@ -9,7 +9,7 @@
         <form action="{{ route("event.update", $event->id) }}" method="post" spellcheck="false" autocomplete="off">
             @csrf
             @method("put")
-            <input type="hidden" name="thumbnail" value="{{ old("thumbnail") }}">
+            <input type="hidden" name="thumbnail" value="{{ old("thumbnail") == "" ? $event->thumbnail : old("thumbnail") }}">
             <div class="rowc">
                 <div class="xl-6 lg-6 md-12 sm-12 fx_12 us_n">
                     <div class="pr_5 pl_5 pb_10">
