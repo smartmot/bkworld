@@ -13,11 +13,13 @@ class Member extends Model
         "user_id",
         "updated_by",
         "name",
+        "position",
         "photo",
         "facebook",
         "instagram",
         "youtube",
         "twitter",
+        "description",
     ];
 
     public function user(){

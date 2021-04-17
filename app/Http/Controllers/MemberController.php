@@ -15,18 +15,18 @@ class MemberController extends Controller
     public function index()
     {
         return view("admin.member")->with([
-            "members" => Member::all()
+            "members" => Member::query()->orderBy("created_at", "desc")->paginate()
         ]);
     }
 
-    /**
+    /*
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        return view("admin.member_create");
     }
 
     /**

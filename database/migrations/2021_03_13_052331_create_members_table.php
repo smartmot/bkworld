@@ -19,10 +19,12 @@ class CreateMembersTable extends Migration
             $table->foreignId("updated_by")->nullable();
             $table->string("name");
             $table->string("photo");
+            $table->string("position")->nullable();
             $table->string("facebook")->nullable();
             $table->string("instagram")->nullable();
             $table->string("youtube")->nullable();
             $table->string("twitter")->nullable();
+            $table->mediumText("description")->nullable();
             $table->timestamps();
         });
     }
