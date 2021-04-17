@@ -16,7 +16,9 @@
                                     <img class="wp_100" src="{{ asset("photo/".$member["photo"].".jpg") }}" alt="">
                                 </div>
                                 <div class="pb_10 p-a b-0 r-0 afbcolor_5 box-s2 color_1 z_x_2 wp_100 pt_5 member_box">
-                                    <div class="fm-ubt t_a_c">{{ $member["name"] }}</div>
+                                    <div class="fm-ubt t_a_c">
+                                        <a class="t_d_n color_1 hcolor_4 acolor_4" href="{{ route("member.show", $member["id"]) }}">{{ $member["name"] }}</a>
+                                    </div>
                                     <div class="fm-ubt4 fs_13 t_a_c">{{ $member["position"] }}</div>
                                 </div>
                                 <div class="p-a t_2 r_5">

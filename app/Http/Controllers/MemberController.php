@@ -81,7 +81,9 @@ class MemberController extends Controller
      */
     public function show(Member $member)
     {
-        //
+        return view("admin.member_show")->with([
+            "member" => $member
+        ]);
     }
 
     /*
@@ -92,9 +94,16 @@ class MemberController extends Controller
      */
     public function edit(Member $member)
     {
-        return view("admin.member_edit")->with([
-            "member" => $member
-        ]);
+        if ($member->user_id == Auth::id() or Auth::user() == "admin"){
+            return view("admin.member_edit")->with([
+                "member" => $member
+            ]);
+        }else{
+            return redirect(route("member.index"))->withErrors([
+                "alert" => "No Permission",
+                "alert_message" => "You don't have permission to edit this member"
+            ])->withInput();
+        }
     }
 
     /*

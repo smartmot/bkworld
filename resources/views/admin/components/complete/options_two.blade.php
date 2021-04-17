@@ -1,4 +1,4 @@
-<div id="alert" class="w_250 bcolor_1 ds_n p-f z_x_5 box-s1 oln_n bd_n" onblur="$(this).fadeOut('fast')" style="right: calc(50% - 125px); top: 75px;" tabindex="1">
+<div id="alertz" class="w_250 bcolor_1 ds_n p-f z_x_5 box-s1 oln_n bd_n" onblur="$(this).fadeOut('fast')" style="right: calc(50% - 125px); top: 75px;" tabindex="1">
     <form action="#" method="post">
         @csrf
         @method('delete')
@@ -21,7 +21,7 @@
         </div>
         <div class="h_3 wp_100 bdbtm_1_gra"></div>
         <div class="t_a_c pt_10">
-            <button class="oln_n bd_n pl_20 pr_20 pt_5 pb_5 fm-ubt csr-p us_n bcolor_5 hbcolor_4 abcolor_4 color_1 hbox-s1 abox-s1" onclick="$('#alert').fadeOut(80)">Cancel</button>
+            <button class="oln_n bd_n pl_20 pr_20 pt_5 pb_5 fm-ubt csr-p us_n bcolor_5 hbcolor_4 abcolor_4 color_1 hbox-s1 abox-s1" onclick="$('#alertz').fadeOut(80)">Cancel</button>
         </div>
     </div>
 </div>
@@ -46,6 +46,6 @@
 <script type="text/javascript">
     let optz = function (member){
         $("#editor").attr('href',member+'/edit');
-        $("#alert").fadeIn(80).focus().children("form").attr("action",member);
+        $("#alertz").fadeIn(80).focus().children("form").attr("action",member);
     }
 </script>
