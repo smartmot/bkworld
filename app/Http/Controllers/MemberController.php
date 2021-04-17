@@ -31,7 +31,7 @@ class MemberController extends Controller
         return view("admin.member_create");
     }
 
-    /**
+    /*
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -39,7 +39,20 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            "name" => ["required", "max:255"],
+            "position" => ["nullable", "max:255"],
+            "photo" => ["required", "max:255"],
+            "facebook" => ["nullable", "max:255"],
+            "instagram" => ["nullable", "max:255"],
+            "youtube" => ["nullable", "max:255"],
+            "twitter" => ["nullable", "max:255"],
+            "description" => ["nullable"],
+        ]);
+        $data = $validator->validate();
+        $data["user_id"] = Auth::id();
+        $member = new Member($data);
+        $member->save();
     }
 
     /**
@@ -89,14 +102,14 @@ class MemberController extends Controller
 
     public function photo(Request $request){
         $validator = Validator::make($request->all(),[
-            "photo" => ["required", "image", "mimes:jpeg", "max:5000", "min:1", "dimensions:ratio=7/9"]
+            "mphoto" => ["required", "image", "mimes:jpeg", "max:5126", "min:1", "dimensions:ratio=6/7"]
         ]);
         if ($validator->fails()){
             $error = $validator->errors()->add("error", true);
             return response($error);
         }else{
             $name = "cache/post_". Auth::id() . ".jpg";
-            $url = $request->photo->storeAs('images', $name, 'local');
+            $url = $request->mphoto->storeAs('images', $name, 'local');
             return response(["url"=>$name."?ver=".date("his"), "error"=>false]);
         }
     }
