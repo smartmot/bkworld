@@ -132,7 +132,6 @@ class EventController extends Controller
         $event->keyword = $data["keyword"];
         $event->description = $data["description"];
         $event->thumbnail = $data["thumbnail"];
-        $event->updated_by = Auth::id();
 
         if ($event->isDirty("thumbnail")){
             if (Storage::disk("local")->exists($image)) {

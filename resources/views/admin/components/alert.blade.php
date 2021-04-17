@@ -1,4 +1,4 @@
-<div id="alert" class="w_250 top_of_alert bc4 t_a_c p-f z_x_5 box-s1" style="right: calc(50% - 125px)">
+<div id="alert" class="w_250 top_of_alert bc4 t_a_c p-f z_x_3 box-s1" style="right: calc(50% - 125px)">
     <div class="fs_20 fm-ubt c4 pb_5 pt_5 bc1">{{ $message }}</div>
     <div class="pr_5 pl_5 pt_10 pb_10">
         @error("alert_message")

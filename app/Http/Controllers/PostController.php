@@ -123,7 +123,6 @@ class PostController extends Controller
         $post->title = $data["title"];
         $post->content = $data["content"];
         $post->keyword = $data["keyword"];
-        $post->updated_by = Auth::id();
         $post->thumbnail = $data["thumbnail"];
         $post->description = $data["description"];
 
@@ -178,7 +177,10 @@ class PostController extends Controller
             $post->delete();
             return redirect(route("post.index"));
         }else{
-            return redirect(route("post.index"));
+            return redirect(route("post.index"))->with([
+                "alert" => "No permission",
+                "alert_message" => "You don't have permission to delete this post"
+            ]);
         }
     }
 

@@ -6,6 +6,35 @@
 
 @section("content")
     <div>
-
+        <div class="rowc pt_5">
+            @foreach($members as $member)
+                <div class="xl-4">
+                    <div class="pr_5 pl_5 pb_10">
+                        <div class="box-s2">
+                            <div class="p-r">
+                                <div>
+                                    <img class="wp_100" src="{{ asset("photo/".$member["photo"].".jpg") }}" alt="">
+                                </div>
+                                <div class="pb_10 p-a b-0 r-0 afbcolor_5 box-s2 color_1 z_x_2 wp_100 pt_5 member_box">
+                                    <div class="fm-ubt t_a_c">{{ $member["name"] }}</div>
+                                    <div class="fm-ubt4 fs_13 t_a_c">{{ $member["position"] }}</div>
+                                </div>
+                                <div class="p-a t_2 r_5">
+                                    <a class="color_5 hcolor_4 acolor_4" href="javascript:optz('{{ route('member.show', $member["id"]) }}')">
+                                        <span class="fa fa-ellipsis-h"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
     </div>
+    @error("alert")
+    @include("admin.components.alert")
+    @enderror
+@endsection
+@section("script")
+    @include("admin.components.complete.options_two",["section"=>"Member", "ask" => "delete this member?"])
 @endsection

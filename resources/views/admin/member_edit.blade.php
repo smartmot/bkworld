@@ -6,10 +6,10 @@
 
 @section("content")
     <div class="pt_5">
-        <form action="{{ route("member.store") }}" method="post" spellcheck="false" autocomplete="off">
+        <form action="{{ route("member.update", $member["id"]) }}" method="post" spellcheck="false" autocomplete="off">
             @csrf
-            @method("post")
-            <input type="hidden" name="photo" value="{{ old("photo") }}">
+            @method("put")
+            <input type="hidden" name="photo" value="{{ old("photo") == "" ? $member["photo"] : old("photo") }}">
             <div class="rowc">
                 <div class="xl-6 lg-6 md-12 sm-12 fx_12 us_n">
                     <div class="pr_5 pl_5 pb_10">
@@ -19,7 +19,7 @@
                             @enderror
                         </div>
                         <div class="p-r">
-                            <img id="newimg" class="wp_100 box-s1" src="{{ old("photo") == "" ? asset("icon/blank3.svg") : old("photo") }}" alt="">
+                            <img id="newimg" class="wp_100 box-s1" src="{{ old("photo") == "" ? asset("photo/".$member["photo"].".jpg") : (old("photo") == $member["photo"] ? asset("photo/".$member["photo"].".jpg") : old("photo")) }}" alt="">
                             <div class="p-a" style="right: calc(50% - 25px); top: calc(50% - 25px)">
                                 <label for="thumb" class="fs_30 ds_b w_50 lh_50 h_50 t_a_c color_5 hcolor_4 acolor_4 csr-p">
                                     <span class="fa fa-camera"></span>
@@ -38,7 +38,7 @@
                                 @enderror
                             </div>
                             <label class="ds_f p-r">
-                                <input type="text" name="name" value="{{ old("name") }}" class="input-1 box-s1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3" placeholder="Name">
+                                <input type="text" name="name" value="{{ old("name") == "" ? $member["name"] : old("name") }}" class="input-1 box-s1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3" placeholder="Name">
                             </label>
                         </div>
                         <div class="pb_5">
@@ -48,7 +48,7 @@
                                 @enderror
                             </div>
                             <label class="ds_f p-r">
-                                <input type="text" name="position" value="{{ old("position") }}" class="input-1 box-s1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3" placeholder="Position">
+                                <input type="text" name="position" value="{{ old("position") == "" ? $member["position"] : old("position") }}" class="input-1 box-s1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3" placeholder="Position">
                             </label>
                         </div>
                         <div class="pb_5">
@@ -58,7 +58,7 @@
                                 @enderror
                             </div>
                             <label class="ds_f p-r">
-                                <input type="text" name="facebook" value="{{ old("facebook") }}" class="input-1 box-s1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3" placeholder="Facebook">
+                                <input type="text" name="facebook" value="{{ old("facebook") == "" ? $member["facebook"] : old("facebook") }}" class="input-1 box-s1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3" placeholder="Facebook">
                             </label>
                         </div>
                         <div class="pb_5">
@@ -68,7 +68,7 @@
                                 @enderror
                             </div>
                             <label class="ds_f p-r">
-                                <input type="text" name="instagram" value="{{ old("instagram") }}" class="input-1 box-s1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3" placeholder="instagram">
+                                <input type="text" name="instagram" value="{{ old("instagram") == "" ? $member["instagram"] : old("instagram") }}" class="input-1 box-s1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3" placeholder="instagram">
                             </label>
                         </div>
                         <div class="pb_5">
@@ -78,7 +78,7 @@
                                 @enderror
                             </div>
                             <label class="ds_f p-r">
-                                <input type="text" name="youtube" value="{{ old("youtube") }}" class="input-1 box-s1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3" placeholder="YouTube">
+                                <input type="text" name="youtube" value="{{ old("youtube") == "" ? $member["youtube"] : old("youtube") }}" class="input-1 box-s1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3" placeholder="YouTube">
                             </label>
                         </div>
                         <div class="pb_5">
@@ -88,7 +88,7 @@
                                 @enderror
                             </div>
                             <label class="ds_f p-r">
-                                <input type="text" name="twitter" value="{{ old("twitter") }}" class="input-1 box-s1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3" placeholder="Twitter">
+                                <input type="text" name="twitter" value="{{ old("twitter") == "" ? $member["twitter"] : old("twitter") }}" class="input-1 box-s1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3" placeholder="Twitter">
                             </label>
                         </div>
                     </div>
@@ -102,12 +102,12 @@
                             @enderror
                         </label>
                         <div class="ds_f p-r">
-                            <textarea id="description" name="description" rows="5" class="input-1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3 box-s1" placeholder="Description">{{ old("description") }}</textarea>
+                            <textarea id="description" name="description" rows="5" class="input-1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3 box-s1" placeholder="Description">{{ old("description") == "" ? $member["description"] : old("description") }}</textarea>
                         </div>
                     </div>
                     <div>
                         <div class="t_a_r pr_5 pl_5 pt_15 pb_5">
-                            <button class="oln_n bd_n pd-5x20 box-s1 b_r_3 csr-p fm-popp fs_16 color_1 bcolor_5 hbcolor_4 abcolor_4" type="submit">Add Member</button>
+                            <button class="oln_n bd_n pd-5x20 box-s1 b_r_3 csr-p fm-popp fs_16 color_1 bcolor_5 hbcolor_4 abcolor_4" type="submit">Update Member</button>
                         </div>
                     </div>
                 </div>
@@ -121,6 +121,9 @@
         <input id="thumb" onchange="$('#coverf').submit()" type="file" name="mphoto" accept="image/jpeg" hidden>
         <input type="reset" hidden>
     </form>
+    @error("alert")
+    @include("admin.components.alert")
+    @enderror
 @endsection
 
 @section("script")

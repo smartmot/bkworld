@@ -55,6 +55,7 @@ class UserController extends Controller
         $data["password"] = Hash::make($data["password"]);
         $data["created_by"] = Auth::id();
         $data["status"] = "active";
+        $data["options"] = json_encode(['message'=>0]);
         $user = new User($data);
         $user->save();
         return redirect(route("user.index"));
@@ -100,7 +101,6 @@ class UserController extends Controller
         $data = $validator->validate();
 
         $data["updated_by"] = Auth::id();
-        $user->role = $data['role'];
         $user->update($data);
         return redirect(route("user.index"));
     }

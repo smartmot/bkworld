@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image;
 
 class MemberController extends Controller
 {
@@ -51,11 +53,27 @@ class MemberController extends Controller
         ]);
         $data = $validator->validate();
         $data["user_id"] = Auth::id();
+
+        $image = "images/cache/post_". Auth::id() . ".jpg";
+
+        $cover = date("Y/m/d/his");
+        $foler = "images/";
+        if (Storage::disk("local")->exists($image)) {
+            Storage::move($image, $foler.$cover. ".jpg");
+            $photo = Image::make("photo/".$cover. ".jpg");
+            $photo->resize(300, 350);
+            $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
+            $data["photo"] = $cover;
+        }else{
+            $validator->errors()->add("photo", "Please upload a photo");
+        }
+
         $member = new Member($data);
         $member->save();
+        return redirect(route("member.index"));
     }
 
-    /**
+    /*
      * Display the specified resource.
      *
      * @param  \App\Models\Member  $member
@@ -66,7 +84,7 @@ class MemberController extends Controller
         //
     }
 
-    /**
+    /*
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Member  $member
@@ -74,10 +92,12 @@ class MemberController extends Controller
      */
     public function edit(Member $member)
     {
-        //
+        return view("admin.member_edit")->with([
+            "member" => $member
+        ]);
     }
 
-    /**
+    /*
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -86,10 +106,68 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $member)
     {
-        //
+        $old_photo = $member["photo"];
+        $validator = Validator::make($request->all(), [
+            "name" => ["required", "max:255"],
+            "position" => ["nullable", "max:255"],
+            "photo" => ["required", "max:255"],
+            "facebook" => ["nullable", "max:255"],
+            "instagram" => ["nullable", "max:255"],
+            "youtube" => ["nullable", "max:255"],
+            "twitter" => ["nullable", "max:255"],
+            "description" => ["nullable"],
+        ]);
+        $data = $validator->validate();
+
+        $image = "images/cache/post_". Auth::id() . ".jpg";
+        $cover = date("Y/m/d/his");
+        $foler = "images/";
+        $member->name = $data["name"];
+        $member->position = $data["position"];
+        $member->photo = $data["photo"];
+        $member->facebook = $data["facebook"];
+        $member->instagram = $data["instagram"];
+        $member->youtube = $data["youtube"];
+        $member->twitter = $data["twitter"];
+        $member->description = $data["description"];
+
+        if ($member->user_id == Auth::id() or Auth::user() == "admin"){
+            if ($member->isDirty("photo")){
+                if (Storage::disk("local")->exists($image)) {
+                    Storage::move($image, $foler.$cover. ".jpg");
+                    Storage::disk("local")->delete([
+                        "images/".$old_photo.".jpg",
+                        "images/".$old_photo."_thumb.jpg",
+                    ]);
+                    $photo = Image::make("photo/".$cover. ".jpg");
+                    $photo->resize(300, 225);
+                    $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
+                    $member->photo = $cover;
+                }else{
+                    $validator
+                        ->after(function ($validator){
+                            $validator->errors()->add("photo","Please upload a photo");
+                        })->validate();
+                }
+            }
+
+            if (count($member->getDirty()) == 0){
+                return redirect(route("member.index"));
+            }else{
+                $member->updated_by = Auth::id();
+                $member->update($member->getDirty());
+                return redirect(route("member.index"));
+            }
+        }else{
+            return redirect(route("member.index"))->withErrors([
+                "alert" => "No permission",
+                "alert_message" => "You don't have permission to edit this member"
+            ])->withInput();
+        }
+
     }
 
-    /**
+    /*
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Member  $member
@@ -97,7 +175,28 @@ class MemberController extends Controller
      */
     public function destroy(Member $member)
     {
-        //
+        if (Auth::user()->role == "admin"){
+            Storage::disk("local")->delete([
+                "images/".$member->photo.".jpg",
+                "images/".$member->photo."_thumb.jpg",
+            ]);
+            $member->delete();
+            return redirect(route("member.index"));
+        }else{
+            if ($member->user_id == Auth::id()){
+                Storage::disk("local")->delete([
+                    "images/".$member->photo.".jpg",
+                    "images/".$member->photo."_thumb.jpg",
+                ]);
+                $member->delete();
+                return redirect(route("member.index"));
+            }else{
+                return redirect(route("member.index"))->withErrors([
+                    "alert" => "No permission",
+                    "alert_message" => "You don't have permission to update this member"
+                ])->withInput();
+            }
+        }
     }
 
     public function photo(Request $request){
