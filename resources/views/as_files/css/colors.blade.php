@@ -6,6 +6,12 @@ $color3 = config("settings.colors")[2];
 $color4 = config("settings.colors")[3];
 $color5 = config("settings.colors")[4];
 echo "
+.bdcolor_1{border-color: $color1;}
+.bdcolor_2{border-color: $color2;}
+.bdcolor_3{border-color: $color3;}
+.bdcolor_4{border-color: $color4;}
+.bdcolor_5{border-color: $color5;}
+
 .color_1{color: $color1;}
 .color_2{color: $color2;}
 .color_3{color: $color3;}
