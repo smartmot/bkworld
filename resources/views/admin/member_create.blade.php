@@ -116,7 +116,7 @@
     <script>
         $("#coverf").submit(function () {
             let upload = new FormData(this);
-            axios.post('{{route("post.thumb")}}', upload).then(response=>{
+            axios.post('{{route("member.photo")}}', upload).then(response=>{
                 $("#coverf").find("input[type='reset']").click();
                 let data = response.data;
                 if (!data.error){
@@ -126,7 +126,7 @@
                         .attr("src", '{{ asset("photo").'/' }}'+data.url)
                         .fadeIn();
                 }else{
-                    $("#error").text("Choose 4:3 ratio image maximum size 2MB");
+                    $("#error").text("Choose 4:3 ratio image maximum size 5MB");
                 }
             });
         });

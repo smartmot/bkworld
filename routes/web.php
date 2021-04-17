@@ -37,6 +37,7 @@ Route::middleware("auth")
     Route::resource("/admin/event", Controllers\EventController::class);
     Route::resource("/admin/message", Controllers\MessageController::class);
     Route::post("/admin/post/thumb", [Controllers\PostController::class,"thumbnail"])->name("post.thumb");
+    Route::post("/admin/member/photo", [Controllers\MemberController::class,"photo"])->name("member.photo");
 });
 
 Route::get("/login", [Controllers\LoginController::class, "login"])

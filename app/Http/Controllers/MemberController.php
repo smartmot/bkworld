@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Member;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class MemberController extends Controller
 {
@@ -83,5 +85,19 @@ class MemberController extends Controller
     public function destroy(Member $member)
     {
         //
+    }
+
+    public function photo(Request $request){
+        $validator = Validator::make($request->all(),[
+            "photo" => ["required", "image", "mimes:jpeg", "max:5000", "min:1", "dimensions:ratio=7/9"]
+        ]);
+        if ($validator->fails()){
+            $error = $validator->errors()->add("error", true);
+            return response($error);
+        }else{
+            $name = "cache/post_". Auth::id() . ".jpg";
+            $url = $request->photo->storeAs('images', $name, 'local');
+            return response(["url"=>$name."?ver=".date("his"), "error"=>false]);
+        }
     }
 }
