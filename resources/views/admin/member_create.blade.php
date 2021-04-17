@@ -19,7 +19,7 @@
                             @enderror
                         </div>
                         <div class="p-r">
-                            <img id="newimg" class="wp_100 box-s1" src="{{ old("photo") == "" ? asset("icon/blank2.svg") : old("photo") }}" alt="">
+                            <img id="newimg" class="wp_100 box-s1" src="{{ old("photo") == "" ? asset("icon/blank3.svg") : old("photo") }}" alt="">
                             <div class="p-a" style="right: calc(50% - 25px); top: calc(50% - 25px)">
                                 <label for="thumb" class="fs_30 ds_b w_50 lh_50 h_50 t_a_c color_5 hcolor_4 acolor_4 csr-p">
                                     <span class="fa fa-camera"></span>
