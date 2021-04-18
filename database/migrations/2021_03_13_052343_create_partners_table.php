@@ -18,6 +18,7 @@ class CreatePartnersTable extends Migration
             $table->foreignId("user_id");
             $table->foreignId("updated_by")->nullable();
             $table->string("name");
+            $table->string("logo");
             $table->string("website")->nullable();
             $table->string("email")->nullable();
             $table->string("phone")->nullable();

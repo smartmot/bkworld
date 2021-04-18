@@ -13,6 +13,7 @@ class Partner extends Model
         "user_id",
         "updated_by",
         "name",
+        "logo",
         "website",
         "email",
         "phone",
