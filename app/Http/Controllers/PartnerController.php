@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Partner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class PartnerController extends Controller
 {
@@ -29,7 +31,7 @@ class PartnerController extends Controller
         return view("admin.partner_create");
     }
 
-    /**
+    /*
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -37,7 +39,17 @@ class PartnerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            "name"=> ["required"],
+            "logo"=> ["required"],
+            "website"=> ["nullable"],
+            "email"=> ["nullable"],
+            "phone"=> ["nullable"],
+            "address"=> ["nullable"],
+        ]);
+
+        $data = $validator->validate();
+        $data["user_id"] = Auth::id();
     }
 
     /**
