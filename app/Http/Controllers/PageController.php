@@ -114,9 +114,24 @@ class PageController extends Controller
      */
     public function destroy(Page $page)
     {
-        return redirect(route("page.index"))->withErrors([
-            "alert" => "Delete Failed",
-            "alert_message" => "You are not admin"
-        ])->withInput();
+        $no_delete = [
+            "about"
+        ];
+        if ($page->user_id == Auth::id() or Auth::user() == "admin") {
+            if (in_array($page->slug, $no_delete)){
+                return redirect(route("page.index"))->withErrors([
+                    "alert" => "Delete Failed",
+                    "alert_message" => "This page is can't not delete"
+                ])->withInput();
+            }else{
+                $page->delete();
+                return redirect(route("page.index"));
+            }
+        }else{
+                return redirect(route("page.index"))->withErrors([
+                    "alert" => "Delete Failed",
+                    "alert_message" => "You are no permission to delete this page"
+                ])->withInput();
+        }
     }
 }

@@ -26,7 +26,7 @@
                             </div>
                             <div>
                                 <a class="c3 ac1 hc1 fs_12 t_d_n" href="{{ route("page.edit", $page["id"]) }}">Edit</a>&nbsp;.&nbsp;
-                                <a class="c3 ac1 hc1 fs_12 t_d_n" href="javascript:fck_page('{{ route("page.destroy", $page["id"]) }}','{{ $page["page_title"] }}')">Delete</a>
+                                <a class="c3 ac1 hc1 fs_12 t_d_n" href="javascript:confirm_del('{{ route("page.destroy", $page["id"]) }}','{{ $page["title"] }}')">Delete</a>
                             </div>
                         </div>
                     </div>
@@ -37,30 +37,8 @@
     @error("alert")
     @include("admin.components.alert")
     @enderror
-    <div id="del" class="w_250 top_of_alert bc4 t_a_c p-f z_x_5 box-s1 ds_n" style="right: calc(50% - 125px)">
-        <div class="fs_20 fm-ubt c4 pb_5 pt_5 bc1">Delete Page</div>
-        <div class="pr_10 pl_10 pt_10 pb_10">
-            <div class="fs_14 fm-ubt4 c2 pb_5" id="title"></div>
-            <div class="fs_16 fm-ubt5 c1 pb_10">Are you sure ?</div>
-            <div class="ds_f pt_5">
-                <label for="confirm" class="w_80 fm-ubt csr-p us_n h_25 lh_25 bc2 c_whi hc1 box-s1">Yes</label>
-                <div class="flx"></div>
-                <div class="w_80 fm-ubt csr-p us_n h_25 lh_25 bc2 c_whi hc1 box-s1" onclick="$('#del').fadeOut(80)">No</div>
-            </div>
-        </div>
-    </div>
-    <form action="" method="post" class="ds_n" id="targ">
-        @csrf
-        @method("delete")
-        <input type="submit" id="confirm" hidden>
-    </form>
 @endsection
 
 @section("script")
-    <script>
-        function fck_page(page, msg) {
-            $("#targ").attr("action", page);$("#del").fadeIn(80);
-            $("#title").text(msg);
-        }
-    </script>
+    @include("admin.components.confirm_del")
 @endsection

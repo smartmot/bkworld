@@ -96,9 +96,16 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        return view("admin.event_edit")->with([
-            "event" => $event
-        ]);
+        if ($event->user_id == Auth::id() or Auth::user() == "admin") {
+            return view("admin.event_edit")->with([
+                "event" => $event
+            ]);
+        }else{
+            return redirect(route("event.index"))->withErrors([
+                "alert" => "No permission!",
+                "alert_message" => "You are not allowed to edit this event"
+            ])->withInput();
+        }
     }
 
     /*
@@ -132,36 +139,42 @@ class EventController extends Controller
         $event->keyword = $data["keyword"];
         $event->description = $data["description"];
         $event->thumbnail = $data["thumbnail"];
-
-        if ($event->isDirty("thumbnail")){
-            if (Storage::disk("local")->exists($image)) {
-                Storage::move($image, $foler.$cover. ".jpg");
-                Storage::disk("local")->delete([
-                    "images/".$old_thumb.".jpg",
-                    "images/".$old_thumb."_thumb.jpg",
-                ]);
-                $photo = Image::make("photo/".$cover. ".jpg");
-                $photo->resize(300, 225);
-                $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
-                $event->thumbnail = $cover;
-            }else{
-                $validator
-                    ->after(function ($validator){
-                        $validator->errors()->add("thumbnail","Please upload a thumbnail");
-                    })->validate();
+        if ($event->user_id == Auth::id() or Auth::user() == "admin") {
+            if ($event->isDirty("thumbnail")){
+                if (Storage::disk("local")->exists($image)) {
+                    Storage::move($image, $foler.$cover. ".jpg");
+                    Storage::disk("local")->delete([
+                        "images/".$old_thumb.".jpg",
+                        "images/".$old_thumb."_thumb.jpg",
+                    ]);
+                    $photo = Image::make("photo/".$cover. ".jpg");
+                    $photo->resize(300, 225);
+                    $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
+                    $event->thumbnail = $cover;
+                }else{
+                    $validator
+                        ->after(function ($validator){
+                            $validator->errors()->add("thumbnail","Please upload a thumbnail");
+                        })->validate();
+                }
             }
-        }
 
-        if (count($event->getDirty()) == 0){
-            return redirect(route("event.index"));
+            if (count($event->getDirty()) == 0){
+                return redirect(route("event.index"));
+            }else{
+                $event->updated_by = Auth::id();
+                $event->update($event->getDirty());
+                return redirect(route("event.index"));
+            }
         }else{
-            $event->updated_by = Auth::id();
-            $event->update($event->getDirty());
-            return redirect(route("event.index"));
+            return redirect(route("event.index"))->withErrors([
+                "alert" => "No permission!",
+                "alert_message" => "You are not allowed to edit this event"
+            ])->withInput();
         }
     }
 
-    /**
+    /*
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Event  $event
@@ -169,6 +182,18 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        if ($event->user_id == Auth::id() or Auth::user() == "admin") {
+            Storage::disk("local")->delete([
+                "images/".$event->thumbnail.".jpg",
+                "images/".$event->thumbnail."_thumb.jpg",
+            ]);
+            $event->delete();
+            return redirect(route("event.index"));
+        }else{
+            return redirect(route("event.index"))->withErrors([
+                "alert" => "No permission!",
+                "alert_message" => "You are not allowed to edit this event"
+            ])->withInput();
+        }
     }
 }

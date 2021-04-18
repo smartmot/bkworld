@@ -17,11 +17,7 @@ use Intervention\Image\Facades\Image;
 
 Route::get("/", [Controllers\HomeController::class, "home"])->name("home");
 Route::get("/abc", function (){
-    $name = "images/2021/04/15/045656.jpg";
-    $name2 = "images/2021/04/15/045656_thumb.jpg";
-    return \Illuminate\Support\Facades\Storage::disk("local")->delete([
-        $name,$name2
-    ]);
+    return \Illuminate\Support\Facades\Auth::logout();
 });
 Route::get("/soft/{soft}", [Controllers\SoftController::class, "index"])->name("soft");
 Route::middleware("auth")

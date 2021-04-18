@@ -14,9 +14,9 @@
                             <div class="wp_100 bcolor_4 color_1 fs_11 bdr-tlr-3">{{ date_format(date_create($event->start), "M") }}</div>
                             <div class="fm-ubt">{{ date_format(date_create($event->start), "d") }}</div>
                         </div>
-                        <div class="p-a t_2 r_2">
-                            <a href="{{ route("event.edit", $event["id"]) }}" class="color_5 hcolor_4 acolor_4">
-                                <span class="fa fa-edit"></span>
+                        <div class="p-a t_2 r_5">
+                            <a href="javascript:optz('{{ route("event.show", $event->id) }}')" class="color_5 hcolor_4 acolor_4">
+                                <span class="fa fa-ellipsis-h"></span>
                             </a>
                         </div>
                         <div class="pr_10 pl_10 fm-popp">
@@ -27,4 +27,10 @@
             </div>
         @endforeach
     </div>
+    @error("alert")
+    @include("admin.components.alert")
+    @enderror
+@endsection
+@section("script")
+    @include("admin.components.complete.options_two",["section"=>"Event", "ask" => "delete this event?"])
 @endsection
