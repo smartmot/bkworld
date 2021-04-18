@@ -6,21 +6,27 @@
 
 @section("content")
     <div>
-        <form action="" method="post" enctype="multipart/form-data">
-            @csrf
-            @method("post")
-            <input id="partner" type="file" name="partner" accept="image/jpeg" hidden>
-        </form>
         <form action="{{ route("partner.store") }}" method="post" autocomplete="off">
             @method("post")
             @csrf
+            <input type="hidden" name="logo" value="{{ old("logo") }}">
             <div class="rowc pt_15">
                 <div class="xl-6 lg-6 md-6 sm-12 fx_12">
                     <div class="pr_5 pl_5">
+                        <div class="w_200 _0auto pb_10">
+                            <img id="newimg" class="wp_100" src="{{ old("logo") }}" alt="">
+                        </div>
                         <div class="t_a_c pb_5">
-                            <label for="partner">
+                            <label for="thumb">
                                 <span class="oln_n bd_n pr_10 pl_10 pt_3 pb_3 bcolor_5 hbcolor_4 abcolor_4 color_1 fm-popp b_r_3 us_n csr-p">Upload Logo</span>
                             </label>
+                        </div>
+                        <div class="pb_5 t_a_c pt_5 fm-popp">
+                            <span class="color_4" id="error">
+                                @error("logo")
+                                {{ $message }}
+                                @enderror
+                            </span>
                         </div>
                         <div>
                             <div class="pb_5">
@@ -93,4 +99,30 @@
             </div>
         </form>
     </div>
+    <form id="coverf" action="javascript:void(0)" method="post" enctype="multipart/form-data">
+        @csrf
+        @method("post")
+        <input id="thumb" onchange="$('#coverf').submit()" type="file" name="partner" accept="image/*" hidden>
+        <input type="reset" hidden>
+    </form>
+@endsection
+@section("script")
+    <script>
+        $("#coverf").submit(function () {
+            let upload = new FormData(this);
+            axios.post('{{route("partner.logo")}}', upload).then(response=>{
+                $("#coverf").find("input[type='reset']").click();
+                let data = response.data;
+                if (!data.error){
+                    $("input[name='logo']").attr("value",'{{ asset("photo").'/' }}'+data.url);
+                    $("#error").text("");
+                    $("#newimg")
+                        .attr("src", '{{ asset("photo").'/' }}'+data.url)
+                        .fadeIn();
+                }else{
+                    $("#error").text("Choose 4:3 ratio image maximum size 2MB");
+                }
+            });
+        });
+    </script>
 @endsection

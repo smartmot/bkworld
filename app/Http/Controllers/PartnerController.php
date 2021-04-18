@@ -62,9 +62,12 @@ class PartnerController extends Controller
         }else{
             $validator->errors()->add("logo", "Please upload a logo");
         }
+        $partner = new Partner($data);
+        $partner->save();
+        return redirect(route("partner.index"));
     }
 
-    /**
+    /*
      * Display the specified resource.
      *
      * @param  \App\Models\Partner  $partner
@@ -107,5 +110,19 @@ class PartnerController extends Controller
     public function destroy(Partner $partner)
     {
         //
+    }
+
+    public function logo(Request $request){
+        $validator = Validator::make($request->all(),[
+            "partner" => ["required", "image", "max:5000", "min:1"]
+        ]);
+        if ($validator->fails()){
+            $error = $validator->errors()->add("error", true);
+            return response($error);
+        }else{
+            $name = "cache/post_". Auth::id() . ".jpg";
+            $url = $request->partner->storeAs('images', $name, 'local');
+            return response(["url"=>$name."?ver=".date("his"), "error"=>false]);
+        }
     }
 }
