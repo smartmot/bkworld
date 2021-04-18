@@ -92,9 +92,16 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view("admin.post_edit")->with([
-            "post" => $post
-        ]);
+        if ($post->user_id == Auth::id() or Auth::user() == "admin"){
+            return view("admin.post_edit")->with([
+                "post" => $post
+            ]);
+        }else{
+            return redirect(route("post.index"))->withErrors([
+                "alert" => "No Permission!",
+                "alert_message" => "You don't have permission to edit this post"
+            ])->withInput();
+        }
     }
 
     /*
@@ -126,32 +133,40 @@ class PostController extends Controller
         $post->thumbnail = $data["thumbnail"];
         $post->description = $data["description"];
 
-        if ($post->isDirty("thumbnail")){
-            if (Storage::disk("local")->exists($image)) {
-                Storage::move($image, $foler.$cover. ".jpg");
-                Storage::disk("local")->delete([
-                    "images/".$old_thumb.".jpg",
-                    "images/".$old_thumb."_thumb.jpg",
-                ]);
-                $photo = Image::make("photo/".$cover. ".jpg");
-                $photo->resize(300, 225);
-                $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
-                $post->thumbnail = $cover;
-            }else{
-                $validator
-                    ->after(function ($validator){
-                        $validator->errors()->add("thumbnail","Please upload a thumbnail");
-                    })->validate();
+        if ($post->user_id == Auth::id() or Auth::user() == "admin"){
+            if ($post->isDirty("thumbnail")){
+                if (Storage::disk("local")->exists($image)) {
+                    Storage::move($image, $foler.$cover. ".jpg");
+                    Storage::disk("local")->delete([
+                        "images/".$old_thumb.".jpg",
+                        "images/".$old_thumb."_thumb.jpg",
+                    ]);
+                    $photo = Image::make("photo/".$cover. ".jpg");
+                    $photo->resize(300, 225);
+                    $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
+                    $post->thumbnail = $cover;
+                }else{
+                    $validator
+                        ->after(function ($validator){
+                            $validator->errors()->add("thumbnail","Please upload a thumbnail");
+                        })->validate();
+                }
             }
+
+            if (count($post->getDirty()) == 0){
+                return redirect(route("post.index"));
+            }else{
+                $post->updated_by = Auth::id();
+                $post->update($post->getDirty());
+                return redirect(route("post.index"));
+            }
+        }else{
+            return redirect(route("post.index"))->withErrors([
+                "alert" => "No Permission!",
+                "alert_message" => "You don't have permission to edit this post"
+            ])->withInput();
         }
 
-        if (count($post->getDirty()) == 0){
-            return redirect(route("post.index"));
-        }else{
-            $post->updated_by = Auth::id();
-            $post->update($post->getDirty());
-            return redirect(route("post.index"));
-        }
     }
 
     /*
