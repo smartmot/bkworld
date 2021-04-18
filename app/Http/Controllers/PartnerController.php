@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Partner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image;
 
 class PartnerController extends Controller
 {
@@ -50,6 +52,16 @@ class PartnerController extends Controller
 
         $data = $validator->validate();
         $data["user_id"] = Auth::id();
+        $image = "images/cache/post_". Auth::id() . ".jpg";
+
+        $cover = date("Y/m/d/his");
+        $foler = "images/";
+        if (Storage::disk("local")->exists($image)) {
+            Storage::move($image, $foler.$cover. ".jpg");
+            $data["logo"] = $cover;
+        }else{
+            $validator->errors()->add("logo", "Please upload a logo");
+        }
     }
 
     /**
