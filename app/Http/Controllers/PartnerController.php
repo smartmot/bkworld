@@ -19,7 +19,7 @@ class PartnerController extends Controller
     public function index()
     {
         return view("admin.partner")->with([
-
+            "partners" => Partner::query()->orderBy("created_at", "desc")->paginate()
         ]);
     }
 
@@ -75,10 +75,12 @@ class PartnerController extends Controller
      */
     public function show(Partner $partner)
     {
-        //
+        return view("admin.partner_show")->with([
+            "partner" => $partner
+        ]);
     }
 
-    /**
+    /*
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Partner  $partner
@@ -86,10 +88,19 @@ class PartnerController extends Controller
      */
     public function edit(Partner $partner)
     {
-        //
+        if ($partner->user_id == Auth::id() or Auth::user() == "admin"){
+            return view("admin.partner_edit")->with([
+                "partner" => $partner
+            ]);
+        }else{
+            return redirect(route("partner.index"))->withErrors([
+                "alert" => "No Permission!",
+                "alert_message" => "No permission to edit this partner"
+            ])->withInput();
+        }
     }
 
-    /**
+    /*
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -98,10 +109,51 @@ class PartnerController extends Controller
      */
     public function update(Request $request, Partner $partner)
     {
-        //
+        if ($partner->user_id == Auth::id() or Auth::user() == "admin"){
+            $validator = Validator::make($request->all(),[
+                "name"=> ["required"],
+                "logo"=> ["required"],
+                "website"=> ["nullable"],
+                "email"=> ["nullable"],
+                "phone"=> ["nullable"],
+                "address"=> ["nullable"],
+            ]);
+
+            $data = $validator->validate();
+            $image = "images/cache/post_". Auth::id() . ".jpg";
+            $cover = date("Y/m/d/his");
+            $foler = "images/";
+            $partner->name = $data["name"];
+            $partner->logo = $data["logo"];
+            $partner->website = $data["website"];
+            $partner->email = $data["email"];
+            $partner->phone = $data["phone"];
+            $partner->address = $data["address"];
+            if ($partner->isDirty("logo")){
+                if (Storage::disk("local")->exists($image)) {
+                    Storage::move($image, $foler.$cover. ".jpg");
+                    $partner->logo = $cover;
+                }else{
+                    $validator->errors()->add("logo", "Please upload a logo");
+                }
+            }
+            if (count($partner->getDirty()) == 0){
+                return redirect(route("partner.index"));
+            }else{
+                $partner->updated_by = Auth::id();
+                $partner->update($partner->getDirty());
+                return redirect(route("partner.index"));
+            }
+
+        }else{
+            return redirect(route("partner.index"))->withErrors([
+                "alert" => "No Permission!",
+                "alert_message" => "No permission to edit this partner"
+            ])->withInput();
+        }
     }
 
-    /**
+    /*
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Partner  $partner
@@ -109,7 +161,18 @@ class PartnerController extends Controller
      */
     public function destroy(Partner $partner)
     {
-        //
+        if ($partner->user_id == Auth::id() or Auth::user() == "admin"){
+            Storage::disk("local")->delete([
+                "images/".$partner->logo.".jpg",
+            ]);
+            $partner->delete();
+            return redirect(route("partner.index"));
+        }else{
+            return redirect(route("partner.index"))->withErrors([
+                "alert" => "No Permission!",
+                "alert_message" => "No permission to delete this partner"
+            ])->withInput();
+        }
     }
 
     public function logo(Request $request){

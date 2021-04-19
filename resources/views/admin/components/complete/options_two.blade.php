@@ -8,6 +8,12 @@
     <div class="pr_5 pl_5 pt_10 pb_10">
         <div class="fs_16 fm-ubt5 color_5 pb_10">
             <div>
+                @if(isset($view))
+                    <a id="view" class="ds_f t_d_n color_5 hcolor_4 acolor_4 pr_10 pl_10 pt_3 pb_3 csr-p hbox-s1" href="javascript:void 0">
+                        <div class="fa fa-external-link w_25 h_25 lh_25"></div>
+                        <div class="lh_25">View</div>
+                    </a>
+                @endif
                 <a id="editor" class="ds_f t_d_n color_5 hcolor_4 acolor_4 pr_10 pl_10 pt_3 pb_3 csr-p hbox-s1" href="javascript:void 0">
                     <div class="fa fa-edit w_25 h_25 lh_25"></div>
                     <div class="lh_25">Edit</div>
@@ -47,5 +53,8 @@
     let optz = function (member){
         $("#editor").attr('href',member+'/edit');
         $("#alertz").fadeIn(80).focus().children("form").attr("action",member);
+        @if(isset($view))
+        $("#view").attr('href',member);
+        @endif
     }
 </script>

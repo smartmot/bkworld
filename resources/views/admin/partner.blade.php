@@ -5,5 +5,30 @@
 @endsection
 
 @section("content")
+    <div>
+        <div class="pt_10">
+            @foreach($partners as $partner)
+                <div class=wp_100">
+                    <div class="pr_10 pl_10 pb_10">
+                        <div class="ds_f">
+                            <div class="w_100 h_100 lh_100 box-s3">
+                                <div class="pr_5 pl_5 pt_5 pb_5">
+                                    <img class="wp_100" src="{{ asset("photo/".$partner["logo"].".jpg") }}" alt="">
+                                </div>
+                            </div>
+                            <div class="flx h_100">
+                                <div class="pl_10 color_5 fm-popp">
+                                    <a class="t_d_n color_5 hcolor_4 acolor_4" href="javascript:optz('{{ route("partner.show", $partner->id) }}')">{{ $partner["name"] }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+@endsection
 
+@section("script")
+    @include("admin.components.complete.options_two", ["view"=>1,"ask"=>"delete this partner?"])
 @endsection
