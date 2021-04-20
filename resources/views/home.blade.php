@@ -1,5 +1,8 @@
 @extends("layouts/".config("settings.theme"))
 
+@section("keywords", config("settings.keywords"))
+@section("description", config("settings.description"))
+
 @section("header")
     <div class="wp_100 p-r h_140">
         <div class="h_100 p-f wp_100 t-0 r-0 bcolor_5">
@@ -41,7 +44,49 @@
             </div>
         </div>
         <div class="h_40 p-f wp_100 t_100 r-0 bcolor_1 box-s1">
-            <div></div>
+            <div class="cw">
+                <div class="pb_5 pt_5 pl_10 pl_10">
+                    <nav id="menu" class="navbar navbar-inverse navbar-static-top " role="navigation">
+                        <div>
+                            <!-- Collect the nav links -->
+                            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                                <ul class="nav navbar-nav">
+                                    <li class="active home">
+                                        <a href="https://news.sabay.com.kh"><i class="fa fa-home"></i></a>
+                                    </li>
+
+                                    <li class=" category " id="">
+                                        <a href="" class="">
+                                            <span>Services</span>
+                                        </a>
+                                    </li>
+                                    <li class=" category " id="">
+                                        <a href="" class="">
+                                            <span>News</span>
+                                        </a>
+                                    </li>
+                                    <li class=" category " id="events">
+                                        <a href="" class="menu_events">
+                                            <span>Events</span>
+                                        </a>
+                                    </li>
+                                    <li class=" category " id="about">
+                                        <a href="" class="menu_about">
+                                            <span>About</span>
+                                        </a>
+                                    </li>
+                                    <li class=" category " id="contact">
+                                        <a href="" class="menu_contact">
+                                            <span>Contact Us</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- /.navbar-collapse -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
