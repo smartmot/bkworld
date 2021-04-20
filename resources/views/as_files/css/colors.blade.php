@@ -12,6 +12,12 @@ echo "
 .bdcolor_4{border-color: $color4;}
 .bdcolor_5{border-color: $color5;}
 
+.bdb_color_1{border-bottom-color:$color1}
+.bdb_color_2{border-bottom-color:$color2}
+.bdb_color_3{border-bottom-color:$color3}
+.bdb_color_4{border-bottom-color:$color4}
+.bdb_color_5{border-bottom-color:$color5}
+
 .color_1{color: $color1;}
 .color_2{color: $color2;}
 .color_3{color: $color3;}

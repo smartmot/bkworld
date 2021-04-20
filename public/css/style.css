@@ -291,6 +291,11 @@ input.oln_g:focus{outline: 1px solid gray;}
     clear: both;
 }
 
+.bd_bs_s{border-bottom-style: solid;}
+.bd_bw_1{border-bottom-width: 1px;}
+.bd_bw_2{border-bottom-width: 2px;}
+.bd_bw_3{border-bottom-width: 3px;}
+
 .drgxer:-moz-drag-over{cursor: move;touch-action: none;}
 .drgxer:drop{cursor: move;}
 .csr-p{cursor: pointer;} .csr-pg{cursor: progress;}.csr-r{cursor: revert;}.csr-n{cursor: not-allowed;}
@@ -385,6 +390,16 @@ input.oln_g:focus{outline: 1px solid gray;}
 .z_x_2{z-index: 2}
 .z_x_3{z-index: 3}
 .z_x_5{z-index: 5}
+.opc_10{opacity: 0.1}
+.opc_20{opacity: 0.2}
+.opc_30{opacity: 0.3}
+.opc_40{opacity: 0.4}
+.opc_50{opacity: 0.5}
+.opc_60{opacity: 0.6}
+.opc_70{opacity: 0.7}
+.opc_80{opacity: 0.8}
+.opc_90{opacity: 0.9}
+.opc_100{opacity: 1}
 .ho_100:hover{opacity: 100%;}
 .ho_80:hover{opacity: 80%;}
 .ho_60:hover{opacity: 60%;}
