@@ -1887,3 +1887,5 @@ input.phc-1::placeholder{color: #c3c3c3}
     opacity: 0.8;
     z-index: -1;
 }
+#bknav ul{list-style: none; display: block}
+#bknav ul li{display: inline-block;list-style: none; padding: 0 8px;}

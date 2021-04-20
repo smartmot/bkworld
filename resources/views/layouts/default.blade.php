@@ -20,6 +20,13 @@
     <link rel="shortcut icon" href="{{ asset("bkworld.svg") }}">
     <link rel="stylesheet" href="{{ asset("css/style.css") }}" type="text/css">
     <link rel="stylesheet" href="{{ route("soft", "css.theme_colors?ver=".config("settings.color_ver")) }}}" type="text/css">
+    @yield("head")
+    <style>
+        @yield("style")
+        @yield("style2")
+        @yield("style3")
+        @yield("style4")
+    </style>
 </head>
 <body>
 @yield("header")
