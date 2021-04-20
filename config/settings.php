@@ -16,7 +16,9 @@ return [
         "#009A3E",
         "#FFD300",
         "#EC2227",
+        "#26272A",
         "black",
     ],
-    "color_ver" => "21.0324"
+    "color_ver" => "21.0324",
+    "theme" => "default"
 ];

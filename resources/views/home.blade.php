@@ -1,89 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends("layouts/".config("settings.theme"))
 
-<head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Welcome to BK WORLD DEVELOPMENT CO., LTD">
-    <meta name="author" content="">
-    <title>BK WORLD DEVELOPMENT CO., LTD</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-
-    <!-- Custom fonts for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-    <!-- Custom styles for this template -->
-    <link href="{{ asset('css/coming-soon.min.css') }}" rel="stylesheet">
-</head>
-<body>
-<div class="overlay"></div>
-<video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-    <source src="{{ asset('mp4/bg.mp4') }}" type="video/mp4">
-</video>
-
-<div class="masthead">
-    <div class="masthead-bg"></div>
-    <div class="container h-100">
-        <div class="row h-100">
-            <div class="col-12 my-auto">
-                <div class="masthead-content text-white py-5 py-md-0">
-                    <h1 class="mb-3">Coming Soon!</h1>
-                    <p class="mb-5">We're working hard to finish the development of this site.</p>
-                    <div>
-                        <div class="" style="display: flex">
-                            <div style="width: 40px; height: 40px; line-height: 40px; font-size: 24px; text-align: center;">
-                                <span class="fa fa-phone-alt"></span>
-                            </div>
-                            <div style="width: auto; height: 40px; line-height: 40px; font-size: 20px;">
-                                <span>010 550 690 / 099 550 690</span>
+@section("header")
+    <div class="wp_100 p-r h_140">
+        <div class="h_100 p-f wp_100 t-0 r-0 bcolor_5">
+            <div class="cw h_100">
+                <div class="pr_10 pl_10 pb_15 pt_15">
+                    <div class="h_70 ds_f">
+                        <div>
+                            <img class="h_70" src="{{ asset("bkworld_logo.svg") }}" alt="BK WORLD Logo">
+                        </div>
+                        <div class="flx"></div>
+                        <div>
+                            <div class="ds_f pb_5 pt_10">
+                                <div class="h_50 w_50 lh_50 bcolor_1 color_6 b_r_c t_a_c fs_30">
+                                    <span class="fa fa-map-marker"></span>
+                                </div>
+                                <div class="h_50 pl_10 color_1 fm-popp lh_20">
+                                    <div class="">
+                                        <span class="opc_50">St 608, Toul Kork,<br/></span>
+                                        <span class="fs_25 fw_b">Phnom Penh</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="" style="display: flex">
-                            <div style="width: 40px; height: 40px; line-height: 40px; font-size: 24px; text-align: center;">
-                                <span class="fa fa-envelope"></span>
-                            </div>
-                            <div style="width: auto; height: 40px; line-height: 40px; font-size: 20px;">
-                                <span>info@bkworld.asia</span>
+                        <div>
+                            <div class="ds_f pl_20 pt_10">
+                                <div class="h_50 w_50 lh_50 bcolor_1 color_6 b_r_c t_a_c fs_30">
+                                    <span class="fa fa-clock-o"></span>
+                                </div>
+                                <div class="h_50 pl_10 color_1 fm-popp lh_20">
+                                    <div class="">
+                                        <span class="opc_50">Working day<br/></span>
+                                        <span class="fs_25 fw_b">Monday-Friday</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="h_40 p-f wp_100 t_100 r-0 bcolor_1 box-s1">
+            <div></div>
+        </div>
     </div>
-</div>
+@endsection
 
-<div class="social-icons">
-    <ul class="list-unstyled text-center mb-0">
-        <li class="list-unstyled-item">
-            <a href="#">
-                <i class="fab fa-twitter"></i>
-            </a>
-        </li>
-        <li class="list-unstyled-item">
-            <a href="https://www.facebook.com/bkworlddevelopment">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-        </li>
-        <li class="list-unstyled-item">
-            <a href="#">
-                <i class="fab fa-instagram"></i>
-            </a>
-        </li>
-    </ul>
-</div>
+@section("content")
 
-<!-- Bootstrap core JavaScript -->
-<script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-
-<!-- Custom scripts for this template -->
-<script src="{{ asset('js/coming-soon.min.js') }}"></script>
-
-</body>
-</html>
+@endsection
