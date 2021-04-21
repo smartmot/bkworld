@@ -12,89 +12,59 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 @endsection
 @section("header")
-    <div class="wp_100 p-r h_140 z_x_3">
-        <div class="h_100 p-f wp_100 t-0 r-0 bcolor_5">
-            <div class="cw h_100">
-                <div class="pr_10 pl_10 pb_15 pt_15">
-                    <div class="h_70 ds_f">
+    <div class="wp_100 h_70">
+        <div class="wp_100 h_70 p-f t-0 r-0 bcolor_1 box-s2 z_x_3">
+            <div class="cw h_70">
+                <div class="pt_5 pb_5">
+                    <div class="h_60 ds_f">
                         <div>
-                            <img class="h_70" src="{{ asset("bkworld_logo.svg") }}" alt="BK WORLD Logo">
+                            <img class="h_60" src="{{ asset("bkworld.svg") }}" alt="">
                         </div>
                         <div class="flx"></div>
-                        <div>
-                            <div class="ds_f pb_5 pt_10">
-                                <div class="h_50 w_50 lh_50 bcolor_1 color_6 b_r_c t_a_c fs_30">
-                                    <span class="fa fa-map-marker"></span>
-                                </div>
-                                <div class="h_50 pl_10 color_1 fm-popp lh_20">
+                        <div class="lh_60">
+                            <nav id="bknav" class="" role="navigation">
+                                <div>
+                                    <!-- Collect the nav links -->
                                     <div class="">
-                                        <span class="opc_50">St 608, Toul Kork,<br/></span>
-                                        <span class="fs_25 fw_b">Phnom Penh</span>
+                                        <ul class="fm-popp fs_18">
+                                            <li class="" id="">
+                                                <a href="{{ route("home") }}" class=" color_5 hcolor_4 t_d_n acolor_4">
+                                                    <span>Home</span>
+                                                </a>
+                                            </li>
+
+                                            <li class="" id="">
+                                                <a href="" class=" color_5 hcolor_4 t_d_n acolor_4">
+                                                    <span>Services</span>
+                                                </a>
+                                            </li>
+                                            <li class="" id="">
+                                                <a href="" class=" color_5 hcolor_4 t_d_n acolor_4">
+                                                    <span>News</span>
+                                                </a>
+                                            </li>
+                                            <li class="" id="events">
+                                                <a href="" class="menu_events color_5 hcolor_4 t_d_n acolor_4">
+                                                    <span>Events</span>
+                                                </a>
+                                            </li>
+                                            <li class="" id="about">
+                                                <a href="" class="menu_about color_5 hcolor_4 t_d_n acolor_4">
+                                                    <span>About</span>
+                                                </a>
+                                            </li>
+                                            <li class="" id="contact">
+                                                <a href="" class="menu_contact color_5 hcolor_4 t_d_n acolor_4">
+                                                    <span>Contact Us</span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </div>
+                                    <!-- /.navbar-collapse -->
                                 </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="ds_f pl_20 pt_10">
-                                <div class="h_50 w_50 lh_50 bcolor_1 color_6 b_r_c t_a_c fs_30">
-                                    <span class="fa fa-clock-o"></span>
-                                </div>
-                                <div class="h_50 pl_10 color_1 fm-popp lh_20">
-                                    <div class="">
-                                        <span class="opc_50">Working day<br/></span>
-                                        <span class="fs_25 fw_b">Monday-Friday</span>
-                                    </div>
-                                </div>
-                            </div>
+                            </nav>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="h_40 p-f wp_100 t_100 r-0 bcolor_1 box-s1">
-            <div class="cw">
-                <div class="pb_5 pt_5 pl_10 pl_10">
-                    <nav id="bknav" class="" role="navigation">
-                        <div>
-                            <!-- Collect the nav links -->
-                            <div class="">
-                                <ul class="fm-popp fs_18">
-                                    <li class="active ">
-                                        <a href="{{ route("home") }}" class=" color_5 hcolor_4 t_d_n acolor_4">
-                                            <span class="fa fa-home"></span>
-                                        </a>
-                                    </li>
-
-                                    <li class="" id="">
-                                        <a href="" class=" color_5 hcolor_4 t_d_n acolor_4">
-                                            <span>Services</span>
-                                        </a>
-                                    </li>
-                                    <li class="" id="">
-                                        <a href="" class=" color_5 hcolor_4 t_d_n acolor_4">
-                                            <span>News</span>
-                                        </a>
-                                    </li>
-                                    <li class="" id="events">
-                                        <a href="" class="menu_events color_5 hcolor_4 t_d_n acolor_4">
-                                            <span>Events</span>
-                                        </a>
-                                    </li>
-                                    <li class="" id="about">
-                                        <a href="" class="menu_about color_5 hcolor_4 t_d_n acolor_4">
-                                            <span>About</span>
-                                        </a>
-                                    </li>
-                                    <li class="" id="contact">
-                                        <a href="" class="menu_contact color_5 hcolor_4 t_d_n acolor_4">
-                                            <span>Contact Us</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- /.navbar-collapse -->
-                        </div>
-                    </nav>
                 </div>
             </div>
         </div>
@@ -102,7 +72,7 @@
 @endsection
 
 @section("content")
-    <div>
+    <div class="">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -128,6 +98,29 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
+        </div>
+    </div>
+    <div class="cw">
+        <div class="pr_10 pl_10 pt_20 pb_10">
+            <div class="h_30 wp_100"></div>
+            <div class="h-50 wp_100 t_a_c">
+                <span class="fm-ubt fs_30 pt_20" style="color: blue">Welcome to BK WORLD DEVELOPMENT CO., LTD</span>
+            </div>
+            <div class="h_30 wp_100"></div>
+            <div class="rowc pt_10 pb_10">
+                <div class="xl-6 lg-6 md-6 sm-12 fx_12">
+                    <div class="pr_10 pl_10">
+                        <div class="vdo-ut">
+                            <iframe src="https://www.youtube.com/embed/M0a9C9t0RW8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="pr_10 pl_10">
+                        <div class="vdo-ut">
+                            <iframe src="https://www.youtube.com/embed/nt2_HNhQhLI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
