@@ -35,12 +35,12 @@
 
                                             <li class="" id="">
                                                 <a href="" class=" color_5 hcolor_4 t_d_n acolor_4">
-                                                    <span>Services</span>
+                                                    <span>Executive Committee</span>
                                                 </a>
                                             </li>
                                             <li class="" id="">
                                                 <a href="" class=" color_5 hcolor_4 t_d_n acolor_4">
-                                                    <span>News</span>
+                                                    <span>Services</span>
                                                 </a>
                                             </li>
                                             <li class="" id="events">
@@ -48,9 +48,14 @@
                                                     <span>Events</span>
                                                 </a>
                                             </li>
+                                            <li class="" id="">
+                                                <a href="" class=" color_5 hcolor_4 t_d_n acolor_4">
+                                                    <span>News</span>
+                                                </a>
+                                            </li>
                                             <li class="" id="about">
                                                 <a href="" class="menu_about color_5 hcolor_4 t_d_n acolor_4">
-                                                    <span>About</span>
+                                                    <span>About Us</span>
                                                 </a>
                                             </li>
                                             <li class="" id="contact">
@@ -109,20 +114,97 @@
             <div class="h_30 wp_100"></div>
             <div class="rowc pt_10 pb_10">
                 <div class="xl-6 lg-6 md-6 sm-12 fx_12">
-                    <div class="pr_10 pl_10">
+                    <div class="pr_20 pl_20">
                         <div class="vdo-ut">
-                            <iframe src="https://www.youtube.com/embed/M0a9C9t0RW8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe src="https://www.youtube.com/embed/M0a9C9t0RW8" title="YouTube video player" replay="1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="pr_10 pl_10 pt_5 pb_10">
+                            <h3>Lorem Ipsum is simply dummy text of the printing </h3>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when
                         </div>
                     </div>
-                    <div class="pr_10 pl_10">
+                </div>
+                <div class="xl-6 lg-6 md-6 sm-12 fx_12">
+                    <div class="pr_20 pl_20">
                         <div class="vdo-ut">
                             <iframe src="https://www.youtube.com/embed/nt2_HNhQhLI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="pr_10 pl_10 pt_5 pb_10">
+                            <h3>Lorem Ipsum is simply dummy text of the printing </h3>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="wp_100 bcolor_5 pt_20">
+        <div class="cw">
+            <div class="t_a_c fm-ubt fs_26 color_1 t_t_c">
+                <span>Our Services</span>
+            </div>
+            <div class="pr_10 pl_10 pt_20 pb_20">
+                <div class="rowc">
+                    @foreach($services as $service)
+                        <div class="xl-4 lg-4 md-4 sm-6 fx_12">
+                            <div class="pr_10 pl_10 pb_15">
+                                <div class="bcolor_1">
+                                    <div>
+                                        <img class="wp_100" src="{{ asset("photo/".$service["thumbnail"].".jpg") }}" alt="">
+                                    </div>
+                                    <div class="pr_10 pl_10 h_100 ovfy_h">
+                                        <div class="fm-ubt fs_18">
+                                            <span>{{ $service["title"] }}</span>
+                                        </div>
+                                        <div>
+                                            <span>{{ $service["description"] }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="h_20 wp_100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wp_100 bcolor_1 pt_20">
+        <div class="cw">
+            <div class="t_a_c fm-ubt fs_26 c_blu t_t_c">
+                <span>business activities</span>
+            </div>
+            <div class="pr_10 pl_10 pt_20 pb_20">
+                <div class="rowc">
+                    @foreach($activities as $act)
+                        <div class="xl-4 lg-4 md-4 sm-6 fx_12">
+                            <div class="pr_10 pl_10 pb_15">
+                                <div class="bcolor_1">
+                                    <div>
+                                        <img class="wp_100" src="{{ asset("photo/".$act["thumbnail"].".jpg") }}" alt="">
+                                    </div>
+                                    <div class="pr_10 pl_10 h_100 ovfy_h">
+                                        <div class="fm-ubt fs_18">
+                                            <span>{{ $act["title"] }}</span>
+                                        </div>
+                                        <div>
+                                            <span>{{ $act["description"] }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="h_20 wp_100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="wp_100 h_30"></div>
 @endsection
 
 @section("script")

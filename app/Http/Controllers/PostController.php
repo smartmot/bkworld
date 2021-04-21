@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,7 +32,7 @@ class PostController extends Controller
     public function create()
     {
         return view("admin.post_create")->with([
-
+            "categories" => Category::all()
         ]);
     }
 
@@ -45,6 +46,7 @@ class PostController extends Controller
     {
         $validator = Validator::make($request->all(), [
             "title" => ["required","max:255"],
+            "category_id" => ["required", "exists:categories,id"],
             "content" => ["required"],
             "keyword" => ["nullable","max:150"],
             "description" => ["required","max:255"],
@@ -94,7 +96,8 @@ class PostController extends Controller
     {
         if ($post->user_id == Auth::id() or Auth::user() == "admin"){
             return view("admin.post_edit")->with([
-                "post" => $post
+                "post" => $post,
+                "categories" => Category::all()
             ]);
         }else{
             return redirect(route("post.index"))->withErrors([
@@ -117,6 +120,7 @@ class PostController extends Controller
         $validator = Validator::make($request->all(), [
             "title" => ["required","max:255"],
             "content" => ["required"],
+            "category_id" => ["required", "exists:categories,id"],
             "keyword" => ["nullable","max:150"],
             "description" => ["required","max:255"],
             "thumbnail" => ["required","max:255"]
@@ -130,6 +134,7 @@ class PostController extends Controller
         $post->title = $data["title"];
         $post->content = $data["content"];
         $post->keyword = $data["keyword"];
+        $post->category_id = $data["category_id"];
         $post->thumbnail = $data["thumbnail"];
         $post->description = $data["description"];
 

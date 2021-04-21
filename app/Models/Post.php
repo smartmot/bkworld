@@ -11,6 +11,7 @@ class Post extends Model
 
     protected $fillable = [
         "user_id",
+        "category_id",
         "updated_by",
         "title",
         "content",
@@ -25,5 +26,8 @@ class Post extends Model
 
     public function updater(){
         return $this->belongsTo(User::class, "updated_by");
+    }
+    public function category(){
+        return $this->belongsTo(Category::class, "category_id");
     }
 }
