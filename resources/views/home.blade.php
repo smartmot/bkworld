@@ -6,10 +6,8 @@
 
 @endsection
 @section("head")
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 @endsection
 @section("header")
     <div class="wp_100 h_70">
@@ -78,31 +76,26 @@
 
 @section("content")
     <div class="">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="{{ asset("images/slide/01.jpg") }}" alt="First slide">
+                    <img src="{{ asset("images/slide/01.jpg") }}" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset("images/slide/02.jpg") }}" alt="Second slide">
+                    <img src="{{ asset("images/slide/2.jpg") }}" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset("images/slide/03.jpg") }}" alt="Third slide">
+                    <img src="{{ asset("images/slide/03.jpg") }}" class="d-block w-100" alt="...">
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </div>
     <div class="cw">
@@ -116,7 +109,7 @@
                 <div class="xl-6 lg-6 md-6 sm-12 fx_12">
                     <div class="pr_20 pl_20">
                         <div class="vdo-ut">
-                            <iframe src="https://www.youtube.com/embed/M0a9C9t0RW8" title="YouTube video player" replay="1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe src="https://www.youtube.com/embed/M0a9C9t0RW8?autoplay=1&loop=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                         <div class="pr_10 pl_10 pt_5 pb_10">
                             <h3>Lorem Ipsum is simply dummy text of the printing </h3>
@@ -139,21 +132,21 @@
         </div>
     </div>
 
-    <div class="wp_100 bcolor_5 pt_20">
+    <div class="wp_100 bcolor_1 pt_20">
         <div class="cw">
-            <div class="t_a_c fm-ubt fs_26 color_1 t_t_c">
+            <div class="t_a_c fm-ubt fs_26 c_blu t_t_c pb_10">
                 <span>Our Services</span>
             </div>
-            <div class="pr_10 pl_10 pt_20 pb_20">
+            <div class="pr_10 pl_10 pt_20">
                 <div class="rowc">
                     @foreach($services as $service)
                         <div class="xl-4 lg-4 md-4 sm-6 fx_12">
                             <div class="pr_10 pl_10 pb_15">
-                                <div class="bcolor_1">
+                                <div class="bcolor_1 box-s1">
                                     <div>
                                         <img class="wp_100" src="{{ asset("photo/".$service["thumbnail"].".jpg") }}" alt="">
                                     </div>
-                                    <div class="pr_10 pl_10 h_100 ovfy_h">
+                                    <div class="pr_15 pl_15 h_100 ovfy_h">
                                         <div class="fm-ubt fs_18">
                                             <span>{{ $service["title"] }}</span>
                                         </div>
@@ -161,7 +154,7 @@
                                             <span>{{ $service["description"] }}</span>
                                         </div>
                                     </div>
-                                    <div class="h_20 wp_100"></div>
+                                    <div class="h_15 wp_100"></div>
                                 </div>
                             </div>
                         </div>
@@ -171,17 +164,17 @@
         </div>
     </div>
 
-    <div class="wp_100 bcolor_1 pt_20">
+    <div class="wp_100 bcolor_1 pt_10">
         <div class="cw">
-            <div class="t_a_c fm-ubt fs_26 c_blu t_t_c">
+            <div class="t_a_c fm-ubt fs_26 c_blu t_t_c pb_10">
                 <span>business activities</span>
             </div>
             <div class="pr_10 pl_10 pt_20 pb_20">
                 <div class="rowc">
                     @foreach($activities as $act)
                         <div class="xl-4 lg-4 md-4 sm-6 fx_12">
-                            <div class="pr_10 pl_10 pb_15">
-                                <div class="bcolor_1">
+                            <div class="pr_15 pl_15 pb_15">
+                                <div class="bcolor_1 box-s1">
                                     <div>
                                         <img class="wp_100" src="{{ asset("photo/".$act["thumbnail"].".jpg") }}" alt="">
                                     </div>
@@ -193,7 +186,7 @@
                                             <span>{{ $act["description"] }}</span>
                                         </div>
                                     </div>
-                                    <div class="h_20 wp_100"></div>
+                                    <div class="h_15 wp_100"></div>
                                 </div>
                             </div>
                         </div>
@@ -203,6 +196,83 @@
         </div>
     </div>
 
+    <div class="wp_100 bcolor_1 pt_10">
+        <div class="cw">
+            <div class="t_a_c fm-ubt fs_26 c_blu t_t_c pb_10">
+                <span>Vision and Mission</span>
+            </div>
+            <div class="rowc">
+                <div class="xl-6 lg-6 md-6 sm-12 fx_12" style="background-color: #eaeaea">
+                    <div class="pr_20 pl_20 pb_15">
+                        <div class="">
+                            <div class="t_a_c fm-ubt fs_26 c_blu t_t_c">
+                                <span>Our Vision</span>
+                            </div>
+                            <div class="fm-popp">
+                                <span>
+                                    “To be a globally respected corporation that provides best-of-breed business solutions, leveraging technology, delivered by best-in-class people.”
+BK World does not just want to be a corporation which just focuses on increasing its business and revenue, rather its vision is to be a corporation
+which provides best business solution by indulging best talented people and eventually to become a reputed and respected corporation.
+“To achieve our objectives in an environment of fairness, honesty, and courtesy towards our clients, employees, vendors and society at large.”
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="xl-6 lg-6 md-6 sm-12 fx_12" style="background-color: #eaeaea">
+                    <div class="pr_20 pl_20 pb_15">
+                        <div class="">
+                            <div class="t_a_c fm-ubt fs_26 c_blu t_t_c">
+                                <span>Our Mission</span>
+                            </div>
+                            <div class="fm-popp">
+                                <span>
+                                   BK World focuses on maintaining fairness, honesty and courtesy towards their clients, employees, vendors and society in their path of achieving
+their objective. They believe that these three key aspects were the main factors in achieving their vision.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="cw">
+        <div class="pr_10 pl_10 pt_20 pb_20">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    {{ $next = 0 }}
+                    @for ($i = 0; $i < count($partners); $i++)
+                        @if($i == $next-1)
+
+                        @endif
+                    @endfor
+                    @foreach($partners as $partner)
+                        <div class="carousel-item active ds_n">
+                            <div class="rowc">
+                                <div class="xl-2p5 lg-3 md-3 sm-4 fx_4">
+                                    <div class="pr_10 pl_10">
+                                        <img class="wp_100" src="{{ asset("photo/".$partner["logo"].".jpg") }}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <div class="wp_100 h_30"></div>
 @endsection
@@ -211,6 +281,6 @@
     <script>
         $('.carousel').carousel({
             interval: 600
-        })
+        });
     </script>
 @endsection
