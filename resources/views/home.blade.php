@@ -3,20 +3,13 @@
 @section("keywords", config("settings.keywords"))
 @section("description", config("settings.description"))
 @section("style")
-    .carousel-item {
-    height: 100vh;
-    min-height: 350px;
-    background: no-repeat center center scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    }
+
 @endsection
 @section("head")
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 @endsection
 @section("header")
     <div class="wp_100 p-r h_140 z_x_3">
@@ -116,27 +109,15 @@
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
             </ol>
-            <div class="carousel-inner" role="listbox">
-                <!-- Slide One - Set the background image for this slide in the line below -->
-                <div class="carousel-item active" style="background-image: url('https://source.unsplash.com/LAaSoL0LrYs/1920x1080')">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h2 class="display-4">First Slide</h2>
-                        <p class="lead">This is a description for the first slide.</p>
-                    </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="{{ asset("images/slide/01.jpg") }}" alt="First slide">
                 </div>
-                <!-- Slide Two - Set the background image for this slide in the line below -->
-                <div class="carousel-item" style="background-image: url('https://source.unsplash.com/bF2vsubyHcQ/1920x1080')">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h2 class="display-4">Second Slide</h2>
-                        <p class="lead">This is a description for the second slide.</p>
-                    </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="{{ asset("images/slide/02.jpg") }}" alt="Second slide">
                 </div>
-                <!-- Slide Three - Set the background image for this slide in the line below -->
-                <div class="carousel-item" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080')">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h2 class="display-4">Third Slide</h2>
-                        <p class="lead">This is a description for the third slide.</p>
-                    </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="{{ asset("images/slide/03.jpg") }}" alt="Third slide">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -153,6 +134,8 @@
 
 @section("script")
     <script>
-
+        $('.carousel').carousel({
+            interval: 600
+        })
     </script>
 @endsection
