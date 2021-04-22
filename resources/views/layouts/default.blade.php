@@ -20,9 +20,11 @@
     <link rel="shortcut icon" href="{{ asset("bkworld.svg") }}">
     <link rel="stylesheet" href="{{ asset("css/style.css") }}" type="text/css">
     <link rel="stylesheet" href="{{ route("soft", "css.theme_colors?ver=".config("settings.color_ver")) }}}" type="text/css">
+    <script src="{{ asset("js/app.js") }}"></script>
     @yield("head")
     <style>
         @yield("style")
+        @yield("style1")
         @yield("style2")
         @yield("style3")
         @yield("style4")
@@ -33,6 +35,10 @@
 
 
 @yield("content")
-
+@yield("script")
+@yield("script1")
+@yield("script2")
+@yield("script3")
+@yield("script4")
 </body>
 </html>
