@@ -31,6 +31,68 @@
     </style>
 </head>
 <body>
+<div class="wp_100 h_70">
+    <div class="wp_100 h_70 p-f t-0 r-0 bcolor_1 box-s2 z_x_3">
+        <div class="cw h_70">
+            <div class="pt_5 pb_5">
+                <div class="h_60 ds_f">
+                    <div>
+                        <img class="h_60" src="{{ asset("bkworld.svg") }}" alt="">
+                    </div>
+                    <div class="flx"></div>
+                    <div class="lh_60">
+                        <nav id="bknav" class="" role="navigation">
+                            <div>
+                                <!-- Collect the nav links -->
+                                <div class="">
+                                    <ul class="fm-popp fs_18">
+                                        <li class="" id="">
+                                            <a href="{{ route("home") }}" class=" color_5 hcolor_4 t_d_n acolor_4">
+                                                <span>Home</span>
+                                            </a>
+                                        </li>
+
+                                        <li class="" id="">
+                                            <a href="{{ route("home.two") }}" class=" color_5 hcolor_4 t_d_n acolor_4">
+                                                <span>Executive Committee</span>
+                                            </a>
+                                        </li>
+                                        <li class="" id="">
+                                            <a href="" class=" color_5 hcolor_4 t_d_n acolor_4">
+                                                <span>Services</span>
+                                            </a>
+                                        </li>
+                                        <li class="" id="events">
+                                            <a href="" class="menu_events color_5 hcolor_4 t_d_n acolor_4">
+                                                <span>Events</span>
+                                            </a>
+                                        </li>
+                                        <li class="" id="">
+                                            <a href="" class=" color_5 hcolor_4 t_d_n acolor_4">
+                                                <span>News</span>
+                                            </a>
+                                        </li>
+                                        <li class="" id="about">
+                                            <a href="" class="menu_about color_5 hcolor_4 t_d_n acolor_4">
+                                                <span>About Us</span>
+                                            </a>
+                                        </li>
+                                        <li class="" id="contact">
+                                            <a href="" class="menu_contact color_5 hcolor_4 t_d_n acolor_4">
+                                                <span>Contact Us</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @yield("header")
 
 
