@@ -16,6 +16,7 @@ use Intervention\Image\Facades\Image;
 */
 
 Route::get("/", [Controllers\HomeController::class, "home"])->name("home");
+Route::get("/executive_committee", [Controllers\HomeController::class, "two"])->name("home.two");
 Route::get("/abc", function (){
     return \Illuminate\Support\Facades\Auth::logout();
 });
@@ -43,3 +44,4 @@ Route::get("/login", [Controllers\LoginController::class, "login"])
 Route::post("/login", [Controllers\LoginController::class, "login_check"])
     ->middleware("guest")
     ->name("login.check");
+
