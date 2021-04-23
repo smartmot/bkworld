@@ -12,6 +12,7 @@ class Member extends Model
     protected $fillable = [
         "user_id",
         "updated_by",
+        "type",
         "name",
         "position",
         "photo",

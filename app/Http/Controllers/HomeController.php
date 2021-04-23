@@ -19,7 +19,8 @@ class HomeController extends Controller
 
     public function two(){
         return view("executive_committee")->with([
-            "members" => Member::all()
+            "members" => Member::query()->where("type", "management"),
+            "operations" => Member::query()->where("type", "operation"),
         ]);
     }
 }
