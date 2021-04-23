@@ -17,6 +17,7 @@ class CreateMembersTable extends Migration
             $table->id();
             $table->foreignId("user_id");
             $table->foreignId("updated_by")->nullable();
+            $table->enum("type", ["management","operation"]);
             $table->string("name");
             $table->string("photo");
             $table->string("position")->nullable();

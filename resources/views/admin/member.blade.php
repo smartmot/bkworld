@@ -13,7 +13,7 @@
                         <div class="box-s2">
                             <div class="p-r">
                                 <div>
-                                    <img class="wp_100" src="{{ asset("photo/".$member["photo"].".jpg") }}" alt="">
+                                    <img class="wp_100" src="{{ asset("photo/".$member["photo"]."_thumb.jpg") }}" alt="">
                                 </div>
                                 <div class="pb_10 p-a b-0 r-0 afbcolor_5 box-s2 color_1 z_x_2 wp_100 pt_5 member_box">
                                     <div class="fm-ubt t_a_c">

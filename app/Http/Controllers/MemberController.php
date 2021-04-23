@@ -19,7 +19,7 @@ class MemberController extends Controller
     public function index()
     {
         return view("admin.member")->with([
-            "members" => Member::query()->orderBy("created_at", "desc")->paginate()
+            "members" => Member::all()
         ]);
     }
 
@@ -44,6 +44,7 @@ class MemberController extends Controller
         $validator = Validator::make($request->all(), [
             "name" => ["required", "max:255"],
             "position" => ["nullable", "max:255"],
+            "type" => ["required", "in:management,operation"],
             "photo" => ["required", "max:255"],
             "facebook" => ["nullable", "max:255"],
             "instagram" => ["nullable", "max:255"],
@@ -119,6 +120,7 @@ class MemberController extends Controller
         $validator = Validator::make($request->all(), [
             "name" => ["required", "max:255"],
             "position" => ["nullable", "max:255"],
+            "type" => ["required", "in:management,operation"],
             "photo" => ["required", "max:255"],
             "facebook" => ["nullable", "max:255"],
             "instagram" => ["nullable", "max:255"],

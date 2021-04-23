@@ -591,6 +591,7 @@ input.oln_g:focus{outline: 1px solid gray;}
     .md-10{-ms-flex:0 0 83.333333%;flex:0 0 83.333333%;max-width:83.333333%}
     .md-11{-ms-flex:0 0 91.666667%;flex:0 0 91.666667%;max-width:91.666667%}
     .md-12{-ms-flex:0 0 100%;flex:0 0 100%;max-width:100%}
+    .md-5x{-ms-flex:0 0 91.666667%;flex:0 0 91.666667%;max-width:91.666667%}
     .omd-1{
         order: 1;
     }
@@ -638,9 +639,8 @@ input.oln_g:focus{outline: 1px solid gray;}
     .xl-10{-ms-flex:0 0 83.333333%;flex:0 0 83.333333%;max-width:83.333333%}
     .xl-11{-ms-flex:0 0 91.666667%;flex:0 0 91.666667%;max-width:91.666667%}
     .xl-12{-ms-flex:0 0 100%;flex:0 0 100%;max-width:100%}
-    .xl-8x{
-        -ms-flex:0 0 12.5%;flex:0 0 12.5%;max-width:12.5%
-    }
+    .xl-7x{-ms-flex:0 0 14.285714%;flex:0 0 14.285714%;max-width:14.285714%}
+    .xl-8x{-ms-flex:0 0 12.5%;flex:0 0 12.5%;max-width:12.5%}
     .notefw,.note_form{
         width: 780px;
     }

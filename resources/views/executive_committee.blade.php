@@ -47,8 +47,24 @@
            <div class="t_a_c fm-ubt fs_26 c_blu t_t_c pb_20">
                <span>Our Operation Team</span>
            </div>
-           <div>
-
+           <div class="pb_20">
+               <div class="rowc">
+                   @foreach($operations as $opt)
+                       <div class="xl-7x lg-2 md-2 sm-6 fx_3">
+                           <div class="pr_10 pl_10 pb_20">
+                               <div class="pb_10">
+                                   <div>
+                                       <img class="wp_100 box-s1" src="{{ asset("photo/".$opt["photo"]."_thumb.jpg") }}" alt="">
+                                   </div>
+                                   <div class="t_a_c b">
+                                       <div class="fm-ubt fs_16">{{ $opt["name"] }}</div>
+                                       <div class="fm-popp fs_12">{{ $opt["position"] }}</div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   @endforeach
+               </div>
            </div>
        </div>
    </div>

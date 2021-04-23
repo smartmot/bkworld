@@ -52,6 +52,20 @@
                             </label>
                         </div>
                         <div class="pb_5">
+                            <div class="fm-popp lh_28 fs_16">Team
+                                @error("type")
+                                <span class="fs_14">&nbsp;:<span class="color_4"> {{ "Invalid" }}</span></span>
+                                @enderror
+                            </div>
+                            <label class="ds_f p-r">
+                                <select name="type" class="input-1 box-s1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3">
+                                    <option value="">Select Team</option>
+                                    <option value="management"{{ old("type") == "" ? "" : (old("type") == "management" ? " selected" : "") }}>Management</option>
+                                    <option value="operation"{{ old("type") == "" ? "" : (old("type") == "operation" ? " selected" : "") }}>Operation</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="pb_5">
                             <div class="fm-popp lh_28 fs_16">Facebook
                                 @error("facebook")
                                 <span class="fs_14">&nbsp;:<span class="color_4"> {{ $message }}</span></span>
