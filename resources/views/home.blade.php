@@ -260,18 +260,20 @@ their objective. They believe that these three key aspects were the main factors
 
     <div class="cw">
         <div class="pr_10 pl_10 pt_20 pb_20">
-            <div class="ds_f ovfx_h ovfy_h" id="partners">
-                @foreach($partners as $key => $partner)
-                    <div class="xl-8x lg-2 md-3 sm-3 fx_4 partner">
-                        <div class="pr_10 pl_10">
-                            <div>
-                                <div class="w_90 h_90 _0auto" style="line-height: 90px;">
-                                    <img class="wp_100" src="{{ asset("photo/".$partner["logo"]).".jpg" }}" alt="">
+            <div class="wp_100">
+                <div class="ds_f ovfx_h ovfy_h" id="partners" style="display: -ms-flexbox;display: flex;-ms-flex-wrap: nowrap;flex-wrap: nowrap;">
+                    @foreach($partners as $key => $partner)
+                        <div class="xl-8x lg-2 md-3 sm-3 fx_4 partner {{ $key==0?" ds_n":"" }}">
+                            <div class="pr_10 pl_10">
+                                <div>
+                                    <div class="w_90 h_90 _0auto" style="line-height: 90px;">
+                                        <img class="wp_100" src="{{ asset("photo/".$partner["logo"]).".jpg" }}" alt="">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
