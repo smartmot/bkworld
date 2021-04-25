@@ -1,4 +1,4 @@
-@extends("layouts.default")
+@extends("layouts/".config("settings.theme"))
 
 @section("content")
    <div class="cw">
@@ -50,7 +50,7 @@
            <div class="pb_20">
                <div class="rowc">
                    @foreach($operations as $opt)
-                       <div class="xl-7x lg-2 md-2 sm-6 fx_3">
+                       <div class="xl-7x lg-2 md-2 sm-4 fx_4">
                            <div class="pr_10 pl_10 pb_20">
                                <div class="pb_10">
                                    <div>

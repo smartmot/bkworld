@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use App\Models\Member;
 use App\Models\Partner;
 use App\Models\Post;
@@ -21,6 +22,34 @@ class HomeController extends Controller
         return view("executive_committee")->with([
             "members" => Member::query()->where("type", "management")->get(),
             "operations" => Member::query()->where("type", "operation")->get(),
+        ]);
+    }
+
+    public function services(){
+        return view("services")->with([
+            "services" => Post::query()->where("category_id",1)->get(),
+        ]);
+    }
+
+    public function events(){
+        return view("events")->with([
+            "events" => Event::query()->orderBy("created_at", "desc")->limit(6),
+        ]);
+    }
+
+    public function about(){
+        return view("about")->with([
+
+        ]);
+    }
+    public function news(){
+        return view("news")->with([
+
+        ]);
+    }
+    public function contact(){
+        return view("contact")->with([
+
         ]);
     }
 }

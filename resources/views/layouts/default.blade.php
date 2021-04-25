@@ -58,27 +58,27 @@
                                             </a>
                                         </li>
                                         <li class="" id="">
-                                            <a href="" class=" color_5 hcolor_4 t_d_n acolor_4">
+                                            <a href="{{ route("services") }}" class=" color_5 hcolor_4 t_d_n acolor_4">
                                                 <span>Services</span>
                                             </a>
                                         </li>
                                         <li class="" id="events">
-                                            <a href="" class="menu_events color_5 hcolor_4 t_d_n acolor_4">
+                                            <a href="{{ route("events") }}" class="menu_events color_5 hcolor_4 t_d_n acolor_4">
                                                 <span>Events</span>
                                             </a>
                                         </li>
                                         <li class="" id="">
-                                            <a href="" class=" color_5 hcolor_4 t_d_n acolor_4">
+                                            <a href="{{ route("news") }}" class=" color_5 hcolor_4 t_d_n acolor_4">
                                                 <span>News</span>
                                             </a>
                                         </li>
                                         <li class="" id="about">
-                                            <a href="" class="menu_about color_5 hcolor_4 t_d_n acolor_4">
+                                            <a href="{{ route("about") }}" class="menu_about color_5 hcolor_4 t_d_n acolor_4">
                                                 <span>About Us</span>
                                             </a>
                                         </li>
                                         <li class="" id="contact">
-                                            <a href="" class="menu_contact color_5 hcolor_4 t_d_n acolor_4">
+                                            <a href="{{ route("contact") }}" class="menu_contact color_5 hcolor_4 t_d_n acolor_4">
                                                 <span>Contact Us</span>
                                             </a>
                                         </li>
@@ -97,6 +97,87 @@
 
 
 @yield("content")
+
+<div class="wp_100 pb_20 box-s1 pt_15">
+    <div class="cw">
+        <div class="pr_10 pl_10">
+           <div class="rowc">
+               <div class="xl-3 lg-3 md-3 sm-4 fx_12">
+                   <div class="w_80">
+                       <img class="wp_100" src="{{ asset("bkworld.svg") }}" alt="">
+                   </div>
+               </div>
+               <div class="xl-3 lg-3 md-3 sm-4 fx_12">
+                   <div class="pb_10">
+                       <div class="fm-popp fs_18 fw_b">Company</div>
+                   </div>
+                   <ul class="pl_10">
+                       <li class="ls_n pl_0 pr_0">
+                           <a class="t_d_n fm-popp c_blk hcolor_4 acolor_4" href="{{ route("events") }}">Events</a>
+                       </li>
+                       <li class="ls_n pl_0 pr_0">
+                           <a class="t_d_n fm-popp c_blk hcolor_4 acolor_4" href="{{ route("services") }}">Services</a>
+                       </li>
+                       <li class="ls_n pl_0 pr_0">
+                           <a class="t_d_n fm-popp c_blk hcolor_4 acolor_4" href="{{ route("about") }}">About</a>
+                       </li>
+                       <li class="ls_n pl_0 pr_0">
+                           <a class="t_d_n fm-popp c_blk hcolor_4 acolor_4" href="{{ route("contact") }}">Contact</a>
+                       </li>
+                   </ul>
+               </div>
+               <div class="xl-3 lg-3 md-3 sm-4 fx_12">
+                   <div class="pb_10">
+                       <div class="fm-popp fs_18 fw_b">Company</div>
+                   </div>
+                   <ul class="pl_10">
+                       <li class="ls_n pl_0 pr_0">
+                           <a class="t_d_n fm-popp c_blk hcolor_4 acolor_4" href="{{ route("events") }}">Events</a>
+                       </li>
+                       <li class="ls_n pl_0 pr_0">
+                           <a class="t_d_n fm-popp c_blk hcolor_4 acolor_4" href="{{ route("services") }}">Services</a>
+                       </li>
+                       <li class="ls_n pl_0 pr_0">
+                           <a class="t_d_n fm-popp c_blk hcolor_4 acolor_4" href="{{ route("about") }}">About</a>
+                       </li>
+                       <li class="ls_n pl_0 pr_0">
+                           <a class="t_d_n fm-popp c_blk hcolor_4 acolor_4" href="{{ route("contact") }}">Contact</a>
+                       </li>
+                   </ul>
+               </div>
+               <div class="xl-3 lg-3 md-3 sm-12 fx_12">
+                   <div class="pb_10">
+                       <div class="fm-popp fs_18 fw_b">Social Media</div>
+                   </div>
+                   <ul class="pl_10 soc_links">
+                       <li class="ls_n pl_0 pr_0 pb_10">
+                           <a class="t_d_n fm-popp c_blk hcolor_4 acolor_4" href="javascript:void 0">
+                               <div class="h_50 w_50 b_r_c bc_01 color_1 t_a_c lh_50 fs_20">
+                                   <span class="fa fa-facebook"></span>
+                               </div>
+                           </a>
+                       </li>
+                       <li class="ls_n pl_0 pr_0 pb_10">
+                           <a class="t_d_n fm-popp c_blk hcolor_4 acolor_4" href="javascript:void 0">
+                               <div class="h_50 w_50 b_r_c bc_01 color_1 t_a_c lh_50 fs_20">
+                                   <span class="fa fa-instagram"></span>
+                               </div>
+                           </a>
+                       </li>
+                       <li class="ls_n pl_0 pr_0 pb_10">
+                           <a class="t_d_n fm-popp c_blk hcolor_4 acolor_4" href="javascript:void 0">
+                               <div class="h_50 w_50 b_r_c bc_01 color_1 t_a_c lh_50 fs_20">
+                                   <span class="fa fa-twitter"></span>
+                               </div>
+                           </a>
+                       </li>
+                   </ul>
+               </div>
+           </div>
+        </div>
+    </div>
+</div>
+
 @yield("script")
 @yield("script1")
 @yield("script2")
