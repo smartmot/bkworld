@@ -435,6 +435,15 @@ input.oln_g:focus{outline: 1px solid gray;}
 #editor.activated .editor_menu{display: block}
 .activated .editor_cw{height: calc(100% - 60px)}
 .cw ,.pcw,.activated .editor_cw{width: 100%;margin-right: auto;margin-left: auto;}
+#bknav ul{list-style: none; display: block}
+#bknav ul li{display: inline-block;list-style: none; padding: 0 8px;}
+#bknav ul li a{
+    color: blue;
+    font-weight: bold;
+}
+@media (max-width: 992px) {
+    #bknav ul li{display: block}
+}
 @media (min-width: 576px) {
     .cw ,.pcw, .activated .editor_cw{max-width: 540px;}
 }
@@ -1895,10 +1904,3 @@ input.phc-1::placeholder{color: #c3c3c3}
     opacity: 0.8;
     z-index: -1;
 }
-#bknav ul{list-style: none; display: block}
-#bknav ul li{display: inline-block;list-style: none; padding: 0 8px;}
-#bknav ul li a{
-    color: blue;
-    font-weight: bold;
-}
-

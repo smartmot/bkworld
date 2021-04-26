@@ -40,7 +40,7 @@
                         <img class="h_60" src="{{ asset("bkworld.svg") }}" alt="">
                     </div>
                     <div class="flx"></div>
-                    <div class="lh_60">
+                    <div class="lh_60 h_60">
                         <nav id="bknav" class="" role="navigation">
                             <div>
                                 <!-- Collect the nav links -->
