@@ -40,7 +40,12 @@
                         <img class="h_60" src="{{ asset("bkworld.svg") }}" alt="">
                     </div>
                     <div class="flx"></div>
-                    <div class="lh_60 h_60">
+                    <div class="lh_60 h_60 p-r">
+                        <div class="menubtnx">
+                            <button class="oln_n bd_n fs_30 pr_15 pl_15" onclick="$('#bknav').slideToggle('fast').focus()">
+                                <span class="fa fa-bars"></span>
+                            </button>
+                        </div>
                         <nav id="bknav" class="" role="navigation">
                             <div>
                                 <!-- Collect the nav links -->

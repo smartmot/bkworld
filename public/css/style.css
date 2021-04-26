@@ -441,8 +441,22 @@ input.oln_g:focus{outline: 1px solid gray;}
     color: blue;
     font-weight: bold;
 }
+.menubtnx{display: none}
 @media (max-width: 992px) {
+    #bknav ul{margin: 0; padding: 0 10px; line-height: 35px;}
     #bknav ul li{display: block}
+    #bknav{
+        background-color: #e3e1e1;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        top: 65px;
+        position: absolute;
+        right: 0;
+        width: 250px;
+        box-shadow: 1px 1px 0 1px #d7d7d7;
+        display: none;
+    }
+    .menubtnx{display: block}
 }
 @media (min-width: 576px) {
     .cw ,.pcw, .activated .editor_cw{max-width: 540px;}
