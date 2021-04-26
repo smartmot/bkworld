@@ -44,7 +44,9 @@ class HomeController extends Controller
     }
     public function news(){
         return view("news")->with([
-
+            "news" => Post::query()
+                ->where("category_id", 2)
+                ->orderBy("created_at", "desc")->limit(6)->get()
         ]);
     }
     public function contact(){
