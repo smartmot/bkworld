@@ -33,7 +33,7 @@ class HomeController extends Controller
 
     public function events(){
         return view("events")->with([
-            "events" => Event::query()->orderBy("created_at", "desc")->limit(6),
+            "events" => Event::query()->orderBy("created_at", "desc")->get()
         ]);
     }
 
