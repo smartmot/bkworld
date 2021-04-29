@@ -10,7 +10,7 @@
         </div>
         <div class="rowc pt_15">
             @foreach($news as $ns)
-                <div class="xl-6 lg-6 md-6 sm-12 fx_12">
+                <div class="xl-4 lg-4 md-4 sm-12 fx_12">
                     <div class="pr_15 pl_15 pb_20">
                         <div>
                             <div>

@@ -441,6 +441,12 @@ input.oln_g:focus{outline: 1px solid gray;}
     color: blue;
     font-weight: bold;
 }
+#bknav ul li a:hover{
+    color: black;
+}
+#bknav ul li a.active{
+    color: black;
+}
 .menubtnx{display: none}
 @media (max-width: 992px) {
     #bknav ul{margin: 0; padding: 0 10px; line-height: 35px;}

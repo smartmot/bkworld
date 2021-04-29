@@ -34,7 +34,7 @@
 <div class="wp_100 h_70">
     <div class="wp_100 h_70 p-f t-0 r-0 bcolor_1 box-s2 z_x_3">
         <div class="cw h_70">
-            <div class="pt_5 pb_5">
+            <div class="pt_5 pb_5 pr_5 pl_5">
                 <div class="h_60 ds_f">
                     <div>
                         <img class="h_60" src="{{ asset("bkworld.svg") }}" alt="">
@@ -42,48 +42,48 @@
                     <div class="flx"></div>
                     <div class="lh_60 h_60 p-r">
                         <div class="menubtnx">
-                            <button class="oln_n bd_n fs_30 pr_15 pl_15" onclick="$('#bknav').slideToggle('fast').focus()">
+                            <button class="oln_n bd_n fs_30 pr_15 pl_15" onclick="$('#bknav').hasClass('open_ed') ? void 0 : $('#bknav').slideDown('fast').focus().addClass('open_ed')">
                                 <span class="fa fa-bars"></span>
                             </button>
                         </div>
-                        <nav id="bknav" class="" role="navigation">
+                        <nav id="bknav" class="oln_n bd_n" role="navigation" tabindex="1" onblur="$(this).hasClass('open_ed') ? $(this).slideUp('fast',function (){$('#bknav').removeClass('open_ed')}) : void 0">
                             <div>
                                 <!-- Collect the nav links -->
                                 <div class="">
                                     <ul class="fm-popp fs_18">
                                         <li class="" id="">
-                                            <a href="{{ route("home") }}" class=" color_5 hcolor_4 t_d_n acolor_4">
+                                            <a href="{{ route("home") }}" class=" color_5 hcolor_4 t_d_n acolor_4{{ route_is() == "home" ? " active" : "" }}">
                                                 <span>Home</span>
                                             </a>
                                         </li>
 
                                         <li class="" id="">
-                                            <a href="{{ route("home.two") }}" class=" color_5 hcolor_4 t_d_n acolor_4">
+                                            <a href="{{ route("home.two") }}" class=" color_5 hcolor_4 t_d_n acolor_4{{ route_is() == "home.two" ? " active" : "" }}">
                                                 <span>Executive Committee</span>
                                             </a>
                                         </li>
                                         <li class="" id="">
-                                            <a href="{{ route("services") }}" class=" color_5 hcolor_4 t_d_n acolor_4">
+                                            <a href="{{ route("services") }}" class=" color_5 hcolor_4 t_d_n acolor_4{{ route_is() == "services" ? " active" : "" }}">
                                                 <span>Services</span>
                                             </a>
                                         </li>
                                         <li class="" id="events">
-                                            <a href="{{ route("events") }}" class="menu_events color_5 hcolor_4 t_d_n acolor_4">
+                                            <a href="{{ route("events") }}" class="menu_events color_5 hcolor_4 t_d_n acolor_4{{ route_is() == "events" ? " active" : "" }}">
                                                 <span>Events</span>
                                             </a>
                                         </li>
                                         <li class="" id="">
-                                            <a href="{{ route("news") }}" class=" color_5 hcolor_4 t_d_n acolor_4">
+                                            <a href="{{ route("news") }}" class=" color_5 hcolor_4 t_d_n acolor_4{{ route_is() == "news" ? " active" : "" }}">
                                                 <span>News</span>
                                             </a>
                                         </li>
                                         <li class="" id="about">
-                                            <a href="{{ route("about") }}" class="menu_about color_5 hcolor_4 t_d_n acolor_4">
+                                            <a href="{{ route("about") }}" class="menu_about color_5 hcolor_4 t_d_n acolor_4{{ route_is() == "about" ? " active" : "" }}">
                                                 <span>About Us</span>
                                             </a>
                                         </li>
                                         <li class="" id="contact">
-                                            <a href="{{ route("contact") }}" class="menu_contact color_5 hcolor_4 t_d_n acolor_4">
+                                            <a href="{{ route("contact") }}" class="menu_contact color_5 hcolor_4 t_d_n acolor_4{{ route_is() == "contact" ? " active" : "" }}">
                                                 <span>Contact Us</span>
                                             </a>
                                         </li>
@@ -110,6 +110,9 @@
                <div class="xl-3 lg-3 md-3 sm-4 fx_12">
                    <div class="w_80">
                        <img class="wp_100" src="{{ asset("bkworld.svg") }}" alt="">
+                   </div>
+                   <div class="fs_12">
+                       <span>BK WORLD DEVELOPMENT CO., LTD</span>
                    </div>
                </div>
                <div class="xl-3 lg-3 md-3 sm-4 fx_12">
@@ -154,29 +157,28 @@
                    <div class="pb_10">
                        <div class="fm-popp fs_18 fw_b">Social Media</div>
                    </div>
-                   <ul class="pl_10 soc_links">
-                       <li class="ls_n pl_0 pr_0 pb_10">
-                           <a class="t_d_n fm-popp c_blk hcolor_4 acolor_4" href="javascript:void 0">
-                               <div class="h_50 w_50 b_r_c bc_01 color_1 t_a_c lh_50 fs_20">
+                   <div>
+                       <div class="ds_b">
+                           <a href="#" class="t_d_n ds_ib">
+                               <div class="w_30 h_30 lh_30 t_a_c color_1 bc-a b_r_c">
                                    <span class="fa fa-facebook"></span>
                                </div>
-                           </a>
-                       </li>
-                       <li class="ls_n pl_0 pr_0 pb_10">
-                           <a class="t_d_n fm-popp c_blk hcolor_4 acolor_4" href="javascript:void 0">
-                               <div class="h_50 w_50 b_r_c bc_01 color_1 t_a_c lh_50 fs_20">
+                           </a>&nbsp;
+
+                           <a href="#" class="t_d_n ds_ib">
+                               <div class="w_30 h_30 lh_30 t_a_c bc_red color_1 b_r_c">
                                    <span class="fa fa-instagram"></span>
                                </div>
-                           </a>
-                       </li>
-                       <li class="ls_n pl_0 pr_0 pb_10">
-                           <a class="t_d_n fm-popp c_blk hcolor_4 acolor_4" href="javascript:void 0">
-                               <div class="h_50 w_50 b_r_c bc_01 color_1 t_a_c lh_50 fs_20">
+                           </a>&nbsp;
+
+                           <a href="#" class="t_d_n ds_ib">
+                               <div class="w_30 h_30 lh_30 t_a_c bc-primary color_1 b_r_c">
                                    <span class="fa fa-twitter"></span>
                                </div>
                            </a>
-                       </li>
-                   </ul>
+
+                       </div>
+                   </div>
                </div>
            </div>
         </div>
