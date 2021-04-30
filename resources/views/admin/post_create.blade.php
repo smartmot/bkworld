@@ -10,7 +10,7 @@
                 <div class="xl-6 lg-6 md-12 sm-12 fx_12 us_n">
                     <div class="pr_5 pl_5 pb_10">
                         <div class="p-r">
-                            <img id="newimg" class="wp_100 box-s1" src="{{ old("thumbnail") == "" ? asset("icon/blank2.svg") : old("thumbnail") }}" alt="">
+                            <img id="newimg" class="wp_100 box-s1" src="{{ old("thumbnail") == "" ? asset("icon/blank_16x9.svg") : old("thumbnail") }}" alt="">
                             <div class="p-a" style="right: calc(50% - 25px); top: calc(50% - 25px)">
                                 <label for="thumb" class="fs_30 ds_b w_50 lh_50 h_50 t_a_c color_5 hcolor_4 acolor_4 csr-p">
                                     <span class="fa fa-camera"></span>
