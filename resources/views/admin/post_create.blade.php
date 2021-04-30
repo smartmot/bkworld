@@ -116,7 +116,7 @@
                         .attr("src", '{{ asset("photo").'/' }}'+data.url)
                         .fadeIn();
                 }else{
-                    $("#error").text("Choose 4:3 ratio image maximum size 2MB");
+                    $("#error").text("Choose 16:9 ratio image maximum size 5MB");
                 }
             });
         });
