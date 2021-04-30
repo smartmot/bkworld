@@ -11,7 +11,12 @@
             <div class="xl-8 lg-8">
                 <div class="pt_10 pr_15 pl_15">
                     <div>
-                        <img class="wp_100" src="{{ asset("photo/".$news->thumbnail.".jpg") }}" alt="">
+                        <img class="wp_100{{ $news->youtube != "" ? " ds_n" : "" }}" src="{{ asset("photo/".$news->thumbnail.".jpg") }}" title="{{ $news->title }}" alt="">
+                        @if($news->youtube != "")
+                            <div class="vdo-ut">
+                                <iframe src="{{ $news->youtube }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        @endif
                     </div>
                     <div>
                         <div><h3 class="fm-ubt5">{{ $news->title }}</h3></div>

@@ -14,7 +14,13 @@
                     <div class="pr_15 pl_15 pb_20">
                         <div>
                             <div>
-                                <img class="wp_100" src="{{ asset("photo/".$ns["thumbnail"]."_thumb.jpg") }}" alt="">
+                                @if($ns->youtube == "")
+                                    <img class="wp_100" src="{{ asset("photo/".$ns->thumbnail."_thumb.jpg") }}" alt="">
+                                @else
+                                    <div class="vdo-ut">
+                                        <iframe src="{{ $ns->youtube }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    </div>
+                                @endif
                             </div>
                             <div class="pr_10 pl_10">
                                 <div>
@@ -28,6 +34,11 @@
                     </div>
                 </div>
             @endforeach
+        </div>
+        <div class="t_a_c pt_15">
+            <div>
+                <button class="oln_n bd_n pd-10x20 b_r_3 bc_02 c_blk fm-ubt fs_18 csr-p hc_red">Load more</button>
+            </div>
         </div>
     </div>
 @endsection
