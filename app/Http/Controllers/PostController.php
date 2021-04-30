@@ -223,7 +223,10 @@ class PostController extends Controller
 
     public function news(Post $post){
         return view("single_post")->with([
-            "news" => $post
+            "news" => $post,
+            "latest" => Post::query()
+                ->whereKeyNot($post->id)
+                ->orderBy("created_at", "desc")->limit(5)->get()
         ]);
     }
 }
