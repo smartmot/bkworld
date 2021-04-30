@@ -14,6 +14,7 @@
                         <div class="fs_12">By :
                             <a class="c3 ac1 hc1" href="{{ route("user.show", $post["user_id"]) }}">{{ $post["user"]["name"] }}</a>
                         </div>
+                        <span class="fs_12 c_red b_r_3 fm-ubt5">{{ $post->category->name }}</span>
                     </div>
                     <div class="xl-auto lg-auto md-12 fx_12">
                         <div>

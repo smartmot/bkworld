@@ -14,7 +14,7 @@
                     <div class="pr_15 pl_15 pb_20">
                         <div>
                             <div>
-                                <img class="wp_100" src="{{ asset("photo/".$ns["thumbnail"].".jpg") }}" alt="">
+                                <img class="wp_100" src="{{ asset("photo/".$ns["thumbnail"]."_thumb.jpg") }}" alt="">
                             </div>
                             <div class="pr_10 pl_10">
                                 <div><h3 class="fm-ubt">{{ $ns["title"] }}</h3></div>

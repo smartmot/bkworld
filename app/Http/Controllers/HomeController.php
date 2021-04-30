@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function home(){
         return view("home")->with([
-            "activities" => Post::query()->where("category_id",2)->get(),
+            "activities" => Post::query()->where("category_id",2)->limit(3)->get(),
             "services" => Post::query()->where("category_id",1)->get(),
             "partners" => Partner::all()
         ]);
@@ -46,7 +46,7 @@ class HomeController extends Controller
         return view("news")->with([
             "news" => Post::query()
                 ->where("category_id", 2)
-                ->orderBy("created_at", "desc")->limit(6)->get()
+                ->orderBy("created_at", "desc")->limit(12)->get()
         ]);
     }
     public function contact(){

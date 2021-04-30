@@ -18,8 +18,8 @@
     <meta property="og:type" content="website" />
 
     <link rel="shortcut icon" href="{{ asset("bkworld.svg") }}">
-    <link rel="stylesheet" href="{{ asset("css/style.css") }}" type="text/css">
-    <link rel="stylesheet" href="{{ route("soft", "css.theme_colors?ver=".config("settings.color_ver")) }}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset("css/style.css?ver=").date("y.m.d.his") }}" type="text/css">
+    <link rel="stylesheet" href="{{ route("soft", "css.theme_colors?ver=".config("settings.color_ver")) }}" type="text/css">
     <script src="{{ asset("js/app.js") }}"></script>
     @yield("head")
     <style>
@@ -105,14 +105,15 @@
 
 <div class="wp_100 pb_20 box-s1 pt_15">
     <div class="cw">
-        <div class="pr_10 pl_10">
+        <div class="pr_10 pl_10 pb_10">
            <div class="rowc">
                <div class="xl-3 lg-3 md-3 sm-4 fx_12">
-                   <div class="w_80">
+                   <div class="w_80 _0auto pt_10">
                        <img class="wp_100" src="{{ asset("bkworld.svg") }}" alt="">
                    </div>
-                   <div class="fs_12">
-                       <span>BK WORLD DEVELOPMENT CO., LTD</span>
+                   <div class="fm-popp t_a_c pt_10">
+                       <div>BK WORLD</div>
+                       <div>DEVELOPMENT CO., LTD</div>
                    </div>
                </div>
                <div class="xl-3 lg-3 md-3 sm-4 fx_12">
@@ -181,6 +182,9 @@
                    </div>
                </div>
            </div>
+        </div>
+        <div class="pt_15 pb_15 fm-popp c_gra">
+            <div class="t_a_c">Copyright © {{ date("Y") }} BK WORLD DEVELOPMENT CO., LTD - All Rights Reserved.</div>
         </div>
     </div>
 </div>

@@ -162,6 +162,7 @@ html, body {
 .p_0{padding: 0;}.p_1{padding: 1px;}.p_2{padding: 2px;}.p_3{padding: 3px;}.p_4{padding: 4px;}.p_5{padding: 5px;}
 .p_6{padding: 6px;}.p_7{padding: 7px;}.p_8{padding: 8px;}.p_9{padding: 9px;}.p_10{padding: 10px;}.p_11{padding: 11px;}.p_12{padding: 12px;}.p_13{padding: 13px;}.p_14{padding: 14px;}.p_15{padding: 15px;}.p_16{padding: 16px;}.p_17{padding: 17px;}.p_18{padding: 18px;}
 .p_19{padding: 19px;}.p_20{padding: 20px;}
+                     .pr_40{padding-right: 40px;}
 .pl_0{padding-left: 0;}.pl_1{padding-left: 1px}.pl_2{padding-left: 2px}.pl_3{padding-left: 3px}.pl_4{padding-left: 4px}.pl_5{padding-left: 5px}
 .pl_6{padding-left: 6px}.pl_7{padding-left: 7px}.pl_8{padding-left: 8px}.pl_9{padding-left: 9px}.pl_10{padding-left: 10px}.pl_11{padding-left: 11px}.pl_12{padding-left: 12px}
 .pl_13{padding-left: 13px}.pl_14{padding-left: 14px}.pl_15{padding-left: 15px}.pl_16{padding-left: 16px}.pl_17{padding-left: 17px}.pl_18{padding-left: 18px}.pl_19{padding-left: 19px}  .pl_20{padding-left: 20px}.pl_30{padding-left: 30px;}.pl_40{padding-left: 40px;}.pl_50{padding-left: 50px;}
@@ -172,6 +173,10 @@ html, body {
 .pr_2{padding-right: 2px}.pr_3{padding-right: 3px}.pr_4{padding-right: 4px}.pr_5{padding-right: 5px}.pr_6{padding-right: 6px}.pr_7{padding-right: 7px}
 .pr_8{padding-right: 8px}.pr_9{padding-right: 9px}.pr_10{padding-right: 10px}.pr_11{padding-right: 11px}.pr_12{padding-right: 12px}.pr_13{padding-right: 13px}.pr_14{padding-right: 14px}
 .pr_15{padding-right: 15px}.pr_16{padding-right: 16px}.pr_17{padding-right: 17px}.pr_18{padding-right: 18px}.pr_19{padding-right: 19px}.pr_20{padding-right: 20px}
+.pr_25{padding-right: 25px;}
+.pr_30{padding-right: 30px;}
+.pl_25{padding-left: 25px;}
+.pl_30{padding-left: 30px;}
 .pt_0{padding-top: 0;}.pt_1{padding-top: 1px}.pt_2{padding-top: 2px}
 .pt_3{padding-top: 3px}.pt_4{padding-top: 4px}.pt_5{padding-top: 5px}.pt_6{padding-top: 6px}.pt_7{padding-top: 7px}.pt_8{padding-top: 8px}.pt_9{padding-top: 9px}.pt_10{padding-top: 10px}.pt_11{padding-top: 11px}.pt_12{padding-top: 12px}.pt_13{padding-top: 13px}
 .pt_14{padding-top: 14px}.pt_15{padding-top: 15px}.pt_16{padding-top: 16px}.pt_17{padding-top: 17px}.pt_18{padding-top: 18px}.pt_19{padding-top: 19px}.pt_20{padding-top: 20px}

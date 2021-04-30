@@ -49,6 +49,7 @@ class PostController extends Controller
             "category_id" => ["required", "exists:categories,id"],
             "content" => ["required"],
             "keyword" => ["nullable","max:150"],
+            "youtube" => ["nullable","max:255"],
             "description" => ["required","max:255"],
             "thumbnail" => ["required","max:255"]
         ]);
@@ -60,7 +61,7 @@ class PostController extends Controller
         if (Storage::disk("local")->exists($image)) {
             Storage::move($image, $foler.$cover. ".jpg");
             $photo = Image::make("photo/".$cover. ".jpg");
-            $photo->resize(300, 225);
+            $photo->resize(320, 180);
             $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
         }else{
             $validator->errors()->add("thumbnail", "Please upload your thumbnail");
@@ -122,6 +123,7 @@ class PostController extends Controller
             "content" => ["required"],
             "category_id" => ["required", "exists:categories,id"],
             "keyword" => ["nullable","max:150"],
+            "youtube" => ["nullable","max:255"],
             "description" => ["required","max:255"],
             "thumbnail" => ["required","max:255"]
         ]);
@@ -134,6 +136,7 @@ class PostController extends Controller
         $post->title = $data["title"];
         $post->content = $data["content"];
         $post->keyword = $data["keyword"];
+        $post->youtube = $data["youtube"];
         $post->category_id = $data["category_id"];
         $post->thumbnail = $data["thumbnail"];
         $post->description = $data["description"];
@@ -147,7 +150,7 @@ class PostController extends Controller
                         "images/".$old_thumb."_thumb.jpg",
                     ]);
                     $photo = Image::make("photo/".$cover. ".jpg");
-                    $photo->resize(300, 225);
+                    $photo->resize(320, 180);
                     $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
                     $post->thumbnail = $cover;
                 }else{
@@ -206,7 +209,7 @@ class PostController extends Controller
 
     public function thumbnail(Request $request){
         $validator = Validator::make($request->all(),[
-            "thumbnail" => ["required", "image", "mimes:jpeg", "max:5000", "min:1", "dimensions:ratio=4/3"]
+            "thumbnail" => ["required", "image", "mimes:jpeg", "max:5125", "min:1", "dimensions:ratio=16/9"]
         ]);
         if ($validator->fails()){
             $error = $validator->errors()->add("error", true);

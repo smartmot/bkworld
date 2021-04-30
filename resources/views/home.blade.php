@@ -98,7 +98,7 @@
                             <div class="pr_10 pl_10 pb_15">
                                 <div class="bcolor_1 box-s1">
                                     <div>
-                                        <img class="wp_100" src="{{ asset("photo/".$service["thumbnail"].".jpg") }}" alt="">
+                                        <img class="wp_100" src="{{ asset("photo/".$service["thumbnail"]."_thumb.jpg") }}" alt="">
                                     </div>
                                     <div class="pr_15 pl_15 h_100 ovfy_h">
                                         <div class="fm-ubt fs_18">
@@ -130,7 +130,13 @@
                             <div class="pr_15 pl_15 pb_15">
                                 <div class="bcolor_1 box-s1">
                                     <div>
-                                        <img class="wp_100" src="{{ asset("photo/".$act["thumbnail"].".jpg") }}" alt="">
+                                        @if($act->youtube == "")
+                                            <img class="wp_100" src="{{ asset("photo/".$act["thumbnail"]."_thumb.jpg") }}" alt="">
+                                        @else
+                                            <div class="vdo-ut">
+                                                <iframe src="{{ $act->youtube }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                            </div>
+                                        @endif
                                     </div>
                                     <div class="pr_10 pl_10 h_100 ovfy_h">
                                         <div class="fm-ubt fs_18">

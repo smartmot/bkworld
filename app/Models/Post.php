@@ -16,6 +16,7 @@ class Post extends Model
         "title",
         "content",
         "keyword",
+        "youtube",
         "thumbnail",
         "description",
     ];

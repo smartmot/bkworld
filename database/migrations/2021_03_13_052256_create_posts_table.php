@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration
             $table->string("keyword")->nullable();
             $table->string("description");
             $table->string("thumbnail");
+            $table->string("youtube")->nullable();
             $table->timestamps();
         });
     }

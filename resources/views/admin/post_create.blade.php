@@ -43,6 +43,14 @@
                         </div>
                         <div class="pb_15">
                             <label class="ds_f p-r">
+                                <input type="text" name="youtube" value="{{ old("youtube") }}" class="input-1 box-s1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3" placeholder="Embed youtube">
+                                @error("youtube")
+                                <span class="p-a b-9 ds_b pr_10 pl_10 bcolor_1 ml_20 b_r_5 fm-popp fs_14 color_4">{{ $message }}</span>
+                                @enderror
+                            </label>
+                        </div>
+                        <div class="pb_15">
+                            <label class="ds_f p-r">
                                 <select name="category_id" class="input-1 box-s1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3">
                                     <option value="">Select Category</option>
                                     @foreach($categories as $categ)
