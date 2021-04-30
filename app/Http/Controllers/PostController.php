@@ -220,4 +220,10 @@ class PostController extends Controller
             return response(["url"=>$name."?ver=".date("his"), "error"=>false]);
         }
     }
+
+    public function news(Post $post){
+        return view("single_post")->with([
+            "news" => $post
+        ]);
+    }
 }

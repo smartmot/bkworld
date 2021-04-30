@@ -20,6 +20,7 @@ Route::get("/executive_committee", [Controllers\HomeController::class, "two"])->
 Route::get("/services", [Controllers\HomeController::class, "services"])->name("services");
 Route::get("/events", [Controllers\HomeController::class, "events"])->name("events");
 Route::get("/news", [Controllers\HomeController::class, "news"])->name("news");
+Route::get("/post/{post}", [Controllers\PostController::class, "news"])->name("news.show");
 Route::get("/about", [Controllers\HomeController::class, "about"])->name("about");
 Route::get("/contact", [Controllers\HomeController::class, "contact"])->name("contact");
 Route::get("/abc", function (){
