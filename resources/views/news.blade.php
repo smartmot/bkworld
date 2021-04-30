@@ -17,7 +17,11 @@
                                 <img class="wp_100" src="{{ asset("photo/".$ns["thumbnail"]."_thumb.jpg") }}" alt="">
                             </div>
                             <div class="pr_10 pl_10">
-                                <div><h3 class="fm-ubt">{{ $ns["title"] }}</h3></div>
+                                <div>
+                                    <a class="t_d_n c_blu hc_red" href="{{ route("news.show", $ns["id"]) }}">
+                                        <h3 class="fm-ubt">{{ $ns["title"] }}</h3>
+                                    </a>
+                                </div>
                                 <div class="fm-popp">{{ $ns["description"] }}</div>
                             </div>
                         </div>
