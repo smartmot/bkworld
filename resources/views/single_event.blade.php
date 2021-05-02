@@ -1,5 +1,8 @@
 @extends("layouts.default")
 
+@section("keywords", $event["keywords"])
+@section("description", $event["description"])
+
 @section("content")
     <div class="cw pt_20 pb_20">
         <div class="rowc">
@@ -17,12 +20,15 @@
             <div class="xl-4 lg-4 md-5 sm-12 fx_12">
                 <div class="pr_15 pl_15">
                     @foreach($relates as $evnt)
-                        <div>
+                        <div class="bc_02">
                             <div>
                                 <img class="wp_100" src="{{ asset("photo/".$evnt["thumbnail"].".jpg") }}" alt="">
                             </div>
-                            <div class="fm-ubt5">
-                                <a class="fm-ubt5 c_blu hc_red t_d_n" href="{{ route("event.single", $evnt["id"]) }}">{{ $evnt["title"] }}</a>
+                            <div class="pr_10 pl_10 pb_10">
+                                <div class="fm-ubt5">
+                                    <a class="fm-ubt5 c_blu hc_red t_d_n" href="{{ route("event.single", $evnt["id"]) }}">{{ $evnt["title"] }}</a>
+                                </div>
+                                <div class="fm-popp">{{ $evnt["description"] }}</div>
                             </div>
                         </div>
                     @endforeach

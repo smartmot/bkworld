@@ -8,7 +8,7 @@
             </div>
             <div class="h_1 wp_100 bcolor_4"></div>
         </div>
-        <div class="rowc pt_15">
+        <div class="rowc pt_15 pb_20">
             <div class="xl-6 lg-6 md-6 sm-12 fx_12 bc_02">
                 <div class="pr_40 pl_40 pb_15">
                     <div class="fm-ubt pb_5 c_blu pb_20 pt_20">
@@ -32,7 +32,7 @@
 
                             <div class="pb_15">
                                 <label class="ds_f">
-                                    <textarea rows="10" class="input-1 box-s1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3" placeholder="Message">{{ old("message") }}</textarea>
+                                    <textarea rows="8" class="input-1 box-s1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3" placeholder="Message">{{ old("message") }}</textarea>
                                 </label>
                             </div>
 
@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="xl-6 lg-6 md-6 sm-12 fx_12">
-                <div class="pr_40 pl_40 pb_10">
+                <div class="pr_40 pl_40">
                     <div>
                         <div class="t_a_c fm-ubt fs_20 c_blu t_t_c pb_20">
                             <span>Customer Services</span>
@@ -77,9 +77,6 @@
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3908.6586680561236!2d104.90154931475644!3d11.576308991781806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310951b017267ee1%3A0x2ccc3fedecb9cb7e!2sBKWORLD%20DEVELOPMENT%20CO.%2CLTD!5e0!3m2!1sen!2skh!4v1619677301784!5m2!1sen!2skh" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
-            </div>
-
-            <div class="fx_6 pb_20" style="order: 4">
             </div>
         </div>
     </div>
