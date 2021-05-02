@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
@@ -225,8 +226,31 @@ class PostController extends Controller
         return view("single_post")->with([
             "news" => $post,
             "latest" => Post::query()
+                ->where("category_id", $post->category_id)
                 ->whereKeyNot($post->id)
-                ->orderBy("created_at", "desc")->limit(5)->get()
+                ->orderBy("created_at", "desc")
+                ->limit(5)
+                ->get()
         ]);
+    }
+
+    public function post(Request $request){
+        $validator = Validator::make($request->all(),[
+            "category" => ["required", "exists:categories,id"],
+            "offset" => ["required", "numeric"]
+        ]);
+        $data = $validator->validate();
+        $post = Post::query()
+            ->where("category_id", $data["category"])
+            ->orderBy("created_at", "desc")
+            ->limit(9)
+            ->offset($data["offset"])
+            ->get();
+        $result = [];
+        $blade = "components.post";
+        foreach ($post as $key => $p){
+            $result[$key] = view($blade)->with(["post" => $p, "class"=>"xl-4 lg-4 md-4 sm-12 fx_12"])->render();
+        }
+        return $result;
     }
 }

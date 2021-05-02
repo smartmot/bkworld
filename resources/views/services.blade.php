@@ -8,24 +8,43 @@
             </div>
             <div class="h_1 wp_100 bcolor_4"></div>
         </div>
-        <div class="rowc">
-            @foreach($services as $service)
-                <div class="xl-6 lg-6 md-12 sm-12 fx_12">
-                    <div class="pr_15 pl_15 pt_10 pb_10">
-                        <div class="b">
-                            <div class="bc_02">
-                                <img class="wp_100" src="{{ asset("photo/".$service["thumbnail"].".jpg") }}" alt="">
-                            </div>
-                            <div class="pr_10 pl_10 bc_02 h_100 pb_15">
-                                <div class="fm-ubt">
-                                    <h3>{{ $service["title"] }}</h3>
-                                </div>
-                                <div class="fm-popp">{{ $service["description"] }}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="rowc pt_20 pb_10" id="news">
+            @foreach($services as $post)
+                @include("components.post", ["class"=>"xl-4 lg-4 md-4 sm-12 fx_12"])
             @endforeach
         </div>
+        <div class="t_a_c pt_15 pb_15{{ count($services) < 9 ? " ds_n" : "" }}">
+            <form action="javascript: void 0" method="post" id="load_more">
+                @csrf
+                @method("post")
+                <input type="hidden" name="offset" value="9" id="offset">
+                <input type="hidden" name="category" value="1">
+                <div>
+                    <button id="load_btn" type="submit" class="oln_n bd_n pd-10x20 b_r_3 bc_02 c_blk fm-ubt fs_18 csr-p hc_red">Load more</button>
+                </div>
+            </form>
+        </div>
     </div>
+@endsection
+
+@section("script")
+    <script type="text/javascript">
+        var offset = 9;
+        $("#load_more").submit(function (e){
+            e.preventDefault();
+            var data = new FormData(this);
+            axios.post('{{ route("post.load") }}', data).then(response=>{
+                let result = response.data;
+                if (result.length < offset){
+                    $('#load_btn').hide();
+                }
+                for (i =0; i< result.length; i++){
+                    $("#news").append(result[i]);
+                }
+            }).then(function (){
+                offset = offset + 9;
+                $("#offset").attr("value", offset);
+            });
+        });
+    </script>
 @endsection
