@@ -196,4 +196,15 @@ class EventController extends Controller
             ])->withInput();
         }
     }
+
+    public function event(Event $event){
+        return view("single_event")->with([
+            "event" => $event,
+            "relates" => Event::query()
+                ->whereKeyNot($event->id)
+                ->orderBy("created_at", "desc")
+                ->limit(5)
+                ->get()
+        ]);
+    }
 }

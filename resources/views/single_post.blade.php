@@ -8,7 +8,7 @@
 @section("content")
     <div class="cw">
         <div class="rowc pt_20 pb_20">
-            <div class="xl-8 lg-8">
+            <div class="xl-8 lg-8 md-7 sm-12 fx_12">
                 <div class="pt_10 pr_15 pl_15">
                     <div>
                         <img class="wp_100{{ $news->youtube != "" ? " ds_n" : "" }}" src="{{ asset("photo/".$news->thumbnail.".jpg") }}" title="{{ $news->title }}" alt="">
@@ -27,7 +27,7 @@
                     </div>
                 </div>
             </div>
-            <div class="xl-4 lg-4">
+            <div class="xl-4 lg-4 md-5 sm-12 fx_12">
                 <div class="">
                     <div>
                         @foreach($latest as $post)
