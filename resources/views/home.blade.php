@@ -63,7 +63,7 @@
                 <div class="xl-6 lg-6 md-6 sm-12 fx_12">
                     <div class="pr_20 pl_20">
                         <div class="vdo-ut">
-                            <iframe src="https://www.youtube.com/embed/M0a9C9t0RW8?autoplay=1&loop=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe src="https://www.youtube.com/embed/M0a9C9t0RW8?autoplay=0&loop=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                         <div class="pr_10 pl_10 pt_5 pb_10">
                             <h3>Lorem Ipsum is simply dummy text of the printing </h3>

@@ -51,22 +51,22 @@
                             <span>Customer Services</span>
                         </div>
                     </div>
-                    <div class="pb_20">
+                    <div class="pb_20 fs_18 fm-popp">
                         <div class="ds_f wp_100">
-                            <div class="w_80 h_40 lh_40">
+                            <div class="w_80 h_40 lh_40 fw_b">
                                 Tel
                             </div>
                             <div class="h_40 lh_40">: 010 563 093</div>
                         </div>
 
                         <div class="ds_f wp_100">
-                            <div class="w_80 h_40 lh_40">
+                            <div class="w_80 h_40 lh_40 fw_b">
                                 Email
                             </div>
                             <div class="h_40 lh_40">: info@bkworld.asia</div>
                         </div>
                         <div class="ds_f wp_100">
-                            <div class="w_80 h_40 lh_40">
+                            <div class="w_80 h_40 lh_40 fw_b">
                                 Address
                             </div>
                             <div class="h_40 lh_40">: #2N, St 608, Toul Kork, Phnom Penh</div>
