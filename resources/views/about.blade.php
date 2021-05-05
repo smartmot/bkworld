@@ -3,7 +3,7 @@
 @section("content")
     <div class="cw pt_20 pb_20">
         <div class="pt_20">
-            <div class="t_a_c fm-ubt fs_26 c_blu t_t_c pb_20">
+            <div class="t_a_c fm-ubt fs_26 c_blu pb_20">
                 <span>Why is BK World Development ?</span>
             </div>
             <div class="h_1 wp_100 bcolor_4"></div>
