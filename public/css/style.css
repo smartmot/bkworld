@@ -1928,3 +1928,17 @@ input.phc-1::placeholder{color: #c3c3c3}
     opacity: 0.8;
     z-index: -1;
 }
+.section{
+    position: relative;
+    z-index: 2;
+}
+.section:after{
+    content: "";
+    position: absolute;
+    bottom: calc(50% - 3px);
+    right: 0;
+    border-bottom: 1px solid #c1c1c1;
+    width: 100%;
+    height: 1px;
+    z-index: -1;
+}

@@ -3,10 +3,7 @@
 @section("content")
     <div class="cw">
         <div class="pt_20 pb_15">
-            <div class="t_a_c fm-ubt fs_26 c_blu t_t_c pb_20">
-                <span>Our Events</span>
-            </div>
-            <div class="h_1 wp_100 bcolor_4"></div>
+            @include("components.section", ["section"=>"Events"])
         </div>
         <div class="rowc">
             @foreach($events as $event)

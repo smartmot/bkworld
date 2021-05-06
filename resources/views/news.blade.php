@@ -2,11 +2,8 @@
 
 @section("content")
     <div class="cw pt_20 pb_20">
-        <div class="pt_20">
-            <div class="t_a_c fm-ubt fs_26 c_blu t_t_c pb_20">
-                <span>Our Business Activities</span>
-            </div>
-            <div class="h_1 wp_100 bcolor_4"></div>
+        <div class="">
+            @include("components.section", ["section"=>"Our Business Activities"])
         </div>
         <div class="rowc pt_15" id="news">
             @foreach($news as $post)

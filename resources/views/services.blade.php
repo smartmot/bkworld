@@ -1,14 +1,9 @@
 @extends("layouts/".config("settings.theme"))
 
 @section("content")
-    <div class="cw">
-        <div class="pt_20">
-            <div class="t_a_c fm-ubt fs_26 c_blu t_t_c pb_20">
-                <span>Our Services</span>
-            </div>
-            <div class="h_1 wp_100 bcolor_4"></div>
-        </div>
-        <div class="rowc pt_20 pb_10" id="news">
+    <div class="cw pt_15">
+        @include("components.section", ["section"=>"Our Services"])
+        <div class="rowc pt_10 pb_10" id="news">
             @foreach($services as $post)
                 @include("components.post", ["class"=>"xl-4 lg-4 md-4 sm-12 fx_12"])
             @endforeach

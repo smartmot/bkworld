@@ -8,7 +8,7 @@
             </div>
             <div class="h_1 wp_100 bcolor_4"></div>
         </div>
-        <div class="pt_15 fm-popp t_a_j">
+        <div class="pt_15 fm-popp t_a_j pr_20 pl_20">
             <p>{{ config("settings.about")[0] }}</p>
         </div>
 

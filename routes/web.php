@@ -23,6 +23,7 @@ Route::get("/news", [Controllers\HomeController::class, "news"])->name("news");
 Route::get("/news/{post}", [Controllers\PostController::class, "news"])->name("news.show");
 Route::post("/post/", [Controllers\PostController::class, "post"])->name("post.load");
 Route::get("/event/{event}", [Controllers\EventController::class, "event"])->name("event.single");
+Route::get("/member/{member}", [Controllers\MemberController::class, "member"])->name("member.single");
 Route::get("/test1", [Controllers\PostController::class, "post"]);
 Route::get("/about", [Controllers\HomeController::class, "about"])->name("about");
 Route::get("/contact", [Controllers\HomeController::class, "contact"])->name("contact");

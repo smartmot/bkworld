@@ -3,10 +3,7 @@
 @section("content")
     <div class="cw">
         <div class="pt_20">
-            <div class="t_a_c fm-ubt fs_26 c_blu t_t_c pb_20">
-                <span>Contact Us</span>
-            </div>
-            <div class="h_1 wp_100 bcolor_4"></div>
+            @include("components.section", ["section" => "Contact Us"])
         </div>
         <div class="rowc pt_15 pb_20">
             <div class="xl-6 lg-6 md-6 sm-12 fx_12 bc_02">

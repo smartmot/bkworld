@@ -223,4 +223,10 @@ class MemberController extends Controller
             return response(["url"=>$name."?ver=".date("his"), "error"=>false]);
         }
     }
+
+    public function member(Member $member){
+        return view("member")->with([
+            "member" => $member
+        ]);
+    }
 }

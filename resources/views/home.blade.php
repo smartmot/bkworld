@@ -88,30 +88,11 @@
 
     <div class="wp_100 bcolor_1 pt_20">
         <div class="cw">
-            <div class="t_a_c fm-ubt fs_26 c_blu t_t_c pb_10">
-                <span>Our Services</span>
-            </div>
+            @include("components.section", ["section"=>"Our Services"])
             <div class="pr_10 pl_10 pt_20">
                 <div class="rowc">
-                    @foreach($services as $service)
-                        <div class="xl-4 lg-4 md-4 sm-6 fx_12">
-                            <div class="pr_10 pl_10 pb_15">
-                                <div class="bcolor_1 box-s1">
-                                    <div>
-                                        <img class="wp_100" src="{{ asset("photo/".$service["thumbnail"]."_thumb.jpg") }}" alt="">
-                                    </div>
-                                    <div class="pr_15 pl_15 h_100 ovfy_h">
-                                        <div class="fm-ubt fs_18">
-                                            <span>{{ $service["title"] }}</span>
-                                        </div>
-                                        <div>
-                                            <span>{{ $service["description"] }}</span>
-                                        </div>
-                                    </div>
-                                    <div class="h_15 wp_100"></div>
-                                </div>
-                            </div>
-                        </div>
+                    @foreach($services as $post)
+                        @include("components.post", ["class"=>"xl-4 lg-4 md-4 sm-6 fx_12"])
                     @endforeach
                 </div>
             </div>
@@ -120,36 +101,11 @@
 
     <div class="wp_100 bcolor_1 pt_10">
         <div class="cw">
-            <div class="t_a_c fm-ubt fs_26 c_blu t_t_c pb_10">
-                <span>business activities</span>
-            </div>
+            @include("components.section", ["section"=>"Latest News"])
             <div class="pr_10 pl_10 pt_20 pb_20">
                 <div class="rowc">
-                    @foreach($activities as $act)
-                        <div class="xl-4 lg-4 md-4 sm-6 fx_12">
-                            <div class="pr_15 pl_15 pb_15">
-                                <div class="bcolor_1 box-s1">
-                                    <div>
-                                        @if($act->youtube == "")
-                                            <img class="wp_100" src="{{ asset("photo/".$act["thumbnail"]."_thumb.jpg") }}" alt="">
-                                        @else
-                                            <div class="vdo-ut">
-                                                <iframe src="{{ $act->youtube }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                            </div>
-                                        @endif
-                                    </div>
-                                    <div class="pr_10 pl_10 h_100 ovfy_h">
-                                        <div class="fm-ubt fs_18">
-                                            <span>{{ $act["title"] }}</span>
-                                        </div>
-                                        <div>
-                                            <span>{{ $act["description"] }}</span>
-                                        </div>
-                                    </div>
-                                    <div class="h_15 wp_100"></div>
-                                </div>
-                            </div>
-                        </div>
+                    @foreach($activities as $post)
+                        @include("components.post", ["class"=>"xl-4 lg-4 md-4 sm-6 fx_12"])
                     @endforeach
                 </div>
             </div>
@@ -158,10 +114,8 @@
 
     <div class="wp_100 bcolor_1 pt_10">
         <div class="cw">
-            <div class="t_a_c fm-ubt fs_26 c_blu t_t_c pb_10">
-                <span>Vision and Mission</span>
-            </div>
-            <div class="rowc">
+            @include("components.section", ["section"=>"Vision and Mission"])
+            <div class="rowc pt_20">
                 <div class="xl-6 lg-6 md-6 sm-12 fx_12" style="background-color: #eaeaea">
                     <div class="pr_20 pl_20 pb_15">
                         <div class="">
