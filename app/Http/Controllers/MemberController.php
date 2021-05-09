@@ -18,9 +18,15 @@ class MemberController extends Controller
      */
     public function index()
     {
-        return view("admin.member")->with([
-            "members" => Member::all()
-        ]);
+        $allow = ["admin"];
+        $confirm = in_array(Auth::user()->role, $allow);
+        if ($confirm){
+            return view("admin.member")->with([
+                "members" => Member::all()
+            ]);
+        }else{
+            return abort(404);
+        }
     }
 
     /*
@@ -30,7 +36,13 @@ class MemberController extends Controller
      */
     public function create()
     {
-        return view("admin.member_create");
+        $allow = ["admin"];
+        $confirm = in_array(Auth::user()->role, $allow);
+        if ($confirm){
+            return view("admin.member_create");
+        }else{
+            return abort(404);
+        }
     }
 
     /*
@@ -41,6 +53,14 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
+        $allow = ["admin"];
+        $confirm = in_array(Auth::user()->role, $allow);
+
+
+        if (!$confirm){
+            abort(404);
+        }
+
         $validator = Validator::make($request->all(), [
             "name" => ["required", "max:255"],
             "position" => ["nullable", "max:255"],
@@ -59,18 +79,20 @@ class MemberController extends Controller
 
         $cover = date("Y/m/d/his");
         $foler = "images/";
-        if (Storage::disk("local")->exists($image)) {
-            Storage::move($image, $foler.$cover. ".jpg");
-            $photo = Image::make("photo/".$cover. ".jpg");
-            $photo->resize(300, 350);
-            $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
-            $data["photo"] = $cover;
-        }else{
-            $validator->errors()->add("photo", "Please upload a photo");
-        }
+        if ($confirm){
+            if (Storage::disk("local")->exists($image)) {
+                Storage::move($image, $foler.$cover. ".jpg");
+                $photo = Image::make("photo/".$cover. ".jpg");
+                $photo->resize(300, 350);
+                $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
+                $data["photo"] = $cover;
+            }else{
+                $validator->errors()->add("photo", "Please upload a photo");
+            }
 
-        $member = new Member($data);
-        $member->save();
+            $member = new Member($data);
+            $member->save();
+        }
         return redirect(route("member.index"));
     }
 
@@ -82,9 +104,15 @@ class MemberController extends Controller
      */
     public function show(Member $member)
     {
-        return view("admin.member_show")->with([
-            "member" => $member
-        ]);
+        $allow = ["admin"];
+        $confirm = in_array(Auth::user()->role, $allow);
+        if ($confirm){
+            return view("admin.member_show")->with([
+                "member" => $member
+            ]);
+        }else{
+            return redirect(route("admin.index"));
+        }
     }
 
     /*
@@ -226,7 +254,12 @@ class MemberController extends Controller
 
     public function member(Member $member){
         return view("member")->with([
-            "member" => $member
+            "member" => $member,
+            "relates" => Member::query()
+                ->where("type", $member["type"])
+                ->whereKeyNot($member["id"])
+                ->limit(5)
+                ->get()
         ]);
     }
 }

@@ -17,11 +17,22 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view("admin.user")->with([
-            "users" => User::query()
-                ->orderBy("created_at", "asc")
-                ->get()
-        ]);
+        $allow = [
+            "admin"
+        ];
+        $confirm = in_array(Auth::user()->role, $allow);
+        if ($confirm){
+            return view("admin.user")->with([
+                "users" => User::query()
+                    ->orderBy("created_at", "asc")
+                    ->get()
+            ]);
+        }else{
+            return redirect(route("admin.index"))->withErrors([
+                "alert" => "No Permission",
+                "alert_message" => "You don't have permission to edit this member"
+            ])->withInput();
+        }
     }
 
     /*
@@ -31,7 +42,15 @@ class UserController extends Controller
      */
     public function create(Request $request)
     {
-        return view("admin.user_create")->with([]);
+        $allow = [
+            "admin"
+        ];
+        $confirm = in_array(Auth::user()->role, $allow);
+        if ($confirm){
+            return view("admin.user_create")->with([]);
+        }else{
+            return redirect(route("user.index"));
+        }
     }
 
     /*
@@ -56,9 +75,15 @@ class UserController extends Controller
         $data["created_by"] = Auth::id();
         $data["status"] = "active";
         $data["options"] = json_encode(['message'=>0]);
-        $user = new User($data);
-        $user->save();
-        return redirect(route("user.index"));
+        $allow = [
+            "admin"
+        ];
+        $confirm = in_array(Auth::user()->role, $allow);
+        if ($confirm){
+            $user = new User($data);
+            $user->save();
+            return redirect(route("user.index"));
+        }
     }
 
     /*
@@ -80,9 +105,20 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view("admin.user_edit")->with([
-            "user" => $user
-        ]);
+        $allow = [
+            "admin"
+        ];
+        $confirm = in_array(Auth::user()->role, $allow);
+        if ($confirm){
+            return view("admin.user_edit")->with([
+                "user" => $user
+            ]);
+        }else{
+            return redirect(route("user.index"))->withErrors([
+                "alert" => "No Permission",
+                "alert_message" => "You don't have permission to edit this member"
+            ])->withInput();
+        }
     }
 
     /*
@@ -94,6 +130,10 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $allow = [
+            "admin"
+        ];
+        $confirm = in_array(Auth::user()->role, $allow);
         $validator = Validator::make($request->all(), [
             "gender" => ["required", "in:male,female"],
             "role" => ["required", "in:admin,editor,moderator"],
@@ -101,18 +141,39 @@ class UserController extends Controller
         $data = $validator->validate();
 
         $data["updated_by"] = Auth::id();
-        $user->update($data);
-        return redirect(route("user.index"));
+        if ($confirm){
+            $user->update($data);
+            return redirect(route("user.index"));
+        }else{
+            return redirect(route("user.index"))->withErrors([
+                "alert" => "No Permission",
+                "alert_message" => "You don't have permission to edit this member"
+            ])->withInput();
+        }
     }
 
-    /**
+    /*
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $allow = [
+            "admin"
+        ];
+        $confirm = in_array(Auth::user()->role, $allow);
+        if ($confirm){
+            $user->status = "deleted";
+            $user->updated_by = Auth::id();
+            $user->save();
+            return redirect(route("user.index"));
+        }else{
+            return redirect(route("user.index"))->withErrors([
+                "alert" => "No Permission",
+                "alert_message" => "You don't have permission to edit this member"
+            ])->withInput();
+        }
     }
 }

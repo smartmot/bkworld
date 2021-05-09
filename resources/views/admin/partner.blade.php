@@ -11,7 +11,7 @@
                 <div class=wp_100">
                     <div class="pr_10 pl_10 pb_10">
                         <div class="ds_f">
-                            <div class="w_100 h_100 lh_100 box-s3">
+                            <div class="w_110 h_110 lh_90 box-s3">
                                 <div class="pr_5 pl_5 pt_5 pb_5">
                                     <img class="wp_100" src="{{ asset("photo/".$partner["logo"].".jpg") }}" alt="">
                                 </div>

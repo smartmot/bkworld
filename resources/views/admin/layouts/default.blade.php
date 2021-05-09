@@ -25,6 +25,9 @@
         </div>
     </div>
 </div>
+<?php
+$confim = in_array(auth()->user()->role, ["admin"])
+?>
 <div style="height: calc(100% - 70px)">
     <div class="cw hp_100">
         <div class="rowc hp_100">
@@ -33,9 +36,11 @@
                     <div class="">
                         <a href="{{ route("admin.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ act_route("admin.index") ? " bcolor_4 color_1":" color_5" }}">Home</a>
                     </div>
-                    <div class="">
-                        <a href="{{ route("user.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ route_parent()=="user" ? " bcolor_4 color_1" : " color_5" }}">Users</a>
-                    </div>
+                    @if($confim)
+                        <div class="">
+                            <a href="{{ route("user.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ route_parent()=="user" ? " bcolor_4 color_1" : " color_5" }}">Users</a>
+                        </div>
+                    @endif
                     <div>
                         <a href="{{ route("post.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ route_parent()=="post" ? " bcolor_4 color_1" : " color_5" }}">Posts</a>
                     </div>
@@ -48,12 +53,14 @@
                     <div>
                         <a href="{{ route("message.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ route_parent()=="message" ? " bcolor_4 color_1" : " color_5" }}">Messages</a>
                     </div>
-                    <div>
-                        <a href="{{ route("member.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ route_parent()=="member" ? " bcolor_4 color_1" : " color_5" }}">Members</a>
-                    </div>
-                    <div>
-                        <a href="{{ route("partner.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ route_parent()=="partner" ? " bcolor_4 color_1" : " color_5" }}">Partners</a>
-                    </div>
+                    @if($confim)
+                        <div>
+                            <a href="{{ route("member.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ route_parent()=="member" ? " bcolor_4 color_1" : " color_5" }}">Members</a>
+                        </div>
+                        <div>
+                            <a href="{{ route("partner.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ route_parent()=="partner" ? " bcolor_4 color_1" : " color_5" }}">Partners</a>
+                        </div>
+                    @endif
                     <div>
                         <a href="{{ route("setting.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ route_parent()=="setting" ? " bcolor_4 color_1" : " color_5" }}">Settings</a>
                     </div>

@@ -5,18 +5,22 @@
        @include("components.section", ["section" => "Our Management Team"])
        <div class="rowc">
            @foreach($members as $member)
-               <div class="xl-6 lg-6 md-6 sm-12 fx_12">
+               <div class="xl-6 lg-6 md-12 sm-12 fx_12">
                    <div class="pl_20 pr_20 pt_20 pb_10">
-                       <div class="bc_02">
+                       <div class="bc_02 box-s1">
                            <div class="rowc">
-                               <div class="xl-4 lg-4 md-5 sm-12 fx_12">
-                                   <img class="wp_100 box-s1" src="{{ asset("photo/".$member["photo"]."_thumb.jpg") }}" alt="">
+                               <div class="xl-4 lg-5 md-5 sm-12 fx_12">
+                                   <a class="t_d_n" href="{{ route("member.single", $member["id"]) }}">
+                                       <img class="wp_100 box-s1 member_fade ts_020 opc_90" src="{{ asset("photo/".$member["photo"]."_thumb.jpg") }}" alt="">
+                                   </a>
                                </div>
-                               <div class="xl-8 lg-8 md-7 sm-12 fx_12">
+                               <div class="xl-8 lg-7 md-7 sm-12 fx_12 p-r">
                                   <div class="pt_10">
                                       <div class="pr_25 pl_25 pb_5">
                                           <div>
-                                              <div class="fs_24 fm-ubt c_blu pb_10">{{ $member["name"] }}</div>
+                                              <div class="fs_24 fm-ubt pb_10">
+                                                  <a class="t_d_n c_blu hc_red" href="{{ route("member.single", $member["id"]) }}">{{ $member["name"] }}</a>
+                                              </div>
                                               <div class="fm-ubt4 pb_10">{{ $member["position"] }}</div>
                                           </div>
                                           <div>
@@ -26,6 +30,11 @@
                                           </div>
                                       </div>
                                   </div>
+                                   <div class="t_a_r pr_20 pb_10">
+                                       <a href="{{ route("member.single", $member["id"]) }}" class="t_d_n pb_5 pt_5 c_blu hc_red h_25 box-s1 bc_whi b_r_3 lh_25 fs_11 fm-popp">
+                                           <span class="pr_10 pl_10">Read more&nbsp;<span class="fa fa-angle-double-right"></span></span>
+                                       </a>
+                                   </div>
                                </div>
                            </div>
                        </div>
