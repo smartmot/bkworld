@@ -1,7 +1,7 @@
 @extends("layouts/".config("settings.theme"))
 
-@section("keywords", "BK WORLD,".$member["name"])
-@section("description", "BK WORLD,".$member["name"])
+@section("keywords", "BK WORLD, ".$member["name"].", ".$member["position"])
+@section("description", $member["description"])
 
 @section("content")
     <div class="cw">
@@ -19,7 +19,7 @@
                                 <div class="fm-ubt fs_20 pt_15">{{ $member["name"] }}</div>
                                 <div class="fm-popp pb_5 bdbtm_1_gra">{{ $member["position"] }}</div>
                             </div>
-                            <div class="pr_15 pl_15 fm-popp pt_10 pb_20">{{ $member["description"] }}</div>
+                            <div class="pr_15 pl_15 fm-popp pt_10 pb_20">{{ $member["content"] }}</div>
                         </div>
                     </div>
                 </div>

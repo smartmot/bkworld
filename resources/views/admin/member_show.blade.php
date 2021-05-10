@@ -64,7 +64,7 @@
             <div class="xl-8 lg-8 md-8 sm-12 fx_12 bcolor_1">
                 <div class="pr_5 pl_5">
                     <div class="pr_10 pl_10 pt_15 pb_10">
-                        <span class="color_5">{{ $member->description }}</span>
+                        <span class="color_5">{{ $member->content }}</span>
                     </div>
                 </div>
             </div>
