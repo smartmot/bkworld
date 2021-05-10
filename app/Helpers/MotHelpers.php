@@ -92,7 +92,7 @@ if (!function_exists("fx_numeric")){
 if (!function_exists("tab_name")){
     function tab_name(){
         $tabs = [
-            "admin.index" => "Admin",
+            "admin.index" => auth()->user()->name,
 
             "user.index" => "Users",
             "user.create" => "Add new User",

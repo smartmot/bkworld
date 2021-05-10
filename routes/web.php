@@ -16,17 +16,23 @@ use Intervention\Image\Facades\Image;
 */
 
 Route::get("/", [Controllers\HomeController::class, "home"])->name("home");
-Route::get("/executive_committee", [Controllers\HomeController::class, "two"])->name("home.two");
-Route::get("/services", [Controllers\HomeController::class, "services"])->name("services");
-Route::get("/events", [Controllers\HomeController::class, "events"])->name("events");
-Route::get("/news", [Controllers\HomeController::class, "news"])->name("news");
-Route::get("/news/{post}", [Controllers\PostController::class, "news"])->name("news.show");
-Route::post("/post/", [Controllers\PostController::class, "post"])->name("post.load");
-Route::get("/event/{event}", [Controllers\EventController::class, "event"])->name("event.single");
-Route::get("/member/{member}", [Controllers\MemberController::class, "member"])->name("member.single");
-Route::get("/test1", [Controllers\PostController::class, "post"]);
-Route::get("/about", [Controllers\HomeController::class, "about"])->name("about");
-Route::get("/contact", [Controllers\HomeController::class, "contact"])->name("contact");
+
+Route::middleware("auth")
+    ->group(function ()
+    {
+        Route::get("/executive_committee", [Controllers\HomeController::class, "two"])->name("home.two");
+        Route::get("/services", [Controllers\HomeController::class, "services"])->name("services");
+        Route::get("/events", [Controllers\HomeController::class, "events"])->name("events");
+        Route::get("/news", [Controllers\HomeController::class, "news"])->name("news");
+        Route::get("/news/{post}", [Controllers\PostController::class, "news"])->name("news.show");
+        Route::post("/post/", [Controllers\PostController::class, "post"])->name("post.load");
+        Route::get("/event/{event}", [Controllers\EventController::class, "event"])->name("event.single");
+        Route::get("/member/{member}", [Controllers\MemberController::class, "member"])->name("member.single");
+        Route::get("/test1", [Controllers\PostController::class, "post"]);
+        Route::get("/about", [Controllers\HomeController::class, "about"])->name("about");
+        Route::get("/contact", [Controllers\HomeController::class, "contact"])->name("contact");
+    });
+
 Route::get("/abc", function (){
     return \Illuminate\Support\Facades\Auth::logout();
 });

@@ -34,7 +34,7 @@ $confim = in_array(auth()->user()->role, ["admin"])
             <div class="xl-4 lg-4 md-4 sm-12 fx_12 hp_100">
                 <div class="">
                     <div class="">
-                        <a href="{{ route("admin.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ act_route("admin.index") ? " bcolor_4 color_1":" color_5" }}">Home</a>
+                        <a href="{{ route("admin.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ act_route("admin.index") ? " bcolor_4 color_1":" color_5" }}">Profile</a>
                     </div>
                     @if($confim)
                         <div class="">
@@ -60,10 +60,10 @@ $confim = in_array(auth()->user()->role, ["admin"])
                         <div>
                             <a href="{{ route("partner.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ route_parent()=="partner" ? " bcolor_4 color_1" : " color_5" }}">Partners</a>
                         </div>
+                        <div>
+                            <a href="{{ route("setting.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ route_parent()=="setting" ? " bcolor_4 color_1" : " color_5" }}">Settings</a>
+                        </div>
                     @endif
-                    <div>
-                        <a href="{{ route("setting.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ route_parent()=="setting" ? " bcolor_4 color_1" : " color_5" }}">Settings</a>
-                    </div>
                 </div>
             </div>
             <div class="xl-8 lg-8 md-8 sm-12 fx_12 bcolor_2 prt_right afbcolor_4 hp_100 box-s1 ovfy_a ">
