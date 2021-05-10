@@ -21,6 +21,7 @@ class Member extends Model
         "youtube",
         "twitter",
         "description",
+        "content",
     ];
 
     public function user(){

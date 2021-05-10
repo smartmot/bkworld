@@ -119,6 +119,18 @@
                             <textarea id="description" name="description" rows="5" class="input-1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3 box-s1" placeholder="Description">{{ old("description") == "" ? $member["description"] : old("description") }}</textarea>
                         </div>
                     </div>
+
+                    <div class="pr_5 pl_5">
+                        <label class="fm-popp fs_16 pb_5 ds_b" for="content">
+                            Content
+                            @error("content")
+                            <span class="fs_14">&nbsp;:<span class="color_4"> {{ $message }}</span></span>
+                            @enderror
+                        </label>
+                        <div class="ds_f p-r">
+                            <textarea id="content" name="content" rows="5" class="input-1 fm-popp wp_100 pd-10x15 fs_16 oln_n bd_n b_r_3 box-s1" placeholder="Content">{{ old("content") == "" ? $member["content"] : old("content") }}</textarea>
+                        </div>
+                    </div>
                     <div>
                         <div class="t_a_r pr_5 pl_5 pt_15 pb_5">
                             <button class="oln_n bd_n pd-5x20 box-s1 b_r_3 csr-p fm-popp fs_16 color_1 bcolor_5 hbcolor_4 abcolor_4" type="submit">Update Member</button>

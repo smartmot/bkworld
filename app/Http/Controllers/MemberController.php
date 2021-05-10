@@ -70,7 +70,8 @@ class MemberController extends Controller
             "instagram" => ["nullable", "max:255"],
             "youtube" => ["nullable", "max:255"],
             "twitter" => ["nullable", "max:255"],
-            "description" => ["nullable"],
+            "description" => ["nullable", "max:255"],
+            "content" => ["nullable"],
         ]);
         $data = $validator->validate();
         $data["user_id"] = Auth::id();
@@ -154,7 +155,8 @@ class MemberController extends Controller
             "instagram" => ["nullable", "max:255"],
             "youtube" => ["nullable", "max:255"],
             "twitter" => ["nullable", "max:255"],
-            "description" => ["nullable"],
+            "description" => ["nullable", "max:255"],
+            "content" => ["nullable"],
         ]);
         $data = $validator->validate();
 
@@ -169,6 +171,7 @@ class MemberController extends Controller
         $member->youtube = $data["youtube"];
         $member->twitter = $data["twitter"];
         $member->description = $data["description"];
+        $member->content = $data["content"];
 
         if ($member->user_id == Auth::id() or Auth::user() == "admin"){
             if ($member->isDirty("photo")){

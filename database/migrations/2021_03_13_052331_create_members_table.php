@@ -25,7 +25,8 @@ class CreateMembersTable extends Migration
             $table->string("instagram")->nullable();
             $table->string("youtube")->nullable();
             $table->string("twitter")->nullable();
-            $table->mediumText("description")->nullable();
+            $table->string("description")->nullable();
+            $table->mediumText("content")->nullable();
             $table->timestamps();
         });
     }
