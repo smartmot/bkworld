@@ -41,6 +41,8 @@ Route::middleware("auth")
     ->group(function ()
 {
     Route::get("/admin", [Controllers\AdminController::class, "index"])->name("admin.index");
+    Route::get("/admin/profile", [Controllers\AdminController::class, "edit"])->name("admin.edit");
+    Route::put("/admin/profile", [Controllers\AdminController::class, "update"])->name("admin.update");
     Route::resource("/admin/user", Controllers\UserController::class);
     Route::resource("/admin/post", Controllers\PostController::class);
     Route::resource("/admin/page", Controllers\PageController::class);

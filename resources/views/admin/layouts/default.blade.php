@@ -34,7 +34,7 @@ $confim = in_array(auth()->user()->role, ["admin"])
             <div class="xl-4 lg-4 md-4 sm-12 fx_12 hp_100">
                 <div class="">
                     <div class="">
-                        <a href="{{ route("admin.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ act_route("admin.index") ? " bcolor_4 color_1":" color_5" }}">Profile</a>
+                        <a href="{{ route("admin.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ route_parent() == "admin" ? " bcolor_4 color_1":" color_5" }}">Profile</a>
                     </div>
                     @if($confim)
                         <div class="">

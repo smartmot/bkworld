@@ -93,6 +93,7 @@ if (!function_exists("tab_name")){
     function tab_name(){
         $tabs = [
             "admin.index" => auth()->user()->name,
+            "admin.edit" => "Update profile",
 
             "user.index" => "Users",
             "user.create" => "Add new User",
