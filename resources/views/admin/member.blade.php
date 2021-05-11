@@ -8,7 +8,7 @@
     <div>
         <div class="rowc pt_5">
             @foreach($members as $member)
-                <div class="xl-4">
+                <div class="xl-4 lg-4 md-6 sm-6 fx_12">
                     <div class="pr_5 pl_5 pb_10">
                         <div class="box-s2">
                             <div class="p-r">

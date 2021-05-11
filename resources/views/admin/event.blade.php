@@ -6,7 +6,7 @@
 @section("content")
     <div class="rowc pt_5">
         @foreach($events as $event)
-            <div class="xl-4">
+            <div class="xl-4 lg-4 md-6 sm-12 fx_12">
                 <div class="pr_5 pl_5 pb_10">
                     <div class="p-r box-s1 pb_5 b_r_3 bcolor_1">
                         <img class="wp_100 bdr-tlr-3" src="{{ asset("photo/".$event["thumbnail"])."_thumb.jpg" }}" alt="">
