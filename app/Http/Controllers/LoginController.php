@@ -31,4 +31,8 @@ class LoginController extends Controller
             })->validate();
         }
     }
+
+    public function reset_password(){
+        dd(1);
+    }
 }

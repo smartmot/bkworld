@@ -1,7 +1,7 @@
 @extends("admin.layouts.default")
 
 @section("head_link")
-    <a class="fm-ubt4 fs_16 pr_10 pl_10 pt_3 pb_4 t_d_n color_1 b_r_3 bcolor_5 hbcolor_4 abcolor_4 box-s1" href="{{ route("admin.edit", auth()->id()) }}">Edit Profile</a>
+    <a class="fm-ubt4 fs_16 pr_10 pl_10 pt_3 pb_4 t_d_n color_1 b_r_3 bcolor_5 hbcolor_4 abcolor_4 box-s1" href="{{ route("admin.edit") }}">Edit Profile</a>
 @endsection
 
 @section("content")
@@ -45,7 +45,20 @@
                         <div class="w_30"><span class="fa fa-lock"></span></div>
                         <div class="fm-popp t_t_c">{{ auth()->user()->role }}</div>
                     </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="pr_10 pl_10 pt_10">
+            <div class="fm-popp pb_2">Security</div>
+            <div class="h_1 wp_100 bcolor_5 opc_30"></div>
+            <div>
+                <div class="pt_5">
+                    <ul class="pl_15 ml_0">
+                        <li>
+                            <a class="color_5 fs_14 fm-popp t_d_n hcolor_4 acolor_4" href="{{ route("admin.pw_form") }}">Change password</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

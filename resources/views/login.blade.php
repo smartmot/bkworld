@@ -1,5 +1,5 @@
-@extends("layouts.default")
-
+@extends("layouts.asset")
+@section("title", "Login _ ".config("app.name"))
 @section("content")
     <div class="cwc bc_blk">
         <div class="pd-20x25">
@@ -34,7 +34,7 @@
             <div class="pr_10 pl_10 bdbtm_1_whi pt_20">
             </div>
             <div class="pb_20 pt_10">
-                <a href="#" class="t_d_n c_whi ac-danger hc-danger fm-ubt4">Reset password</a>
+                <a href="{{ "" }}" class="t_d_n c_whi ac-danger hc-danger fm-ubt4">Reset password</a>
             </div>
         </div>
     </div>

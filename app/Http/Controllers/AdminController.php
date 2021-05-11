@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
@@ -68,16 +70,39 @@ class AdminController extends Controller
         }
     }
 
-    /**
+    /*
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            "name" => ["required"],
+            "email" => ["required","email"],
+            "birth_date" => ["required","date"],
+            "gender" => ["required", "in:male,female"],
+        ]);
+        $user = User::query()->find(Auth::id());
+        if ($user != null){
+            if ($request->has("email") && $request->get("email") != $user->email){
+                $email = Validator::make($request->only("email"),[
+                    "email" => ["required", "email", "unique:users,email"]
+                ]);
+                $email->validate();
+            }
+            $data = $validator->validate();
+            $user->name = $data["name"];
+            $user->email = $data["email"];
+            $user->birth_date = $data["birth_date"];
+            $user->gender = $data["gender"];
+            $user->save();
+            return redirect(route("admin.index"));
+        }else{
+            return abort(404);
+        }
     }
 
     /**
@@ -89,5 +114,31 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function password_form(){
+        return view("admin.profile_password");
+    }
+
+    public function update_password(Request $request){
+        $user = User::query()->find(Auth::id());
+        if ($user != null){
+            $validator = Validator::make($request->all(), [
+                "password" => ["required"],
+                "new_password" => ["required", "confirmed"]
+            ]);
+            $data = $validator->validate();
+            if (Hash::check($request->get("password"), $user->password)){
+                $user->password = Hash::make($data["new_password"]);
+                $user->save();
+                return redirect(route("admin.index"));
+            }else{
+                $validator->after(function ($validator){
+                    $validator->errors()->add("password","Incorrect Password");
+                })->validate();
+            }
+        }else{
+            abort(404);
+        }
     }
 }

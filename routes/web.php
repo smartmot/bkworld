@@ -43,6 +43,8 @@ Route::middleware("auth")
     Route::get("/admin", [Controllers\AdminController::class, "index"])->name("admin.index");
     Route::get("/admin/profile", [Controllers\AdminController::class, "edit"])->name("admin.edit");
     Route::put("/admin/profile", [Controllers\AdminController::class, "update"])->name("admin.update");
+    Route::get("/admin/password", [Controllers\AdminController::class, "password_form"])->name("admin.pw_form");
+    Route::put("/admin/password", [Controllers\AdminController::class, "update_password"])->name("admin.pw_update");
     Route::resource("/admin/user", Controllers\UserController::class);
     Route::resource("/admin/post", Controllers\PostController::class);
     Route::resource("/admin/page", Controllers\PageController::class);
@@ -55,6 +57,14 @@ Route::middleware("auth")
     Route::post("/admin/member/photo", [Controllers\MemberController::class,"photo"])->name("member.photo");
     Route::post("/admin/partner/logo", [Controllers\PartnerController::class,"logo"])->name("partner.logo");
 });
+
+Route::get("/login/reset_password", [Controllers\LoginController::class, "reset_password"])
+    ->middleware("guest")
+    ->name("reset_password");
+
+Route::get("/login/reset_password", [Controllers\LoginController::class, "login"])
+    ->middleware("guest")
+    ->name("pw.update");
 
 Route::get("/login", [Controllers\LoginController::class, "login"])
     ->middleware("guest")
