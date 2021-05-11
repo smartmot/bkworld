@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->foreignId("user_id");
             $table->foreignId("updated_by")->nullable();
+            $table->foreignId("category_id")->nullable();
             $table->string("title");
             $table->longText("content");
             $table->string("keyword")->nullable();
