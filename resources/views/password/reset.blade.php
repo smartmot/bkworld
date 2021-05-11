@@ -1,5 +1,7 @@
 @extends("layouts.asset")
-@section("title", "Login _ ".config("app.name"))
+
+@section("title", "Reset password _ ".config("app.name"))
+
 @section("content")
     <div class="cwc bc_blk">
         <div class="pd-20x25">
@@ -7,27 +9,21 @@
                 <img class="wp_100" src="{{ asset("bkworld_logo.svg") }}" alt="">
             </div>
             <div class="c_whi pt_20 t_a_c pb_10">
-                <span class="fm-ubt fs_24">Login</span>
+                <span class="fm-ubt fs_24">Reset Password</span>
             </div>
             <div class="c_whi">
-                <form action="{{ route("login.check") }}" method="post" spellcheck="false">
+                <form action="{{ route("update_password") }}" method="post" spellcheck="false">
                     @method("post")
                     @csrf
                     @error("email")
                     <div class="pb_5 fm-ubt4 c_yel fs_14">{{ $message }}</div>
                     @enderror
                     <label class="ds_f pb_10">
-                        <input class="input-3 pd-10x15 wp_100 fm-ubt5 fs_16 b_r_5" value="{{ old("email") }}" type="text" placeholder="Email" name="email">
+                        <input class="input-3 pd-10x15 wp_100 fm-ubt5 fs_16 b_r_5" value="{{ old("email") }}" type="text" placeholder="Enter your email" name="email">
                     </label>
 
-                    @error("password")
-                    <div class="pb_5 fm-ubt4 c_yel fs_14">{{ $message }}</div>
-                    @enderror
-                    <label class="ds_f pb_10">
-                        <input class="input-3 pd-10x15 wp_100 fm-ubt5 fs_16 b_r_5" type="password" placeholder="Password" name="password">
-                    </label>
                     <div class="pt_15 t_a_c">
-                        <button class="oln_n pd-10x20 fm-ubt b_r_3 bd_n csr-p hbc_red hc_whi" type="submit">Login</button>
+                        <button class="oln_n pd-10x20 fm-ubt b_r_3 bd_n csr-p hbc_red hc_whi" type="submit">Reset</button>
                     </div>
                 </form>
             </div>

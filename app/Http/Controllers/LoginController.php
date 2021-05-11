@@ -33,6 +33,14 @@ class LoginController extends Controller
     }
 
     public function reset_password(){
-        dd(1);
+        return view("password.reset");
+    }
+
+    public function reset_check(Request $request){
+        $validator = Validator::make($request->all(),[
+            "email" => ["email", "required", "exists:users,email"]
+        ]);
+        $data = $validator->validate();
+        
     }
 }

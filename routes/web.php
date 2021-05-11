@@ -58,13 +58,12 @@ Route::middleware("auth")
     Route::post("/admin/partner/logo", [Controllers\PartnerController::class,"logo"])->name("partner.logo");
 });
 
+Route::post("/login/reset_password", [Controllers\LoginController::class, "reset_check"])
+->middleware("guest")
+->name("update_password");
 Route::get("/login/reset_password", [Controllers\LoginController::class, "reset_password"])
     ->middleware("guest")
     ->name("reset_password");
-
-Route::get("/login/reset_password", [Controllers\LoginController::class, "login"])
-    ->middleware("guest")
-    ->name("pw.update");
 
 Route::get("/login", [Controllers\LoginController::class, "login"])
     ->middleware("guest")
