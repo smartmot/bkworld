@@ -1900,11 +1900,11 @@ input.phc-1::placeholder{color: #c3c3c3}
     font-size: 16px;
 }
 .main_page .prt_left{
-    transform: translateX(-100%);
+    transform: translateX(0);
 }
 .main_page .prt_right{
     position: relative;
-    transform: translateX(-100%);
+    transform: translateX(0);
 }
 
 .main_page.active .prt_left{
