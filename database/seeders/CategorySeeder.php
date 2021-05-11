@@ -22,15 +22,7 @@ class CategorySeeder extends Seeder
             ],
             [
                 "id" => 2,
-                "name"=> "Business Activity",
-            ],
-            [
-                "id" =>3,
-                "name" => "Post"
-            ],
-            [
-                "id" => 4,
-                "name" => "News"
+                "name"=> "News",
             ]
         ]);
     }
