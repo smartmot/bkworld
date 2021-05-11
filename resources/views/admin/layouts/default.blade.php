@@ -15,11 +15,19 @@
 <div class="wp_100 h_70 p-r">
     <div class="wp_100 h_70 p-f t-0 r-0 bcolor_5">
         <div class="cw">
-            <div class="pr_10 p-r">
-                <div class="w_124 h_60 pt_5 pb_5 pl_10 p-a t-0 l-0">
+            <div class="pr_10 pl_10 p-r ds_f">
+                <div class="w_124 h_60 pt_5 pb_5 pl_10">
                     <a href="{{ route("admin.index") }}" class="ds_b t_d_n">
                         <img class="h_60" src="{{ asset("bkworld_logo.svg") }}" alt="">
                     </a>
+                </div>
+                <div class="flx"></div>
+                <div>
+                    <div class="h_60 lh_60 mt_7">
+                        <button class="color_1 fs_30 pr_10 pl_10 bcolor_4 oln_n bd_n csr-p us_n hbcolor_3" type="button" onclick="$('.main_page').toggleClass('active')">
+                            <span class="fa fa-bars"></span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -30,8 +38,8 @@ $confim = in_array(auth()->user()->role, ["admin"])
 ?>
 <div style="height: calc(100% - 70px)">
     <div class="cw hp_100">
-        <div class="rowc hp_100">
-            <div class="xl-4 lg-4 md-4 sm-12 fx_12 hp_100">
+        <div class="ds_f hp_100 wp_100 ovfx_h main_page">
+            <div class="xl-4 lg-4 md-4 sm-12 fx_12 ts_030 hp_100 prt_left">
                 <div class="">
                     <div class="">
                         <a href="{{ route("admin.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ route_parent() == "admin" ? " bcolor_4 color_1":" color_5" }}">Profile</a>
@@ -66,7 +74,7 @@ $confim = in_array(auth()->user()->role, ["admin"])
                     @endif
                 </div>
             </div>
-            <div class="xl-8 lg-8 md-8 sm-12 fx_12 bcolor_2 prt_right afbcolor_4 hp_100 box-s1 ovfy_a ">
+            <div class="xl-8 lg-8 md-8 sm-12 fx_12 ts_030 bcolor_2 prt_right afbcolor_4 hp_100 box-s1 ovfy_a ">
                 <div class="wp_100 box-s1 h_60 ds_f">
                     <div class="pl_30 fm-ubt fs_24 lh_60 color_5">
                         {{ tab_name() }}

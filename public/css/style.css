@@ -1899,10 +1899,21 @@ input.phc-1::placeholder{color: #c3c3c3}
     padding: 0 10px;
     font-size: 16px;
 }
-.prt_left{}
-.prt_right{
-    position: relative;
+.main_page .prt_left{
+    transform: translateX(-100%);
 }
+.main_page .prt_right{
+    position: relative;
+    transform: translateX(-100%);
+}
+
+.main_page.active .prt_left{
+    transform: translateX(0);
+}
+.main_page.active .prt_right{
+    transform: translateX(0);
+}
+
 .prt_right:after{
     content: "";
     position: absolute;
