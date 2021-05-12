@@ -2,7 +2,7 @@
 <html lang="en">
 <div class="" style="max-width: 320px; min-width: 300px;margin: 0px auto">
     <div style="padding-top: 10px;">
-        <div style="display: flex;">
+        <div style="display: flex;padding: 0 5px;">
             <div style="height: 30px; width: 41.7px;"><img style="height: 30px; width: 41.7px;" src="{{ asset("bkworld.jpg") }}" alt=""></div>
             <div style="line-height: 30px; padding-left: 10px; font-size: 18px;font-weight: bold;">
                 <a href="{{ route("home") }}" style="text-decoration: none; color: black;">{{ config("settings.name") }}</a>
