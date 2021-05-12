@@ -47,14 +47,18 @@ class LoginController extends Controller
         $user = User::query()
             ->where("email", $data["email"])
             ->where("status", "active")
-            ->get();
-        $mail = new ResetMail();
-        return Mail::to($data["email"])
-            ->send(
-              $mail->with([
-                  "name" => "",
-                  "code" => "23709"
-              ])
-            );
+            ->first();
+        if ($user != null){
+            $mail = new ResetMail();
+            return Mail::to("lyelmot@gmail.com")
+                ->queue(
+                    $mail->with([
+                        "name" => $user["name"],
+                        "code" => "23x709"
+                    ])
+                );
+        }else{
+
+        }
     }
 }

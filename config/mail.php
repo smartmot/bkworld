@@ -39,8 +39,8 @@ return [
             'host' => "bkworld.asia",//env('MAIL_HOST', 'smtp.mailgun.org'),
             'port' => 465,//env('MAIL_PORT', 587),
             'encryption' => "ssl",//env('MAIL_ENCRYPTION', 'tls'),
-            'username' => config("settings.assistant_email"),//env('MAIL_USERNAME'),
-            'password' => config("settings.email_password"),//env('MAIL_PASSWORD'),
+            'username' => "notifications@bkworld.asia",//env('MAIL_USERNAME'),
+            'password' => "b@K/Wo&r_ld1x$",//env('MAIL_PASSWORD'),
             'timeout' => null,
             'auth_mode' => null,
         ],
@@ -84,7 +84,7 @@ return [
     */
 
     'from' => [
-        'address' => config("settings.assistant_email"),//env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+        'address' => "notifications@bkworld.asia",//env('MAIL_FROM_ADDRESS', 'hello@example.com'),
         'name' => config("settings.name"),//env('MAIL_FROM_NAME', 'Example'),
     ],
 

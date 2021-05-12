@@ -38,13 +38,7 @@ Route::middleware("auth")
 Route::get("/abc", function (){
     //return \Illuminate\Support\Facades\Auth::logout();
     $mail = new ResetMail();
-    return Mail::to("lyelmot@gmail.com")
-        ->send(
-            $mail->with([
-                "name" => "EL MOT",
-                "code" => "23709"
-            ])
-        );
+
 });
 Route::get("/soft/{soft}", [Controllers\SoftController::class, "index"])->name("soft");
 Route::middleware("auth")

@@ -6,8 +6,6 @@ return [
     "tel" => "010 563 093",
     "website"=>"www.bkworld.aisa",
     "email" => "notifications@bkworld.asia",
-    "password" => "b@K/Wo&r_ld1x$",
-    "host" => "bkworld.asia",
     "admin" => "default",
     "admin_header" => "header_1",
     "colors" => [

@@ -98,6 +98,7 @@ class AdminController extends Controller
             $user->email = $data["email"];
             $user->birth_date = $data["birth_date"];
             $user->gender = $data["gender"];
+            $user->updated_by = Auth::id();
             $user->save();
             return redirect(route("admin.index"));
         }else{
@@ -130,6 +131,7 @@ class AdminController extends Controller
             $data = $validator->validate();
             if (Hash::check($request->get("password"), $user->password)){
                 $user->password = Hash::make($data["new_password"]);
+                $user->updated_by = Auth::id();
                 $user->save();
                 return redirect(route("admin.index"));
             }else{
