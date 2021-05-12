@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="en">
 <div class="" style="max-width: 320px; min-width: 300px;margin: 0px auto">
-    <div class="style-padding-10">
-        <div class="rowc">
-            <div><img style="height: 30px;" src="{{ asset("bkworld.svg") }}" alt=""></div>
-            <div class="c_official" style="line-height: 30px; padding-left: 10px; font-size: 18px;font-weight: bold">
-                <a href="{{ route("home") }}" style="text-decoration: none" class="c_official">{{ config("settings.name") }}</a>
+    <div style="padding-top: 10px;">
+        <div style="display: flex;">
+            <div style="height: 30px; width: 41.7px;"><img style="height: 30px; width: 41.7px;" src="{{ asset("bkworld.svg") }}" alt=""></div>
+            <div style="line-height: 30px; padding-left: 10px; font-size: 18px;font-weight: bold;">
+                <a href="{{ route("home") }}" style="text-decoration: none; color: black;">{{ config("settings.name") }}</a>
             </div>
         </div>
         <div style="padding-left: 5px; padding-right: 5px;">
