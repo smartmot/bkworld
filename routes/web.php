@@ -63,8 +63,24 @@ Route::middleware("auth")
 });
 
 Route::post("/login/reset_password", [Controllers\LoginController::class, "reset_check"])
-->middleware("guest")
-->name("update_password");
+    ->middleware("guest")
+    ->name("update_password");
+Route::get("/login/reset_password/verify", [Controllers\LoginController::class, "reset_confirm"])
+    ->middleware("guest")
+    ->name("reset_confirm");
+
+Route::post("/login/reset_password/verify", [Controllers\LoginController::class, "reset_final"])
+    ->middleware("guest")
+    ->name("reset_confirm.submit");
+
+Route::get("/login/new_password", [Controllers\LoginController::class, "new_password"])
+    ->middleware("guest")
+    ->name("new_password");
+
+Route::put("/login/new_password", [Controllers\LoginController::class, "save_password"])
+    ->middleware("guest")
+    ->name("new_password.save");
+
 Route::get("/login/reset_password", [Controllers\LoginController::class, "reset_password"])
     ->middleware("guest")
     ->name("reset_password");

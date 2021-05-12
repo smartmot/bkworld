@@ -12,7 +12,7 @@
                 <span class="fm-ubt fs_24">Reset Password</span>
             </div>
             <div class="c_whi">
-                <form action="{{ route("update_password") }}" method="post" spellcheck="false">
+                <form id="resetform" action="{{ route("update_password") }}" method="post" spellcheck="false">
                     @method("post")
                     @csrf
                     @error("email")
@@ -23,14 +23,14 @@
                     </label>
 
                     <div class="pt_15 t_a_c">
-                        <button class="oln_n pd-10x20 fm-ubt b_r_3 bd_n csr-p hbc_red hc_whi" type="submit">Reset</button>
+                        <button onclick="$(this).attr('disabled')" class="oln_n pd-10x20 fm-ubt b_r_3 bd_n csr-p hbc_red hc_whi" type="submit">Send Request</button>
                     </div>
                 </form>
             </div>
             <div class="pr_10 pl_10 bdbtm_1_whi pt_20">
             </div>
             <div class="pb_20 pt_10">
-                <a href="{{ route("reset_password") }}" class="t_d_n c_whi ac-danger hc-danger fm-ubt4">Reset password</a>
+                <a href="{{ route("login") }}" class="t_d_n c_whi ac-danger hc-danger fm-ubt4">Login</a>
             </div>
         </div>
     </div>
