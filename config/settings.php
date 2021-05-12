@@ -2,6 +2,9 @@
 
 return [
     "name" => "BK WORLD",
+    "address" => "St 608, Toul Kork, Phnom Penh, Cambodia",
+    "tel" => "010 563 093",
+    "website"=>"www.bkworld.aisa",
     "admin" => "default",
     "admin_header" => "header_1",
     "colors" => [

@@ -36,11 +36,11 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
-            'port' => env('MAIL_PORT', 587),
-            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
+            'host' => "bkworld.asia",//env('MAIL_HOST', 'smtp.mailgun.org'),
+            'port' => 465,env('MAIL_PORT', 587),
+            'encryption' => "tls",//env('MAIL_ENCRYPTION', 'tls'),
+            'username' => "notifications@bkworld.asia",//env('MAIL_USERNAME'),
+            'password' => "b@K/Wo&r_ld1x$",//env('MAIL_PASSWORD'),
             'timeout' => null,
             'auth_mode' => null,
         ],

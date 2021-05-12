@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ResetMail;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class LoginController extends Controller
 {
@@ -41,6 +44,17 @@ class LoginController extends Controller
             "email" => ["email", "required", "exists:users,email"]
         ]);
         $data = $validator->validate();
-        
+        $user = User::query()
+            ->where("email", $data["email"])
+            ->where("status", "active")
+            ->get();
+        $mail = new ResetMail();
+        return Mail::to($data["email"])
+            ->send(
+              $mail->with([
+                  "name" => "",
+                  "code" => "23709"
+              ])
+            );
     }
 }
