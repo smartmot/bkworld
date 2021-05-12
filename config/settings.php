@@ -5,13 +5,9 @@ return [
     "address" => "St 608, Toul Kork, Phnom Penh, Cambodia",
     "tel" => "010 563 093",
     "website"=>"www.bkworld.aisa",
-    "mail_setup"=>[
-        "email" => "notifications@bkworld.asia",
-        "password" => "b@K/Wo&r_ld1x$",
-        "host" => "bkworld.asia",
-        "port" => 465,
-        "encryption" => "ssl"
-    ],
+    "email" => "notifications@bkworld.asia",
+    "password" => "b@K/Wo&r_ld1x$",
+    "host" => "bkworld.asia",
     "admin" => "default",
     "admin_header" => "header_1",
     "colors" => [
