@@ -14,7 +14,7 @@ class UpdateUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('updated_by')->nullable();
+            $table->string('code')->nullable();
         });
     }
 
