@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->enum("gender", ["male", "female"]);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('code')->nullable();
             $table->string('token', 400);
             $table->enum('status', ["active", "deleted", "blocked"]);
             $table->enum('role', ["admin", "editor", "moderator"]);
