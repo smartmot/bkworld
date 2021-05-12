@@ -38,6 +38,10 @@ Route::middleware("auth")
 Route::get("/abc", function (){
     //return \Illuminate\Support\Facades\Auth::logout();
     $mail = new ResetMail();
+    return $mail->with([
+        "name" => "MOT EL",
+        "code" => rand(12345,998899)
+    ]);
 
 });
 Route::get("/soft/{soft}", [Controllers\SoftController::class, "index"])->name("soft");
