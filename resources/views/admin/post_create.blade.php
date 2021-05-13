@@ -107,8 +107,8 @@
 
 @section("script")
     <script>
-        $("#coverf").submit(function () {
-            let upload = new FormData(this);
+        $("#coverf").submit(function (e) {
+            e.preventDefault();
             f.r({
                 d:function (data){
                     if (!data.error){
@@ -128,7 +128,7 @@
                 r:function (){
                     //$("#coverf").find("input[type='reset']").click();
                 }
-            },{d:upload,m:"post",t:"json",target:"{{ route("post.thumb") }}"});
+            },{x:f.d(this),m:"post",t:"json",target:"{{ route("post.thumb") }}"});
         });
     </script>
 @endsection
