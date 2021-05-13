@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ route("soft", "css.colors?ver=".config("settings.color_ver")) }}" type="text/css">
     <link rel="stylesheet" href="{{ asset("css/style.css")."?ver=".date('y.m.d.his') }}" type="text/css">
     <script type="text/javascript" src="{{ asset("js/app.js") }}"></script>
-    @yield("head_asset")
+    <script type="text/javascript" src="{{ asset("js/fx.js") }}"></script>
 </head>
 <body>
 <div class="wp_100 h_70 p-r">
@@ -98,6 +98,5 @@ $confim = in_array(auth()->user()->role, ["admin"])
 @yield("script")
 @yield("script1")
 @yield("script2")
-@yield("script3")
 </body>
 </html>

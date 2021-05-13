@@ -43,3 +43,29 @@ var x = {
         return "ajx/"+attr;
     }
 };
+const ob = {
+    k(obj){
+        return Object.keys(obj);
+    },
+    v(obj){
+        return Object.values(obj);
+    },
+    a(obj){
+        return 1;
+    },
+    fd(frm){
+        return new FormData(frm);
+    },
+    /**
+     *
+     * @param objx
+     * @returns {FormData}
+     */
+    df(objx){
+        const mfdxs = new FormData();
+        for(var i=0;i<ob.k(objx).length;i++){
+            mfdxs.append(ob.k(objx)[i], objx[ob.k(objx)[i]]);
+        }
+        return mfdxs;
+    }
+};
