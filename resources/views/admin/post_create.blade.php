@@ -20,7 +20,7 @@
                             </label>
                         </div>
                     </div>
-                    <div id="prog" class="h_3 w_80 bc_red ts_050" style="width: 0"></div>
+                    <div id="prog" class="h_3 w_80 bc_red" style="width: 0"></div>
                     <div class="t_a_c pt_4 fs_13 fm-popp color_4" id="error"></div>
                     @error("thumbnail")
                     <div class="t_a_c pt_4 fs_13 fm-popp color_4">{{ $message }}</div>
@@ -126,7 +126,7 @@
                     $("#prog").css("width", status+"%");
                 },
                 r:function (){
-                    //$("#coverf").find("input[type='reset']").click();
+                    $("#coverf").find("input[type='reset']").click();
                 }
             },{x:f.d(this),m:"post",t:"json",target:"{{ route("post.thumb") }}"});
         });
