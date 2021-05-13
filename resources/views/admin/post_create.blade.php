@@ -5,17 +5,11 @@
 @endsection
 
 @section("content")
-    <div class="pb_10">
-        <div class="wp_100 h_30 bc_red">
-            <div id="progress" class="h_30 bc_blu ts_050" style="width:0%"></div>
-        </div>
-    </div>
     <form action="{{ route("post.store") }}" method="post" spellcheck="false" autocomplete="off">
         @csrf
         @method("post")
         <input type="hidden" name="thumbnail" value="{{ old("thumbnail") }}">
-        <div class="rowc">
-
+        <div class="rowc pt_5">
             <div class="xl-6 lg-6 md-12 sm-12 fx_12 us_n">
                 <div class="pr_5 pl_5 pb_10">
                     <div class="p-r">
@@ -113,16 +107,22 @@
 @section("script")
     <script>
         $("#coverf").submit(function () {
-            nis = this;
-            x.r({
-                p:function (info, prog){
-                    $("#progress").css("width",prog+"%");
-                },
-                d:function (respone){
-                    nis.reset();
-                    alert(JSON.stringify(respone))
-                }
-            },x.d({d:ob.fd(this),t:"json"},"{{route("abc")}}"))
+            let upload = new FormData(this);
+            axios
+                .post('{{route("post.thumb")}}', upload)
+                .then(response=>{
+                    $("#coverf").find("input[type='reset']").click();
+                    let data = response.data;
+                    if (!data.error){
+                        $("input[name='thumbnail']").attr("value",'{{ asset("photo").'/' }}'+data.url);
+                        $("#error").text("");
+                        $("#newimg")
+                            .attr("src", '{{ asset("photo").'/' }}'+data.url)
+                            .fadeIn();
+                    }else{
+                        $("#error").text("Choose 16:9 ratio image maximum size 5MB");
+                    }
+                });
         });
     </script>
 @endsection
