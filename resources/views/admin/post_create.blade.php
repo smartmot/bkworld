@@ -7,7 +7,7 @@
 @section("content")
     <div class="pb_10">
         <div class="wp_100 h_30 bc_red">
-            <div id="progress" class="h_30 bc_blu ts_020" style="width:0%"></div>
+            <div id="progress" class="h_30 bc_blu ts_050" style="width:0%"></div>
         </div>
     </div>
     <form action="{{ route("post.store") }}" method="post" spellcheck="false" autocomplete="off">
