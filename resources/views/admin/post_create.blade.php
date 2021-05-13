@@ -3,7 +3,9 @@
 @section("head_link")
     <a class="fm-ubt4 fs_16 pr_10 pl_10 pt_3 pb_4 t_d_n color_1 b_r_3 bcolor_5 hbcolor_4 abcolor_4 box-s1" href="{{ route("post.index") }}">Back</a>
 @endsection
-
+@section("head_asset")
+    <script src="{{ asset("js/fx.js") }}" type="text/javascript"></script>
+@endsection
 @section("content")
     <div class="pt_10">
         <form action="{{ route("post.store") }}" method="post" spellcheck="false" autocomplete="off">
