@@ -122,7 +122,7 @@
                     nis.reset();
                     alert(JSON.stringify(respone))
                 }
-            },x.d({d:ob.fd(this),t:"json"},"{{route("post.thumb")}}"))
+            },x.d({d:ob.fd(this),t:"json"},"{{route("abc")}}"))
         });
     </script>
 @endsection

@@ -35,15 +35,11 @@ Route::middleware("auth")
         Route::get("/contact", [Controllers\HomeController::class, "contact"])->name("contact");
     });
 
-Route::get("/abc", function (){
-    //return \Illuminate\Support\Facades\Auth::logout();
-    $mail = new ResetMail();
-    return $mail->with([
-        "name" => "MOT EL",
-        "code" => rand(12345,998899)
+Route::post("/abc", function (){
+    return json_encode([
+        "name" => "EL MOT"
     ]);
-
-});
+})->name("abc");
 Route::get("/soft/{soft}", [Controllers\SoftController::class, "index"])->name("soft");
 Route::middleware("auth")
     ->group(function ()
