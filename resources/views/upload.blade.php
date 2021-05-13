@@ -35,12 +35,12 @@
         event.preventDefault();
         f.r({
             d:function (res){
-                alert(res);
+                alert(res.error);
             },
             p:function (pro, status){
                 $("#progress").css("width", status+"%");
             }
-        },{t:'text',m:"post",target:"{{ route("upload.submit") }}",x:f.d(this)})
+        },{t:'json',m:"post",target:"{{ route("upload.submit") }}",x:f.d(this)})
     });
 
 

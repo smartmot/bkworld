@@ -20,6 +20,7 @@
                             </label>
                         </div>
                     </div>
+                    <div id="prog" class="h_3 w_80 bc_red ts_050" style="width: 0"></div>
                     <div class="t_a_c pt_4 fs_13 fm-popp color_4" id="error"></div>
                     @error("thumbnail")
                     <div class="t_a_c pt_4 fs_13 fm-popp color_4">{{ $message }}</div>
@@ -108,11 +109,8 @@
     <script>
         $("#coverf").submit(function () {
             let upload = new FormData(this);
-            axios
-                .post('{{route("post.thumb")}}', upload)
-                .then(response=>{
-                    $("#coverf").find("input[type='reset']").click();
-                    let data = response.data;
+            f.r({
+                d:function (data){
                     if (!data.error){
                         $("input[name='thumbnail']").attr("value",'{{ asset("photo").'/' }}'+data.url);
                         $("#error").text("");
@@ -122,7 +120,15 @@
                     }else{
                         $("#error").text("Choose 16:9 ratio image maximum size 5MB");
                     }
-                });
+                    $("#prog").css("width", "0");
+                },
+                p:function (pro,status){
+                    $("#prog").css("width", status+"%");
+                },
+                r:function (){
+                    //$("#coverf").find("input[type='reset']").click();
+                }
+            },{d:upload,m:"post",t:"json",target:"{{ route("post.thumb") }}"});
         });
     </script>
 @endsection
