@@ -10,8 +10,10 @@
     <link rel="stylesheet" href="{{ route("soft", "css.theme_colors?ver=".config("settings.color_ver")) }}" type="text/css">
     <script src="{{ asset("js/app.js") }}"></script>
     <title>@yield("title")</title>
+    @yield("asset")
 </head>
 <body>
 @yield("content")
 </body>
+@yield("script")
 </html>

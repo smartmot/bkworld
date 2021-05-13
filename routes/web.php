@@ -92,3 +92,5 @@ Route::post("/login", [Controllers\LoginController::class, "login_check"])
     ->middleware("guest")
     ->name("login.check");
 
+Route::get("/upload",[Controllers\TestController::class,"show"])->name("upload");
+Route::post("/upload",[Controllers\TestController::class,"uplaod"])->name("upload.submit");
