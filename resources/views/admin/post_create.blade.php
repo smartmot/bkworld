@@ -113,9 +113,14 @@
 @section("script")
     <script>
         $("#coverf").submit(function () {
+            nis = this;
             x.r({
                 p:function (info, prog){
                     $("#progress").css("width",prog+"%");
+                },
+                d:function (respone){
+                    nis.reset();
+                    alert(JSON.stringify(respone))
                 }
             },x.d({d:ob.fd(this),t:"json"},"{{route("post.thumb")}}"))
         });
