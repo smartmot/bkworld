@@ -110,7 +110,9 @@
     <script>
         $("#coverf").submit(function () {
             let upload = new FormData(this);
-            axios.post('{{route("post.thumb")}}', upload).then(response=>{
+            axios
+                .post('{{route("post.thumb")}}', upload)
+                .then(response=>{
                 $("#coverf").find("input[type='reset']").click();
                 let data = response.data;
                 if (!data.error){
