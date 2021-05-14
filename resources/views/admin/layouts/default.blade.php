@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield("title", config("settings.name"))</title>
-    <link rel="shortcut icon" href="http://bkworld.proj/bkworld.svg">
+    <link rel="shortcut icon" href="{{ asset("bkworld.svg") }}">
     <link rel="stylesheet" href="{{ route("soft", "css.colors?ver=".config("settings.color_ver")) }}" type="text/css">
     <link rel="stylesheet" href="{{ asset("css/style.css")."?ver=".date('y.m.d.his') }}" type="text/css">
     <script type="text/javascript" src="{{ asset("js/app.js") }}"></script>
