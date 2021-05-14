@@ -11,7 +11,7 @@
                 <div class="pr_10 pl_10 pb_10">
                     <div class="ds_f bcolor_1 box-s2 pr_10 pl_10 pt_10 pb_10">
                         <div class="w_50">
-                            <img class="w_50 box-s2 b_r_c" src="{{ asset("icon/member.svg") }}" alt="">
+                            <img class="w_50 box-s2 b_r_c" src="{{ asset($user->photo == "" ? "icon/member.svg" : "photo/".$user->photo) }}" alt="">
                         </div>
                         <div class="lh_20">
                             <div class="fm-popp pl_10 fs_18 pt_5">{{ $user["name"] }}</div>
