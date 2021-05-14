@@ -20,7 +20,7 @@
                             </label>
                         </div>
                     </div>
-                    <div id="prog" class="h_3 w_80 bc_red" style="width: 0"></div>
+                    <div id="prog" class="h_3 w_80 bc_red ts_050" style="width: 0"></div>
                     <div class="t_a_c pt_4 fs_13 fm-popp color_4" id="error"></div>
                     @error("thumbnail")
                     <div class="t_a_c pt_4 fs_13 fm-popp color_4">{{ $message }}</div>
@@ -118,8 +118,10 @@
                             $("#error").text("");
                             $("#newimg")
                                 .attr("src", '{{ asset("photo").'/' }}'+data.url).next().show();
+                            $("#prog").removeClass("ts_050").css("width", "0").addClass("ts_050");
                         });
                     }else{
+                        $("#newimg").attr("src", "{{ asset("icon/blank_16x9.svg") }}").next().show();
                         $("#error").text("Choose 16:9 ratio image maximum size 5MB");
                     }
 
