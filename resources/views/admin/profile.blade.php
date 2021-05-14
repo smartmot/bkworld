@@ -8,7 +8,7 @@
     <div>
         <div class="rowc pt_10">
             <div class="xl-4 lg-4 md-12 sm-12 fx_12">
-                <div class="mb_15 pr_10 pl_10 p-r">
+                <div class="pr_10 pl_10 p-r">
                     @if(auth()->user()->photo == "")
                         <img class="wp_100 box-s1" src="{{ asset("icon/member.svg") }}" alt="">
                     @else
@@ -18,6 +18,7 @@
                         <span class="fa fa-camera"></span>
                     </label>
                 </div>
+                <div id="prog" class="h_3 w_80 bc_red ts_050 mb_15" style="width: 0"></div>
             </div>
             <div class="xl-8 lg-8 md-12 sm-12 fx_12">
                 <div class="pr_10 pl_10">
