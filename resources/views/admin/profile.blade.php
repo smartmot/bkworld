@@ -85,13 +85,13 @@
         e.preventDefault();
         f.r({
             d:function (data){
-                $("#newimg").attr("src", "{{ asset("icon/square_pulse.svg") }}").next().hide();
+                $("#newimg").attr("src", "{{ asset("icon/square_pulse.svg") }}");
                 if (!data.error){
                     img.load("{{ asset("photo")."/" }}"+data.url, function (){
                         $("input[name='photo']").attr("value",'{{ asset("photo").'/' }}'+data.url);
                         $("#error").text("");
                         $("#newimg")
-                            .attr("src", '{{ asset("photo").'/' }}'+data.url).next().show();
+                            .attr("src", '{{ asset("photo").'/' }}'+data.url);
                         $("#prog")
                             .removeClass("ts_050")
                             .css("width", "0");
@@ -106,7 +106,7 @@
                     setTimeout(function (){
                         $("#prog").addClass("ts_050");
                     },100);
-                    $("#newimg").attr("src", "{{ asset("icon/member.svg") }}").next().show();
+                    $("#newimg").attr("src", "{{ asset("icon/member.svg") }}");
                     $("#error").text("Choose a square image maximum size 5MB");
                 }
 
