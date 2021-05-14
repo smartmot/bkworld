@@ -145,7 +145,7 @@ class AdminController extends Controller
     }
 
     public function photo(Request $request){
-        $user = User::query()->find(Auth::id())->get();
+        $user = User::query()->find(Auth::id());
         $validator = Validator::make($request->all(),[
             "photo" => ["required", "image", "mimes:jpeg", "max:5125", "min:1", "dimensions:ratio=1"]
         ]);
