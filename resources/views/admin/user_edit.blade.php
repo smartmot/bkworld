@@ -70,7 +70,7 @@
             <div class="xl-6 lg-6 md-12 sm-12 order-0">
                 <div class="pr_10 pl_10">
                     <div class="_0auto w_100 pt_10">
-                        <img class="w_100 b_r_c" src="{{ asset("icon/member.svg") }}" alt="">
+                        <img class="w_100 b_r_c" src="{{ asset($user->photo == "" ? "icon/member.svg" : "photo/".$user->photo) }}" alt="">
                     </div>
                     <div>
                         <div class="t_a_c fm-popp"><span id="sname" class="fw_b fs_16">{{ $user["name"] }}</span>(<span id="srole" class="t_t_c fs_14">{{ $user["role"] }}</span>)</div>
