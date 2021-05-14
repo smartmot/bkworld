@@ -111,7 +111,7 @@
             e.preventDefault();
             f.r({
                 d:function (data){
-                    $("#newimg").attr("src", "{{ asset("icon/16x9_pusle.svg") }}").next().hide();
+                    $("#newimg").attr("src", "{{ asset("icon/16x9_pulse.svg") }}").next().hide();
                     if (!data.error){
                         img.load("{{ asset("photo")."/" }}"+data.url, function (){
                             $("input[name='thumbnail']").attr("value",'{{ asset("photo").'/' }}'+data.url);
