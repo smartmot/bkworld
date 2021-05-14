@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image;
 
 class AdminController extends Controller
 {
@@ -153,11 +154,14 @@ class AdminController extends Controller
             $error = $validator->errors()->add("error", true);
             return response($error);
         }else{
-            $name = "users/".Auth::id().".jpg";
+            $name = "users/".Auth::id();
             $url = $request->photo->storeAs('images', $name, 'local');
+            $photo = Image::make("photo/".$name. ".jpg");
+            $photo->resize(250, 250);
+            $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
             $user->photo = $name;
             $user->save();
-            return response(["url"=>$name."?ver=".date("his"), "error"=>false]);
+            return response(["url"=>$name.".jpg?ver=".date("his"), "error"=>false]);
         }
     }
 }

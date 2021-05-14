@@ -12,7 +12,7 @@
                     @if(auth()->user()->photo == "")
                         <img id="newimg" class="wp_100 box-s1" src="{{ asset("icon/member.svg") }}" alt="">
                     @else
-                        <img id="newimg" class="wp_100 box-s1" src="{{ asset("photo/".auth()->user()->photo) }}" alt="">
+                        <img id="newimg" class="wp_100 box-s1" src="{{ asset("photo/".auth()->user()->photo.".jpg") }}" alt="">
                     @endif
                     <label for="thumb" class="w_30 h_30 b_r_c bc_red b-5 r-3 p-a t_a_c lh_30 box-s1 c_whi oln_n bd_n csr-p us_n">
                         <span class="fa fa-camera"></span>
