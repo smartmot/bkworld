@@ -19,7 +19,7 @@
                             @enderror
                         </div>
                         <div class="p-r">
-                            <img id="newimg" class="wp_100 box-s1" src="{{ old("thumbnail") == "" ? asset("icon/blank2.svg") : old("thumbnail") }}" alt="">
+                            <img id="newimg" class="wp_100 box-s1" src="{{ old("thumbnail") == "" ? asset("icon/blank_16x9.svg") : old("thumbnail") }}" alt="">
                             <div class="p-a" style="right: calc(50% - 25px); top: calc(50% - 25px)">
                                 <label for="thumb" class="fs_30 ds_b w_50 lh_50 h_50 t_a_c color_5 hcolor_4 acolor_4 csr-p">
                                     <span class="fa fa-camera"></span>
@@ -116,21 +116,43 @@
 
 @section("script")
     <script>
-        $("#coverf").submit(function () {
-            let upload = new FormData(this);
-            axios.post('{{route("post.thumb")}}', upload).then(response=>{
-                $("#coverf").find("input[type='reset']").click();
-                let data = response.data;
-                if (!data.error){
-                    $("input[name='thumbnail']").attr("value",'{{ asset("photo").'/' }}'+data.url);
-                    $("#error").text("");
-                    $("#newimg")
-                        .attr("src", '{{ asset("photo").'/' }}'+data.url)
-                        .fadeIn();
-                }else{
-                    $("#error").text("Choose 4:3 ratio image maximum size 2MB");
+        $("#coverf").submit(function (e) {
+            e.preventDefault();
+            f.r({
+                d:function (data){
+                    $("#newimg").attr("src", "{{ asset("icon/16x9_loading.gif") }}").next().hide();
+                    if (!data.error){
+                        img.load("{{ asset("photo")."/" }}"+data.url, function (){
+                            $("input[name='thumbnail']").attr("value",'{{ asset("photo").'/' }}'+data.url);
+                            $("#error").text("");
+                            $("#newimg")
+                                .attr("src", '{{ asset("photo").'/' }}'+data.url).next().show();
+                            $("#prog")
+                                .removeClass("ts_050")
+                                .css("width", "0");
+                            setTimeout(function (){
+                                $("#prog").addClass("ts_050");
+                            },100);
+                        });
+                    }else{
+                        $("#prog")
+                            .removeClass("ts_050")
+                            .css("width", "0");
+                        setTimeout(function (){
+                            $("#prog").addClass("ts_050");
+                        },100);
+                        $("#newimg").attr("src", "{{ asset("icon/blank_16x9.svg") }}").next().show();
+                        $("#error").text("Choose 16:9 ratio image maximum size 5MB");
+                    }
+
+                },
+                p:function (pro,status){
+                    $("#prog").css("width", status+"%");
+                },
+                r:function (){
+                    $("#coverf").find("input[type='reset']").click();
                 }
-            });
+            },{x:f.d(this),m:"post",t:"json",target:"{{ route("post.thumb") }}"});
         });
     </script>
 @endsection
