@@ -21,6 +21,7 @@
                 <div class="pr_10 pl_10">
                     <div id="prog" class="h_3 w_80 bc_red ts_050 mb_15" style="width: 0"></div>
                 </div>
+                <div class="t_a_c pt_4 fs_13 fm-popp color_4" id="error"></div>
             </div>
             <div class="xl-8 lg-8 md-12 sm-12 fx_12">
                 <div class="pr_10 pl_10">
