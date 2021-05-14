@@ -155,7 +155,7 @@ class AdminController extends Controller
             return response($error);
         }else{
             $name = "users/".Auth::id();
-            $url = $request->photo->storeAs('images', $name, 'local');
+            $url = $request->photo->storeAs('images', $name.".jpg", 'local');
             $photo = Image::make("photo/".$name. ".jpg");
             $photo->resize(250, 250);
             $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
