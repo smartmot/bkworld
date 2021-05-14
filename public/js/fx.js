@@ -41,3 +41,12 @@ const f = {
         req.send(options.x);
     }
 };
+const img = {
+    load(src, fn){
+        let image = new Image();
+        image.src = src;
+        image.onload = function () {
+            fn(image);
+        };
+    },
+};

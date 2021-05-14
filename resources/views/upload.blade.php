@@ -42,7 +42,5 @@
             }
         },{t:'json',m:"post",target:"{{ route("upload.submit") }}",x:f.d(this)})
     });
-
-
 </script>
 @endsection
