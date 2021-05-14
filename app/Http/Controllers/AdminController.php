@@ -143,4 +143,20 @@ class AdminController extends Controller
             abort(404);
         }
     }
+
+    public function photo(Request $request){
+        $user = User::query()->find(Auth::id())->get();
+        $validator = Validator::make($request->all(),[
+            "photo" => ["required", "image", "mimes:jpeg", "max:5125", "min:1", "dimensions:ratio=1"]
+        ]);
+        if ($validator->fails()){
+            $error = $validator->errors()->add("error", true);
+            return response($error);
+        }else{
+            $name = "users/.".Auth::id().".jpg";
+            $url = $request->photo->storeAs('images', $name, 'local');
+            $user->photo = $name;
+            return response(["url"=>$name."?ver=".date("his"), "error"=>false]);
+        }
+    }
 }

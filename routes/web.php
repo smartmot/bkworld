@@ -47,6 +47,7 @@ Route::middleware("auth")
     Route::get("/admin", [Controllers\AdminController::class, "index"])->name("admin.index");
     Route::get("/admin/profile", [Controllers\AdminController::class, "edit"])->name("admin.edit");
     Route::put("/admin/profile", [Controllers\AdminController::class, "update"])->name("admin.update");
+    Route::post("/admin/photo", [Controllers\AdminController::class, "photo"])->name("admin.photo");
     Route::get("/admin/password", [Controllers\AdminController::class, "password_form"])->name("admin.pw_form");
     Route::put("/admin/password", [Controllers\AdminController::class, "update_password"])->name("admin.pw_update");
     Route::resource("/admin/user", Controllers\UserController::class);
