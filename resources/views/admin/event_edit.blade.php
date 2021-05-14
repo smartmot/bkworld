@@ -25,6 +25,7 @@
                                 </label>
                             </div>
                         </div>
+                        <div id="prog" class="h_3 w_80 bc_red ts_050" style="width: 0"></div>
                         <div class="t_a_c pt_4 fs_13 fm-popp color_4" id="error"></div>
                     </div>
                 </div>
