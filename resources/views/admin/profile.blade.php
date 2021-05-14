@@ -10,15 +10,17 @@
             <div class="xl-4 lg-4 md-12 sm-12 fx_12">
                 <div class="pr_10 pl_10 p-r">
                     @if(auth()->user()->photo == "")
-                        <img class="wp_100 box-s1" src="{{ asset("icon/member.svg") }}" alt="">
+                        <img id="newimg" class="wp_100 box-s1" src="{{ asset("icon/member.svg") }}" alt="">
                     @else
-                        <img class="wp_100 box-s1" src="{{ asset("photo/".auth()->user()->photo.".jpg") }}" alt="">
+                        <img id="newimg" class="wp_100 box-s1" src="{{ asset("photo/".auth()->user()->photo.".jpg") }}" alt="">
                     @endif
                     <label for="thumb" class="w_30 h_30 b_r_c bc_red b-5 r-3 p-a t_a_c lh_30 box-s1 c_whi oln_n bd_n csr-p us_n">
                         <span class="fa fa-camera"></span>
                     </label>
                 </div>
-                <div id="prog" class="h_3 w_80 bc_red ts_050 mb_15" style="width: 0"></div>
+                <div class="pr_10 pl_10">
+                    <div id="prog" class="h_3 w_80 bc_red ts_050 mb_15" style="width: 0"></div>
+                </div>
             </div>
             <div class="xl-8 lg-8 md-12 sm-12 fx_12">
                 <div class="pr_10 pl_10">
