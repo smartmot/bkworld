@@ -153,7 +153,7 @@ class AdminController extends Controller
             $error = $validator->errors()->add("error", true);
             return response($error);
         }else{
-            $name = "users/.".Auth::id().".jpg";
+            $name = "users/".Auth::id().".jpg";
             $url = $request->photo->storeAs('images', $name, 'local');
             $user->photo = $name;
             $user->save();
