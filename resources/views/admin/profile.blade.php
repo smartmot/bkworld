@@ -8,7 +8,7 @@
     <div>
         <div class="rowc pt_10">
             <div class="xl-4 lg-4 md-12 sm-12 fx_12">
-                <div class="mb_20 pr_10 pl_10">
+                <div class="mb_15 pr_10 pl_10">
                     @if(auth()->user()->photo == "")
                         <img class="wp_100 box-s1" src="{{ asset("icon/member.svg") }}" alt="">
                     @else
