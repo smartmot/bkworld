@@ -118,7 +118,11 @@
                             $("#error").text("");
                             $("#newimg")
                                 .attr("src", '{{ asset("photo").'/' }}'+data.url).next().show();
-                            $("#prog").removeClass("ts_050").css("width", "0").addClass("ts_050");
+                            $("#prog")
+                                .removeClass("ts_050")
+                                .css("width", "0")
+                                .delay(60)
+                                .addClass("ts_050");
                         });
                     }else{
                         $("#newimg").attr("src", "{{ asset("icon/blank_16x9.svg") }}").next().show();
