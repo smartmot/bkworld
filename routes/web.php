@@ -37,7 +37,7 @@ Route::middleware("auth")
 
 Route::post("/abc", function (){
     return json_encode([
-        "name" => "EL MOT"
+        "photo" => auth()->user()->photo
     ]);
 })->name("abc");
 Route::get("/soft/{soft}", [Controllers\SoftController::class, "index"])->name("soft");
