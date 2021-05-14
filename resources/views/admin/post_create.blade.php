@@ -126,6 +126,12 @@
                             },100);
                         });
                     }else{
+                        $("#prog")
+                            .removeClass("ts_050")
+                            .css("width", "0");
+                        setTimeout(function (){
+                            $("#prog").addClass("ts_050");
+                        },100);
                         $("#newimg").attr("src", "{{ asset("icon/blank_16x9.svg") }}").next().show();
                         $("#error").text("Choose 16:9 ratio image maximum size 5MB");
                     }
