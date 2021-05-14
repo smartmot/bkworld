@@ -111,13 +111,13 @@
             e.preventDefault();
             f.r({
                 d:function (data){
-                    $("#newimg").attr("src", "{{ asset("icon/16x9_loading.gif") }}").prev().hide();
+                    $("#newimg").attr("src", "{{ asset("icon/16x9_loading.gif") }}").next().hide();
                     if (!data.error){
                         img.load("{{ asset("photo")."/" }}"+data.url, function (){
                             $("input[name='thumbnail']").attr("value",'{{ asset("photo").'/' }}'+data.url);
                             $("#error").text("");
                             $("#newimg")
-                                .attr("src", '{{ asset("photo").'/' }}'+data.url).prev().show();
+                                .attr("src", '{{ asset("photo").'/' }}'+data.url).next().show();
                         });
                     }else{
                         $("#error").text("Choose 16:9 ratio image maximum size 5MB");
