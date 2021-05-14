@@ -121,7 +121,7 @@
                             $("#prog")
                                 .removeClass("ts_050")
                                 .css("width", "0")
-                                .delay(60)
+                                .delay(1000)
                                 .addClass("ts_050");
                         });
                     }else{
