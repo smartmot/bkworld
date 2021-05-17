@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Notifications;
 use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 class MessageController extends Controller
 {
@@ -29,7 +33,7 @@ class MessageController extends Controller
         //
     }
 
-    /**
+    /*
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -37,7 +41,28 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            "name" => ["required", "max:255"],
+            "email" => ["required", "email", "max:255"],
+            "message" => ["required", "min:10"]
+        ]);
+        $data = $validator->validate();
+        if (Cookie::has("message")){
+            abort(404);
+        }else{
+            $message = new Message($data);
+            $message->save();
+            if (config("settings.notifications") != ""){
+                $notification = new Notifications();
+                Mail::to(config("settings.notifications"))->queue(
+                    $notification->with([
+                        "email" => $data["email"]
+                    ])
+                );
+            }
+            Cookie::queue("message", "sent", 30);
+        }
+        return redirect(route("contact"));
     }
 
     /**

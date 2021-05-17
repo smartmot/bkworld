@@ -160,19 +160,19 @@
                    </div>
                    <div>
                        <div class="ds_b">
-                           <a href="#" class="t_d_n ds_ib">
+                           <a href="{{ config("settings.facebook") == "" ? "javascript:void 0" : config("settings.facebook") }}" class="t_d_n ds_ib"{{ config("settings.facebook") == "" ? "" : " target='_blank'" }}>
                                <div class="w_30 h_30 lh_30 t_a_c color_1 bc-a b_r_c">
                                    <span class="fa fa-facebook"></span>
                                </div>
                            </a>&nbsp;
 
-                           <a href="#" class="t_d_n ds_ib">
+                           <a href="{{ config("settings.instagram") == "" ? "javascript:void 0" : config("settings.instagram") }}" class="t_d_n ds_ib"{{ config("settings.instagram") == "" ? "" : " target='_blank'" }}>
                                <div class="w_30 h_30 lh_30 t_a_c bc_red color_1 b_r_c">
                                    <span class="fa fa-instagram"></span>
                                </div>
                            </a>&nbsp;
 
-                           <a href="#" class="t_d_n ds_ib">
+                           <a href="{{ config("settings.twitter") == "" ? "javascript:void 0" : config("settings.twitter") }}" class="t_d_n ds_ib"{{ config("settings.twitter") == "" ? "" : " target='_blank'" }}>
                                <div class="w_30 h_30 lh_30 t_a_c bc-primary color_1 b_r_c">
                                    <span class="fa fa-twitter"></span>
                                </div>
@@ -184,7 +184,7 @@
            </div>
         </div>
         <div class="pt_15 pb_15 fm-popp c_gra">
-            <div class="t_a_c">Copyright © {{ date("Y") }} BK WORLD DEVELOPMENT CO., LTD - All Rights Reserved.</div>
+            <div class="t_a_c">Copyright © {{ date("Y") }} <span class="t_t_u">{{ config("settings.name") }}</span> - All Rights Reserved.</div>
         </div>
     </div>
 </div>

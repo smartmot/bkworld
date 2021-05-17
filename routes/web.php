@@ -35,10 +35,8 @@ Route::middleware("auth")
         Route::get("/contact", [Controllers\HomeController::class, "contact"])->name("contact");
     });
 
-Route::post("/abc", function (){
-    return json_encode([
-        "photo" => auth()->user()->photo
-    ]);
+Route::get("/abc", function (){
+   return new \App\Mail\Notifications();
 })->name("abc");
 Route::get("/soft/{soft}", [Controllers\SoftController::class, "index"])->name("soft");
 Route::middleware("auth")
@@ -55,12 +53,19 @@ Route::middleware("auth")
     Route::resource("/admin/page", Controllers\PageController::class);
     Route::resource("/admin/member", Controllers\MemberController::class);
     Route::resource("/admin/partner", Controllers\PartnerController::class);
-    Route::resource("/admin/setting", Controllers\SettingController::class);
+    Route::resource("/admin/setting", Controllers\SettingController::class)->middleware("admin");
+    Route::get("/admin/settings/{setting}", [Controllers\SettingController::class, "setting"])
+        ->middleware("admin")
+        ->name("setting.item");
+    Route::put("/admin/settings/{setting}", [Controllers\SettingController::class, "update_item"])
+        ->middleware("admin")
+        ->name("setting.item_update");
     Route::resource("/admin/event", Controllers\EventController::class);
     Route::resource("/admin/message", Controllers\MessageController::class);
     Route::post("/admin/post/thumb", [Controllers\PostController::class,"thumbnail"])->name("post.thumb");
     Route::post("/admin/member/photo", [Controllers\MemberController::class,"photo"])->name("member.photo");
     Route::post("/admin/partner/logo", [Controllers\PartnerController::class,"logo"])->name("partner.logo");
+    Route::post("logout", [Controllers\LoginController::class, "logout"])->name("logout");
 });
 
 Route::post("/login/reset_password", [Controllers\LoginController::class, "reset_check"])

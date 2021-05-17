@@ -78,7 +78,7 @@ $confim = in_array(auth()->user()->role, ["admin"])
             <div class="xl-8 lg-8 md-8 sm-12 fx_12 ts_030 bcolor_2 prt_right afbcolor_4 hp_100 box-s1 ovfy_a ">
                 <div class="wp_100 box-s1 h_60 ds_f">
                     <div class="pl_30 fm-ubt fs_24 lh_60 color_5">
-                        {{ tab_name() }}
+                        @yield("tab_name", tab_name())
                     </div>
                     <div class="fx"></div>
                     <div class="lh_60 pr_15">

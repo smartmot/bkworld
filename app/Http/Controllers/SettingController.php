@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class SettingController extends Controller
 {
+
     /*
      * Display a listing of the resource.
      *
@@ -51,7 +54,7 @@ class SettingController extends Controller
         //
     }
 
-    /**
+    /*
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Setting  $setting
@@ -59,10 +62,12 @@ class SettingController extends Controller
      */
     public function edit(Setting $setting)
     {
-        //
+        return view("admin.settings.".$setting->name)->with([
+            "setting" => $setting
+        ]);
     }
 
-    /**
+    /*
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -71,7 +76,26 @@ class SettingController extends Controller
      */
     public function update(Request $request, Setting $setting)
     {
-        //
+        switch ($setting->name){
+            case "featured_video":
+                $validator = Validator::make($request->all(),[
+                    "title" => ["required", "max:255"],
+                    "video" => ["required"],
+                    "content" => ["required"]
+                ]);
+                $data = $validator->validate();
+                $setting->json = json_encode(
+                    [
+                        "title" => $data["title"],
+                        "video" => $data["video"]
+                    ]
+                );
+                $setting->content = $data["content"];
+                $setting->save();
+                return redirect(route("setting.index"));
+                break;
+            default:abort(404);
+        }
     }
 
     /**
@@ -83,5 +107,40 @@ class SettingController extends Controller
     public function destroy(Setting $setting)
     {
         //
+    }
+
+    public function setting($item){
+        $keys = array_keys(config("settings"));
+        if (in_array($item, $keys)){
+            return view("admin.setting_edit");
+        }else{
+            return abort(404);
+        }
+    }
+    public function update_item(Request $request, $item){
+        $validator = Validator::make($request->all(),[
+            "name" => ["max:255", "min:3"],
+            "address" => ["max:255", "min:3"],
+            "tel" => ["max:255", "min:3"],
+            "website" => ["max:255", "min:3"],
+            "email" => ["max:255", "min:3"],
+            "facebook" => ["max:255", "min:3"],
+            "youtube" => ["max:255", "min:3"],
+            "twitter" => ["max:255", "min:3"],
+            "instagram" => ["max:255", "min:3"],
+            "notifications" => ["max:255", "min:3", "email"],
+            "description" => ["max:500", "min:3"],
+            "map" => ["max:500", "min:3"],
+            "keywords" => ["max:255", "min:3"],
+            "admin" => ["in:default"],
+            "theme" => ["in:default"],
+            "admin_header" => ["in:header_1"],
+        ]);
+        $data = $validator->validate();
+        config(['settings.'.$item => $data[$item]]);
+        $fp = fopen(base_path() .'/config/settings.php' , 'w');
+        fwrite($fp, '<?php return ' . var_export(config('settings'), true) . ';');
+        fclose($fp);
+        return redirect(route("setting.index"));
     }
 }

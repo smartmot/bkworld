@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Carbon;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Cookie;
 
 if (!function_exists("if_null_is")){
     function if_null_is($str, $str_if_true){
@@ -131,8 +132,42 @@ if (!function_exists("tab_name")){
 
             "setting.index" => "Settings",
             "setting.edit" => "Update Setting",
+            "setting.item" => "Edit " . request("setting"),
         ];
         return (isset($tabs[route_is()]) ? $tabs[route_is()] : config("setting.name"));
     }
 }
 
+if (!function_exists("settings")) {
+    function settings($key = "")
+    {
+        $items = [
+            "name" => "text",
+            "address" => "text",
+            "tel" => "text",
+            "website" => "text",
+            "email" => "text",
+            "facebook" => "text",
+            "youtube" => "text",
+            "twitter" => "text",
+            "instagram" => "text",
+            "notifications" => "text",
+            "admin" => "admin",
+            "admin_header" => "admin_header",
+            "colors" => "",
+            "theme_color" => "",
+            "color_ver" => "",
+            "theme" => "theme",
+            "description" => "textarea",
+            "keywords" => "textarea",
+            "map" => "textarea",
+        ];
+        return $items[$key];
+    }
+}
+
+if (!function_exists("cooki_ceck")) {
+    function cooki_ceck($key){
+        return Cookie::has($key);
+    }
+}

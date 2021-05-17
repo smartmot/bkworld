@@ -28,6 +28,8 @@ class Notifications extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this
+            ->subject("New Message ".date("d M, Y"))
+            ->markdown('mails.notifications');
     }
 }

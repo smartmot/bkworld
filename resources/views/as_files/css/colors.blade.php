@@ -1,10 +1,10 @@
 <?php
 header("Content-type: text/css; charset: UTF-8");
-$color1 = config("settings.colors")[0];
-$color2 = config("settings.colors")[1];
-$color3 = config("settings.colors")[2];
-$color4 = config("settings.colors")[3];
-$color5 = config("settings.colors")[4];
+$color1 = config("colors.colors")[0];
+$color2 = config("colors.colors")[1];
+$color3 = config("colors.colors")[2];
+$color4 = config("colors.colors")[3];
+$color5 = config("colors.colors")[4];
 echo "
 .bdcolor_1{border-color: $color1;}
 .bdcolor_2{border-color: $color2;}

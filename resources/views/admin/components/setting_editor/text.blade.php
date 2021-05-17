@@ -1,0 +1,1 @@
+<input class="input-4 b_r_3 wp_100 pd-10x15 ph-tt_c" type="text" name="{{ request("setting") }}" value="{{ old(request("setting")) == "" ? config("settings.".request("setting")) : old(request("setting")) }}" placeholder="{{ request("setting") }}">

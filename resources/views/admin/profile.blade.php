@@ -65,6 +65,13 @@
                         <li>
                             <a class="color_5 fs_14 fm-popp t_d_n hcolor_4 acolor_4" href="{{ route("admin.pw_form") }}">Change password</a>
                         </li>
+                        <li class="mt_10 ls_n">
+                            <form method="post" action="{{ route("logout") }}">
+                                @csrf
+                                @method("post")
+                                <button class="oln_n bd_n color_1 bcolor_5 hbcolor_4 abcolor_4 pd-5x15 csr-p b_r_3">Logout</button>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>

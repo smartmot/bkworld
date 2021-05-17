@@ -60,28 +60,22 @@
             </div>
             <div class="h_30 wp_100"></div>
             <div class="rowc pt_10 pb_10">
-                <div class="xl-6 lg-6 md-6 sm-12 fx_12">
-                    <div class="pr_20 pl_20">
-                        <div class="vdo-ut">
-                            <iframe src="https://www.youtube.com/embed/M0a9C9t0RW8?autoplay=0&loop=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                        <div class="pr_10 pl_10 pt_5 pb_10">
-                            <h3>Lorem Ipsum is simply dummy text of the printing </h3>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when
-                        </div>
-                    </div>
-                </div>
-                <div class="xl-6 lg-6 md-6 sm-12 fx_12">
-                    <div class="pr_20 pl_20">
-                        <div class="vdo-ut">
-                            <iframe src="https://www.youtube.com/embed/nt2_HNhQhLI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                        <div class="pr_10 pl_10 pt_5 pb_10">
-                            <h3>Lorem Ipsum is simply dummy text of the printing </h3>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when
+                @foreach($featured_video as $ft)
+                    <div class="xl-6 lg-6 md-6 sm-12 fx_12">
+                        <div class="pr_20 pl_20">
+                            <div class="vdo-ut">
+                                {!! $ft->data["video"] !!}
+                            </div>
+                            <div class="pr_10 pl_10 pt_5 pb_10">
+                                <h3>{{ $ft->data["title"] }}</h3>
+                                <div>
+                                    {{ mb_substr($ft["content"], 0, 255) }}
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
     </div>
