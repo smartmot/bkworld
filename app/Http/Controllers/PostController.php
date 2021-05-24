@@ -159,10 +159,11 @@ class PostController extends Controller
                         ->after(function ($validator){
                             $validator->errors()->add("thumbnail","Please upload a thumbnail");
                         })->validate();
+
+                    dd($validator);
                 }
             }
 
-            dd($post->getDirty());
             if (count($post->getDirty()) == 0){
                 return redirect(route("post.index"));
             }else{
