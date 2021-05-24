@@ -4,7 +4,7 @@
     <div class="pt_10">
         <form action="{{ route("post.update", $post->id) }}" method="post" spellcheck="false" autocomplete="off" accept-charset="UTF-8">
             @csrf
-            @method("put")
+            @method("PATCH")
             <input type="hidden" name="thumbnail" value="{{ old("thumbnail") == "" ? $post->thumbnail : old("thumbnail") }}">
             <div class="rowc">
                 <div class="xl-6 lg-6 md-12 sm-12 fx_12 us_n">
