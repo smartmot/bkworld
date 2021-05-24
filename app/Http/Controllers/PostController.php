@@ -119,6 +119,7 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $old_thumb = $post->thumbnail;
+        dd($old_thumb);
         $validator = Validator::make($request->all(), [
             "title" => ["required","max:255"],
             "content" => ["required"],
@@ -141,7 +142,6 @@ class PostController extends Controller
         $post->category_id = $data["category_id"];
         $post->thumbnail = $data["thumbnail"];
         $post->description = $data["description"];
-        dd($image);
         if ($post->user_id == Auth::id() or Auth::user() == "admin"){
             if ($post->isDirty("thumbnail")){
                 if (Storage::disk("local")->exists($image)) {
