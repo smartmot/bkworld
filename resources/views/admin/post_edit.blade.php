@@ -2,7 +2,7 @@
 
 @section("content")
     <div class="pt_10">
-        <form action="{{ route("post.update", $post->id) }}" method="post" spellcheck="false" autocomplete="off">
+        <form action="{{ route("post.update", $post->id) }}" method="post" spellcheck="false" autocomplete="off" enctype="multipart/form-data">
             @csrf
             @method("put")
             <input type="hidden" name="thumbnail" value="{{ old("thumbnail") == "" ? $post->thumbnail : old("thumbnail") }}">

@@ -119,7 +119,6 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $old_thumb = $post->thumbnail;
-        dd($old_thumb);
         $validator = Validator::make($request->all(), [
             "title" => ["required","max:255"],
             "content" => ["required"],
