@@ -162,6 +162,7 @@ class PostController extends Controller
                 }
             }
 
+            dd($post->getDirty());
             if (count($post->getDirty()) == 0){
                 return redirect(route("post.index"));
             }else{
