@@ -130,6 +130,11 @@ if (!function_exists("tab_name")){
             "partner.edit" => "Edit Partner",
             "partner.show" => "Partner",
 
+            "media.index" => "Media",
+            "media.create" => "Upload Media",
+            "media.edit" => "Edit Media",
+            "media.show" => "Media",
+
             "setting.index" => "Settings",
             "setting.edit" => "Update Setting",
             "setting.item" => "Edit " . request("setting"),

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateSettingsTable extends Migration
+class CreateMediaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class UpdateSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::table('settings', function (Blueprint $table) {
+        Schema::create('media', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId("user_id");
             $table->string("name");
-            $table->text("json");
-            $table->mediumText("content");
+            $table->string("type");
+            $table->string("extension");
+            $table->string("options")->nullable();
+            $table->timestamps();
         });
     }
 
@@ -27,8 +31,6 @@ class UpdateSettingsTable extends Migration
      */
     public function down()
     {
-        Schema::table('settings', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('media');
     }
 }

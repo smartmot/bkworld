@@ -62,6 +62,9 @@ $confim = in_array(auth()->user()->role, ["admin"])
                     <div>
                         <a href="{{ route("message.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ route_parent()=="message" ? " bcolor_4 color_1" : " color_5" }}">Messages</a>
                     </div>
+                    <div>
+                        <a href="{{ route("media.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ route_parent()=="media" ? " bcolor_4 color_1" : " color_5" }}">Media</a>
+                    </div>
                     @if($confim)
                         <div>
                             <a href="{{ route("member.index") }}" class="ds_b t_d_n h_60 fs_18 fm-popp fw_b abcolor_4 acolor_1 hbcolor_4 hcolor_1 pl_30 lh_60{{ route_parent()=="member" ? " bcolor_4 color_1" : " color_5" }}">Members</a>

@@ -53,6 +53,7 @@ Route::middleware("auth")
     Route::resource("/admin/page", Controllers\PageController::class);
     Route::resource("/admin/member", Controllers\MemberController::class);
     Route::resource("/admin/partner", Controllers\PartnerController::class);
+    Route::resource("/admin/media", Controllers\MediaController::class);
     Route::resource("/admin/setting", Controllers\SettingController::class)->middleware("admin");
     Route::get("/admin/settings/{setting}", [Controllers\SettingController::class, "setting"])
         ->middleware("admin")
