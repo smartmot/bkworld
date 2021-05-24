@@ -141,7 +141,7 @@ class PostController extends Controller
         $post->category_id = $data["category_id"];
         $post->thumbnail = $data["thumbnail"];
         $post->description = $data["description"];
-
+        dd($image);
         if ($post->user_id == Auth::id() or Auth::user() == "admin"){
             if ($post->isDirty("thumbnail")){
                 if (Storage::disk("local")->exists($image)) {
@@ -160,7 +160,6 @@ class PostController extends Controller
                             $validator->errors()->add("thumbnail","Please upload a thumbnail");
                         })->validate();
 
-                    dd($validator);
                 }
             }
 
