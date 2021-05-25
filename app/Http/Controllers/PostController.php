@@ -116,65 +116,9 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Post $post)
     {
-        $old_thumb = $post->thumbnail;
-        $validator = Validator::make($request->all(), [
-            "title" => ["required","max:255"],
-            "content" => ["required"],
-            "category_id" => ["required", "exists:categories,id"],
-            "keyword" => ["nullable","max:150"],
-            "youtube" => ["nullable","max:255"],
-            "description" => ["required","max:255"],
-            "thumbnail" => ["required","max:255"]
-        ]);
-        $image = "images/cache/post_". Auth::id() . ".jpg";
-
-        $cover = date("Y/m/d/his");
-        $foler = "images/";
-
-        $data = $validator->validate();
-        $post->title = $data["title"];
-        $post->content = $data["content"];
-        $post->keyword = $data["keyword"];
-        $post->youtube = $data["youtube"];
-        $post->category_id = $data["category_id"];
-        $post->thumbnail = $data["thumbnail"];
-        $post->description = $data["description"];
-        if ($post->user_id == Auth::id() or Auth::user() == "admin"){
-            if ($post->isDirty("thumbnail")){
-                if (Storage::disk("local")->exists($image)) {
-                    Storage::move($image, $foler.$cover. ".jpg");
-                    Storage::disk("local")->delete([
-                        "images/".$old_thumb.".jpg",
-                        "images/".$old_thumb."_thumb.jpg",
-                    ]);
-                    $photo = Image::make("photo/".$cover. ".jpg");
-                    $photo->resize(320, 180);
-                    $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
-                    $post->thumbnail = $cover;
-                }else{
-                    $validator
-                        ->after(function ($validator){
-                            $validator->errors()->add("thumbnail","Please upload a thumbnail");
-                        })->validate();
-
-                }
-            }
-
-            if (count($post->getDirty()) == 0){
-                return redirect(route("post.index"));
-            }else{
-                $post->updated_by = Auth::id();
-                $post->update($post->getDirty());
-                return redirect(route("post.index"));
-            }
-        }else{
-            return redirect(route("post.index"))->withErrors([
-                "alert" => "No Permission!",
-                "alert_message" => "You don't have permission to edit this post"
-            ])->withInput();
-        }
+        dd($_POST["content"]);
 
     }
 
