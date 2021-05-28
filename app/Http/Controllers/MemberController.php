@@ -175,6 +175,7 @@ class MemberController extends Controller
 
         if ($member->user_id == Auth::id() or Auth::user() == "admin"){
             if ($member->isDirty("photo")){
+
                 if (Storage::disk("local")->exists($image)) {
                     Storage::move($image, $foler.$cover. ".jpg");
                     Storage::disk("local")->delete([
@@ -182,7 +183,7 @@ class MemberController extends Controller
                         "images/".$old_photo."_thumb.jpg",
                     ]);
                     $photo = Image::make("photo/".$cover. ".jpg");
-                    $photo->resize(300, 225);
+                    $photo->resize(300, 350);
                     $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
                     $member->photo = $cover;
                 }else{
