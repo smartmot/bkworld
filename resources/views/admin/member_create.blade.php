@@ -160,7 +160,7 @@
                     $("#newimg").attr("src", "{{ asset("icon/30x35_pulse.svg") }}").next().hide();
                     if (!data.error){
                         img.load("{{ asset("photo")."/" }}"+data.url, function (){
-                            $("input[name='thumbnail']").attr("value",'{{ asset("photo").'/' }}'+data.url);
+                            $("input[name='photo']").attr("value",'{{ asset("photo").'/' }}'+data.url);
                             $("#error").text("");
                             $("#newimg")
                                 .attr("src", '{{ asset("photo").'/' }}'+data.url).next().show();
