@@ -172,6 +172,7 @@ class MemberController extends Controller
         $member->twitter = $data["twitter"];
         $member->description = $data["description"];
         $member->content = $data["content"];
+        $member->type = $data["type"];
 
         if ($member->user_id == Auth::id() or Auth::user() == "admin"){
             if ($member->isDirty("photo")){
