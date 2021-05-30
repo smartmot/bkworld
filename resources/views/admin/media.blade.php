@@ -20,6 +20,15 @@
                     </div>
                 </div>
             </div>
+            @foreach($media as $md)
+                <div class="xl-3 lg-3 md-4 sm-4 fx_6">
+                    <div class="pr_10 pl_10 pb_10">
+                        <div>
+                            <img class="wp_100" src="{{ asset("photo/".$md["name"]."_thumb.".$md["extension"]) }}" alt="">
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
 @endsection
@@ -34,7 +43,7 @@
             f.r({
                 d:function (data){
                     if (!data.error){
-                        window.location.reload();
+                        location.reload();
                     }else{
                         $("#error").text("Choose an image maximum size 12MB");
                     }
