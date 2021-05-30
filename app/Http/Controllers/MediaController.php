@@ -6,6 +6,7 @@ use App\Models\Media;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image;
 
 class MediaController extends Controller
 {
@@ -40,9 +41,40 @@ class MediaController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "file" => ["required", "image", "min:1"]
+            "file" => ["required", "image", "min:1", "max:15000"]
         ]);
-        return $ext = $request->file("file")->extension();
+        if ($request->has("file")){
+            $name = date("Y/m/d/his");
+            $ext = $request->file("file")->extension();
+            $data = [
+                "user_id" => Auth::id(),
+                "name" => $name,
+                "type" => "image",
+                "extension" => $ext,
+            ];
+
+            if ($validator->fails()){
+                $error = $validator->errors()->add("error", true);
+                return response($error);
+            }else{
+                $url = $request->file->storeAs('images', $name.".".$ext, 'local');
+                $media = new Media($data);
+                $media->save();
+                $folder = "storage/app/images/";
+                $image = Image::make($folder.$name.".jpg");
+                if ($image->width() < $image->height()){
+                    $image->resize(150,(150)*($image->height()/$image->width()));
+                }else{
+                    $image->resize((150)*($image->width()/$image->height()), 150);
+                }
+                $image->resizeCanvas(150,150);
+                $image->save($folder.$name."_thumb.jpg");// save thumbnail
+                return response(["url"=>$name."?ver=".date("his"), "error"=>false]);
+            }
+        }else{
+            $error = $validator->errors()->add("error", true);
+            return response($error);
+        }
     }
 
     /*

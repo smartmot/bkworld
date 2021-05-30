@@ -33,9 +33,11 @@
             e.preventDefault();
             f.r({
                 d:function (data){
-                    $("#newimg").attr("src", "{{ asset("icon/square_pulse.svg") }}");
-                    alert(data);
-
+                    if (!data.error){
+                        window.location.reload();
+                    }else{
+                        $("#error").text("Choose an image maximum size 12MB");
+                    }
                 },
                 p:function (pro,status){
                     $("#prog").css("width", status+"%");
@@ -43,7 +45,7 @@
                 r:function (){
                     $("#photoform").find("input[type='reset']").click();
                 }
-            },{x:f.d(this),m:"post",t:"text",target:"{{ route("media.store") }}"});
+            },{x:f.d(this),m:"post",t:"json",target:"{{ route("media.store") }}"});
         });
     </script>
 @endsection
