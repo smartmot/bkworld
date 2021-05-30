@@ -57,18 +57,18 @@ class MediaController extends Controller
                 $error = $validator->errors()->add("error", true);
                 return response($error);
             }else{
-                $url = $request->file->storeAs('images', $name.".".$ext, 'local');
+                $request->file->storeAs('images', $name.".".$ext, 'local');
                 $media = new Media($data);
                 $media->save();
-                $folder = "storage/app/images/";
-                $image = Image::make($folder.$name.".jpg");
+                $folder = "photo/";
+                $image = Image::make($folder.$name.".".$ext);
                 if ($image->width() < $image->height()){
                     $image->resize(150,(150)*($image->height()/$image->width()));
                 }else{
                     $image->resize((150)*($image->width()/$image->height()), 150);
                 }
                 $image->resizeCanvas(150,150);
-                $image->save($folder.$name."_thumb.jpg");// save thumbnail
+                $image->save($folder.$name."_thumb.".$ext);// save thumbnail
                 return response(["url"=>$name."?ver=".date("his"), "error"=>false]);
             }
         }else{
