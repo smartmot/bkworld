@@ -34,7 +34,7 @@
             f.r({
                 d:function (data){
                     $("#newimg").attr("src", "{{ asset("icon/square_pulse.svg") }}");
-                    alert(JSON.stringify(data));
+                    alert(data);
 
                 },
                 p:function (pro,status){
@@ -43,7 +43,7 @@
                 r:function (){
                     $("#photoform").find("input[type='reset']").click();
                 }
-            },{x:f.d(this),m:"post",t:"json",target:"{{ route("media.store") }}"});
+            },{x:f.d(this),m:"post",t:"text",target:"{{ route("media.store") }}"});
         });
     </script>
 @endsection
