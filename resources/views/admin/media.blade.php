@@ -26,6 +26,9 @@
 
 @section("script")
     <script type="text/javascript">
+        $("#file").change(function (){
+            $("#photoform").submit();
+        });
         $("#photoform").submit(function (e){
             e.preventDefault();
             f.r({
