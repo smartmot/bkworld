@@ -42,7 +42,6 @@
             e.preventDefault();
             f.r({
                 d:function (data){
-                    alert(JSON.stringify(data));
                     if (!data.error){
                         location.reload();
                     }else{
