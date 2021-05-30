@@ -43,7 +43,7 @@
                 r:function (){
                     $("#photoform").find("input[type='reset']").click();
                 }
-            },{x:f.d(this),m:"post",t:"json",target:"{{ route("admin.photo") }}"});
+            },{x:f.d(this),m:"post",t:"json",target:"{{ route("media.store") }}"});
         });
     </script>
 @endsection
