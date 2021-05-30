@@ -42,18 +42,7 @@ class MediaController extends Controller
         $validator = Validator::make($request->all(), [
             "file" => ["required", "image", "min:1"]
         ]);
-        if ($request->has("file")){
-            $ext = $request->file->extension();
-            dd($ext);
-        }
-        if ($validator->fails()){
-            $error = $validator->errors()->add("error", true);
-            return response($error);
-        }else{
-            $name = "cache/post_". Auth::id() . ".jpg";
-            $url = $request->thumbnail->storeAs('images', $name, 'local');
-            return response(["url"=>$name."?ver=".date("his"), "error"=>false]);
-        }
+        return $ext = $request->file->extension();
     }
 
     /*
