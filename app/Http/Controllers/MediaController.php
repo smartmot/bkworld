@@ -42,7 +42,7 @@ class MediaController extends Controller
         $validator = Validator::make($request->all(), [
             "file" => ["required", "image", "min:1"]
         ]);
-        return $ext = $request->file->extension();
+        return $ext = $request->file("file")->extension();
     }
 
     /*
