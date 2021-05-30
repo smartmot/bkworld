@@ -34,8 +34,7 @@
             f.r({
                 d:function (data){
                     $("#newimg").attr("src", "{{ asset("icon/square_pulse.svg") }}");
-                    alert(data);
-                    alert(data);
+                    alert(JSON.stringify(data));
 
                 },
                 p:function (pro,status){
