@@ -21,22 +21,13 @@ class UploadController extends Controller
             $name = "cache/upload_". Auth::id() . ".jpg";
             $request->upload->storeAs('images', $name, 'local');
             $file = "photo/".$name;
-
             $image = Image::make($file);
-
-            $class = "";
-            if ($image->getWidth() > $image->getHeight()){
-                $class = "hor";
-            }else{
-                $class = "ver";
-            }
             $image->save();
 
             return response(
                 [
                     "url"=>$name."?ver=".date("his"),
                     "error"=>false,
-                    "class" => $class
                 ]
             );
         }
@@ -53,13 +44,23 @@ class UploadController extends Controller
             $cord = json_decode($request->get("cord"), true);
             $image= Image::make("photo/".$file);
             if (isset($cord["r"]) && $cord["r"]!=0){
-                $image->rotate($cord["r"]);
+                switch ($cord["r"]){
+                    case -90:
+                        $image->rotate(90);
+                        break;
+                    case 90:
+                        $image->rotate(-90);
+                        break;
+                    default:
+                        $image->rotate($cord["r"]);
+                        break;
+                }
             }
             $image->crop(
                 number_format($cord["width"], 0, "", ""),
                 number_format($cord["height"], 0,"",""),
                 number_format($cord["x"], 0, "", ""),
-                number_format($cord["y"], 0, "","")
+                number_format($cord["y"], 0, "",""),
             );
             $image->save();
             return response($resp);
