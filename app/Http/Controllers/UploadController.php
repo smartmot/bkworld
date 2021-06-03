@@ -63,7 +63,7 @@ class UploadController extends Controller
                 number_format($cord["y"], 0, "",""),
             );
             $image->save();
-            
+
             return response($resp);
         }else{
             $resp["error"] = true;
