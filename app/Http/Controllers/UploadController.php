@@ -26,7 +26,7 @@ class UploadController extends Controller
 
             return response(
                 [
-                    "url"=>$name."?ver=".date("his"),
+                    "url"=>$name."?ver=".date("y.m.dhis"),
                     "error"=>false,
                 ]
             );
@@ -37,7 +37,7 @@ class UploadController extends Controller
         $folder = "images/";
         $file = "cache/upload_". Auth::id() . ".jpg";
         $resp = [
-            "url" => $file."?ver=".date("hisymd"),
+            "url" => $file."?ver=".date("y.m.dhis"),
             "error" => false
         ];
         if ($request->has("cord") && Storage::disk("local")->exists($folder.$file)){
