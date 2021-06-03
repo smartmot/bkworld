@@ -2,6 +2,15 @@ const f = {
     d(form){
         return new FormData(form);
     },
+    f(form){
+        var formdata;
+        $(form).submit(function (event){
+            event.preventDefault();
+            formdata = new FormData(this);
+        });
+        $(form).submit();
+        return formdata;
+    },
     x(){
         return new XMLHttpRequest();
     },
@@ -50,3 +59,31 @@ const img = {
         };
     },
 };
+
+const $f = {
+    x(ele,oncrop){
+        return new _$(ele,{
+            aspectRatio:(16/9),
+            zoomable:true,
+            dragMode:"move",
+            viewMode:1,
+            cropBoxResizable:false,
+            cropBoxMovable:false,
+            minCropBoxWidth:30,
+            responsive:true,
+            guides:false,
+            movable:true,
+            highlight:true,
+            crop(data){
+                cdata = {
+                    width:data.detail.width,
+                    height:data.detail.height,
+                    x:data.detail.x,
+                    y:data.detail.y,
+                    r:data.detail.rotate,
+                };
+                oncrop(cdata);
+            }
+        });
+    }
+}

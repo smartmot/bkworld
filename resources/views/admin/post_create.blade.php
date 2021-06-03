@@ -132,7 +132,7 @@
                         <button class="pr_10 pl_10 oln_n bd_n pt_3 pb_3 b_r_3 bcolor_5 color_1 csr-p hcolor_4 fs_16">
                             <span class="fa fa-rotate-right"></span>
                         </button>&nbsp;
-                        <button class="pr_10 pl_10 oln_n bd_n pt_3 pb_3 b_r_3 bcolor_5 color_1 csr-p hcolor_4 fs_16">Crop</button>
+                        <button class="pr_10 pl_10 oln_n bd_n pt_3 pb_3 b_r_3 bcolor_5 color_1 csr-p hcolor_4 fs_16" id="cropbtn">Crop</button>
                     </div>
                 </div>
             </div>
@@ -140,6 +140,11 @@
     </div>
 
     <div class="p-f b-0 l-0 wp_100 h_50 bc_01 c_whi" id="test"></div>
+    <form action="{{ route("upload.crop") }}" method="post" id="cordform">
+        @csrf
+        @method("post")
+        <input type="hidden" name="cord" value="" id="cord">
+    </form>
 @endsection
 
 @section("script")
@@ -147,30 +152,39 @@
         var url = "{{ asset("photo/cache/post_1.jpg?ver=1.1.12") }}",
             image = document.getElementById("tocrop"),
             crop, cdata ={};
-
-        setTimeout(function (){
-            /*image.src = url;
-            crop = new _$(image,{
-                aspectRatio:(16/9),
-                zoomable:false,
-                minCropBoxWidth:30,
-                responsive:true,
-                guides:false,
-                movable:false,
-                highlight:true,
-                crop(data){
-                    cdata = {
-                        width:data.detail.width,
-                        height:data.detail.height,
-                        x:data.detail.x,
-                        y:data.detail.y,
-                        r:data.detail.rotate,
-                    };
-                    $("#test").text(JSON.stringify(cdata));
-                }
-            });*/
-        }, 1000);
-
+        $("#cropbtn").click(function (){
+            f.r({
+                d:function (resp){
+                   if (!resp.error){
+                       $(".cropx").fadeOut();
+                       crop.destroy();
+                       img.load("{{ asset("photo")."/" }}"+resp.url, function (){
+                           $("input[name='thumbnail']").attr("value",'{{ asset("photo").'/' }}'+resp.url);
+                           $("#error").text("");
+                           $("#newimg")
+                               .attr("src", '{{ asset("photo").'/' }}'+resp.url).next().show();
+                           $("#prog")
+                               .removeClass("ts_050")
+                               .css("width", "0");
+                           setTimeout(function (){
+                               $("#prog").addClass("ts_050");
+                           },500);
+                       });
+                   }else {
+                       crop.destroy();
+                   }
+                },
+                p:function (pro,status){
+                    $("#prog").css("width", status+"%");
+                },
+            },{x:f.f($("#cordform")),m:"post",t:"json",target:"{{ route("upload.crop") }}"});
+        })
+        .prev().click(function (){
+            crop.rotateTo(cdata.r + 90);
+        })
+        .prev().click(function (){
+            crop.rotateTo(cdata.r - 90);
+        });
         $("#coverf").submit(function (e) {
             e.preventDefault();
             f.r({
@@ -181,28 +195,20 @@
                         img.load("{{ asset("photo")."/" }}"+data.url, function (){
                             image.src = url;
                             setTimeout(function (){
-                                crop = new _$(image,{
-                                    aspectRatio:(16/9),
-                                    zoomable:false,
-                                    minCropBoxWidth:30,
-                                    responsive:true,
-                                    guides:false,
-                                    movable:false,
-                                    highlight:true,
-                                    crop(data){
-                                        cdata = {
-                                            width:data.detail.width,
-                                            height:data.detail.height,
-                                            x:data.detail.x,
-                                            y:data.detail.y,
-                                            r:data.detail.rotate,
-                                        };
-                                    }
+                                crop = $f.x(image,function (cord){
+                                    $("#cord").attr("value", JSON.stringify(cord));
                                 });
                             }, 200);
                         });
                     }else{
-
+                        $("#prog")
+                            .removeClass("ts_050")
+                            .css("width", "0");
+                        setTimeout(function (){
+                            $("#prog").addClass("ts_050");
+                        },500);
+                        $("#newimg").attr("src", "{{ asset("icon/blank_16x9.svg") }}").next().show();
+                        $("#error").text("Choose 16:9 ratio image maximum size 5MB");
                     }
                 },
                 p:function (pro,status){

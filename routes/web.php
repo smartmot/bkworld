@@ -35,6 +35,7 @@ Route::middleware("auth")
         Route::get("/contact", [Controllers\HomeController::class, "contact"])->name("contact");
 
         Route::post("/admin/post/upload", [Controllers\UploadController::class, "image"])->name("upload.image");
+        Route::post("/admin/post/upload/crop", [Controllers\UploadController::class, "crop"])->name("upload.crop");
     });
 
 Route::get("/abc", function (){
