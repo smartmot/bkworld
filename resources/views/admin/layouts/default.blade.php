@@ -9,8 +9,10 @@
     <link rel="shortcut icon" href="{{ asset("bkworld.svg") }}">
     <link rel="stylesheet" href="{{ route("soft", "css.colors?ver=".config("settings.color_ver")) }}" type="text/css">
     <link rel="stylesheet" href="{{ asset("css/style.css")."?ver=".date('y.m.d.his') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset("css/app.css")."?ver=".date('y.m.d.his') }}" type="text/css">
     <script type="text/javascript" src="{{ asset("js/app.js") }}"></script>
     <script type="text/javascript" src="{{ asset("js/fx.js") }}"></script>
+    @yield("head_asset")
 </head>
 <body>
 <div class="wp_100 h_70 p-r">
@@ -98,6 +100,7 @@ $confim = in_array(auth()->user()->role, ["admin"])
         </div>
     </div>
 </div>
+@yield("fixed")
 @yield("script")
 @yield("script1")
 @yield("script2")

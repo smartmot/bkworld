@@ -33,10 +33,12 @@ Route::middleware("auth")
         Route::get("/test1", [Controllers\PostController::class, "post"]);
         Route::get("/about", [Controllers\HomeController::class, "about"])->name("about");
         Route::get("/contact", [Controllers\HomeController::class, "contact"])->name("contact");
+
+        Route::post("/admin/post/upload", [Controllers\UploadController::class, "image"])->name("upload.image");
     });
 
 Route::get("/abc", function (){
-   return new \App\Mail\Notifications();
+   return view("abc");
 })->name("abc");
 Route::get("/soft/{soft}", [Controllers\SoftController::class, "index"])->name("soft");
 Route::middleware("auth")
