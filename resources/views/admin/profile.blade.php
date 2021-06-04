@@ -135,7 +135,18 @@
             f.r({
                 d:function (data){
                     if (!data.error){
-                        alert(1);
+                        url = "{{ asset("photo") }}/" + data.url;
+                        $(".cropx").fadeIn();
+                        image.src = "{{ asset("icon/16x9_pulse.svg") }}";
+                        img.load("{{ asset("photo")."/" }}"+data.url, function (){
+                            image.src = url;
+                            setTimeout(function (){
+                                crop = $f.x(image,function (cord){
+                                    $("#cord").attr("value", JSON.stringify(cord));
+                                    $("#test").text(JSON.stringify(cord));
+                                });
+                            }, 200);
+                        });
                     }else{
                         $("#prog")
                             .removeClass("ts_050")
