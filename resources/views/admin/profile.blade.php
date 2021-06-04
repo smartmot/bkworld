@@ -143,7 +143,6 @@
                             setTimeout(function (){
                                 crop = $f.x(image,function (cord){
                                     $("#cord").attr("value", JSON.stringify(cord));
-                                    $("#test").text(JSON.stringify(cord));
                                 });
                             }, 200);
                         },{
