@@ -146,6 +146,8 @@
                                     $("#test").text(JSON.stringify(cord));
                                 });
                             }, 200);
+                        },{
+                            ratio:1
                         });
                     }else{
                         $("#prog")

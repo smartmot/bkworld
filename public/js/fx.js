@@ -61,9 +61,9 @@ const img = {
 };
 
 const $f = {
-    x(ele,oncrop){
+    x(ele,oncrop,option={ratio:(16/9)}){
         return new _$(ele,{
-            aspectRatio:(16/9),
+            aspectRatio:option.ratio,
             zoomable:true,
             dragMode:"move",
             viewMode:1,
