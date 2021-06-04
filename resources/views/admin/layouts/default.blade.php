@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="{{ route("soft", "css.colors?ver=".config("settings.color_ver")) }}" type="text/css">
     <link rel="stylesheet" href="{{ asset("css/style.css")."?ver=".date('y.m.d.his') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset("css/app.css")."?ver=".date('y.m.d.his') }}" type="text/css">
-    <script type="text/javascript" src="{{ asset("js/app.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("js/fx.js") }}"></script>
+    <script type="text/javascript" src="{{ asset("js/app.js")."?ver=1.2" }}"></script>
+    <script type="text/javascript" src="{{ asset("js/fx.js")."?ver=1.2" }}"></script>
     @yield("head_asset")
 </head>
 <body>

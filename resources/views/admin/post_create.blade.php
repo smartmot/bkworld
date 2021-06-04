@@ -141,8 +141,7 @@
             </div>
         </div>
     </div>
-
-    <div class="p-f b-0 l-0 wp_100 h_50 bc_01 c_whi" id="test"></div>
+    
     <form action="{{ route("upload.crop") }}" method="post" id="cordform">
         @csrf
         @method("post")
