@@ -81,51 +81,79 @@
         <form id="coverf" action="javascript:void(0)" method="post" enctype="multipart/form-data">
             @csrf
             @method("post")
-            <input id="thumb" onchange="$('#coverf').submit()" type="file" name="photo" accept="image/jpeg" hidden>
+            <input id="thumb" onchange="$('#coverf').submit()" type="file" name="upload" accept="image/jpeg" hidden>
             <input type="reset" hidden>
         </form>
     </div>
 @endsection
 
+
+@section("fixed")
+@include("admin.include.crop")
+@endsection
+
 @section("script")
-<script type="text/javascript">
-    $("#coverf").submit(function (e) {
-        e.preventDefault();
-        f.r({
-            d:function (data){
-                $("#newimg").attr("src", "{{ asset("icon/square_pulse.svg") }}");
-                if (!data.error){
-                    img.load("{{ asset("photo")."/" }}"+data.url, function (){
-                        $("input[name='photo']").attr("value",'{{ asset("photo").'/' }}'+data.url);
-                        $("#error").text("");
-                        $("#newimg")
-                            .attr("src", '{{ asset("photo").'/' }}'+data.url);
+    <script>
+        var url = "{{ asset("photo/cache/post_1.jpg?ver=1.1.12") }}",
+            image = document.getElementById("tocrop"),
+            crop, cdata ={};
+        $("#cropbtn").click(function (){
+            f.r({
+                d:function (resp){
+                    if (!resp.error){
+                        $("#newimg").attr("src", "{{ asset("icon/16x9_pulse.svg") }}").next().hide();
+                        $(".cropx").fadeOut();
+                        crop.destroy();
+                        img.load("{{ asset("photo")."/" }}"+resp.url, function (){
+                            $("#error").text("");
+                            $("#newimg")
+                                .attr("src", '{{ asset("photo").'/' }}'+resp.url).next().show();
+                            $("#prog")
+                                .removeClass("ts_050")
+                                .css("width", "0");
+                            setTimeout(function (){
+                                $("#prog").addClass("ts_050");
+                            },1000);
+                        });
+                    }else {
+                        crop.destroy();
+                    }
+                },
+                p:function (pro,status){
+                    $("#prog").css("width", status+"%");
+                },
+            },{x:f.f($("#cordform")),m:"post",t:"json",target:"{{ route("upload.crop") }}"});
+        })
+            .prev().click(function (){
+            crop.rotateTo(cdata.r + 90);
+        })
+            .prev().click(function (){
+            crop.rotateTo(cdata.r - 90);
+        });
+        $("#coverf").submit(function (e) {
+            e.preventDefault();
+            f.r({
+                d:function (data){
+                    if (!data.error){
+                        alert(1);
+                    }else{
                         $("#prog")
                             .removeClass("ts_050")
                             .css("width", "0");
                         setTimeout(function (){
                             $("#prog").addClass("ts_050");
-                        },100);
-                    });
-                }else{
-                    $("#prog")
-                        .removeClass("ts_050")
-                        .css("width", "0");
-                    setTimeout(function (){
-                        $("#prog").addClass("ts_050");
-                    },100);
-                    $("#newimg").attr("src", "{{ asset("icon/member.svg") }}");
-                    $("#error").text("Choose a square image maximum size 5MB");
+                        },1000);
+                        $("#newimg").attr("src", "{{ asset("icon/blank_16x9.svg") }}").next().show();
+                        $("#error").text(data.upload[0]);
+                    }
+                },
+                p:function (pro,status){
+                    $("#prog").css("width", status+"%");
+                },
+                r:function (){
+                    $("#coverf").find("input[type='reset']").click();
                 }
-
-            },
-            p:function (pro,status){
-                $("#prog").css("width", status+"%");
-            },
-            r:function (){
-                $("#coverf").find("input[type='reset']").click();
-            }
-        },{x:f.d(this),m:"post",t:"json",target:"{{ route("admin.photo") }}"});
-    });
-</script>
+            },{x:f.d(this),m:"post",t:"json",target:"{{ route("upload.image") }}"});
+        });
+    </script>
 @endsection
