@@ -54,7 +54,7 @@ class PostController extends Controller
             "description" => ["required","max:255"],
             "thumbnail" => ["required","max:255"]
         ]);
-        $image = "images/cache/post_". Auth::id() . ".jpg";
+        $image = "images/cache/upload_". Auth::id() . ".jpg";
 
         $cover = date("Y/m/d/his");
         $foler = "images/";
@@ -128,7 +128,7 @@ class PostController extends Controller
             "description" => ["required","max:255"],
             "thumbnail" => ["required","max:255"]
         ]);
-        $image = "images/cache/post_". Auth::id() . ".jpg";
+        $image = "images/cache/upload_". Auth::id() . ".jpg";
 
         $cover = date("Y/m/d/his");
         $foler = "images/";

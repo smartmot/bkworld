@@ -141,7 +141,7 @@
             </div>
         </div>
     </div>
-    
+
     <form action="{{ route("upload.crop") }}" method="post" id="cordform">
         @csrf
         @method("post")
@@ -171,7 +171,7 @@
                                .css("width", "0");
                            setTimeout(function (){
                                $("#prog").addClass("ts_050");
-                           },500);
+                           },1000);
                        });
                    }else {
                        crop.destroy();
@@ -211,9 +211,9 @@
                             .css("width", "0");
                         setTimeout(function (){
                             $("#prog").addClass("ts_050");
-                        },500);
+                        },1000);
                         $("#newimg").attr("src", "{{ asset("icon/blank_16x9.svg") }}").next().show();
-                        $("#error").text("Choose 16:9 ratio image maximum size 5MB");
+                        $("#error").text(data.upload[0]);
                     }
                 },
                 p:function (pro,status){
