@@ -160,11 +160,6 @@
         var url = "{{ asset("photo/cache/post_1.jpg?ver=1.1.12") }}",
             image = document.getElementById("tocrop"),
             crop, cdata ={};
-        let save=function (){
-            f.r({
-
-            });
-        }
         $("#cropbtn").click(function (){
             f.r({
                 d:function (resp){
@@ -183,7 +178,6 @@
                             setTimeout(function (){
                                 $("#prog").addClass("ts_050");
                             },1000);
-                            save();
                         });
                     }else {
                         crop.destroy();

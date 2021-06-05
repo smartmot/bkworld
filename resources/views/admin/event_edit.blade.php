@@ -156,14 +156,9 @@
 
 @section("script")
     <script>
-        var url = "{{ asset("photo/cache/post_1.jpg?ver=1.1.12") }}",
+        var url = "{{ asset("icon/16x9_pulse.svg") }}",
             image = document.getElementById("tocrop"),
             crop, cdata ={};
-        let save=function (){
-            f.r({
-
-            });
-        }
         $("#cropbtn").click(function (){
             f.r({
                 d:function (resp){
@@ -182,7 +177,6 @@
                             setTimeout(function (){
                                 $("#prog").addClass("ts_050");
                             },1000);
-                            save();
                         });
                     }else {
                         crop.destroy();

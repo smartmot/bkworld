@@ -60,7 +60,7 @@ class EventController extends Controller
         if (Storage::disk("local")->exists($image)) {
             Storage::move($image, $foler.$cover. ".jpg");
             $photo = Image::make("photo/".$cover. ".jpg");
-            $photo->resize(300, 225);
+            $photo->resize(320, 180);
             $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
         }else{
             $validator
@@ -148,7 +148,7 @@ class EventController extends Controller
                         "images/".$old_thumb."_thumb.jpg",
                     ]);
                     $photo = Image::make("photo/".$cover. ".jpg");
-                    $photo->resize(300, 225);
+                    $photo->resize(320, 180);
                     $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
                     $event->thumbnail = $cover;
                 }else{
