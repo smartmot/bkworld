@@ -13,9 +13,9 @@
         <div class="h_50 wp_100">
             <div class="pr_20 pl_20 lh_50">
                 <div class="t_a_c">
-                    <button class="pr_10 pl_10 oln_n bd_n pt_3 pb_3 b_r_3 bcolor_5 color_1 csr-p hcolor_4 fs_16">
+                    <button class="pr_10 pl_10 oln_n bd_n pt_3 pb_3 b_r_3 bcolor_5 color_1 csr-p hcolor_4 fs_16" onclick="$('.cropx').fadeOut();$('#tocrop').attr('src','{{ asset("icon/16x9_pulse.svg") }}')">
                         <span>Cancel</span>
-                    </button>
+                    </button>&nbsp;
                     <button class="pr_10 pl_10 oln_n bd_n pt_3 pb_3 b_r_3 bcolor_5 color_1 csr-p hcolor_4 fs_16">
                         <span class="fa fa-rotate-left"></span>
                     </button>&nbsp;
