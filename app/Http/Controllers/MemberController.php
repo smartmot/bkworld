@@ -76,7 +76,7 @@ class MemberController extends Controller
         $data = $validator->validate();
         $data["user_id"] = Auth::id();
 
-        $image = "images/cache/post_". Auth::id() . ".jpg";
+        $image = "images/cache/upload_". Auth::id() . ".jpg";
 
         $cover = date("Y/m/d/his");
         $foler = "images/";
@@ -160,7 +160,7 @@ class MemberController extends Controller
         ]);
         $data = $validator->validate();
 
-        $image = "images/cache/post_". Auth::id() . ".jpg";
+        $image = "images/cache/upload_". Auth::id() . ".jpg";
         $cover = date("Y/m/d/his");
         $foler = "images/";
         $member->name = $data["name"];
