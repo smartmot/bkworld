@@ -52,7 +52,7 @@ class EventController extends Controller
             "keyword" => ["nullable"],
             "description" => ["nullable"],
         ]);
-        $image = "images/cache/post_". Auth::id() . ".jpg";
+        $image = "images/cache/upload_". Auth::id() . ".jpg";
 
         $cover = date("Y/m/d/his");
         $foler = "images/";
@@ -127,7 +127,7 @@ class EventController extends Controller
             "keyword" => ["nullable"],
             "description" => ["nullable"],
         ]);
-        $image = "images/cache/post_". Auth::id() . ".jpg";
+        $image = "images/cache/upload_". Auth::id() . ".jpg";
 
         $cover = date("Y/m/d/his");
         $foler = "images/";
