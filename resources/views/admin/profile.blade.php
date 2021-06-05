@@ -123,6 +123,7 @@
                             setTimeout(function (){
                                 $("#prog").addClass("ts_050");
                             },1000);
+                            save();
                         });
                     }else {
                         crop.destroy();
