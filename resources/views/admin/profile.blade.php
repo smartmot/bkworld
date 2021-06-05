@@ -94,14 +94,14 @@
 
 @section("script")
     <script>
-        var url = "{{ asset("photo/cache/post_1.jpg?ver=1.1.12") }}",
+        var url = "{{ asset("icon/1x1_pulse.svg") }}",
             image = document.getElementById("tocrop"),
             crop, cdata ={};
         $("#cropbtn").click(function (){
             f.r({
                 d:function (resp){
                     if (!resp.error){
-                        $("#newimg").attr("src", "{{ asset("icon/16x9_pulse.svg") }}").next().hide();
+                        $("#newimg").attr("src", "{{ asset("icon/1x1_pulse.svg") }}").next().hide();
                         $(".cropx").fadeOut();
                         crop.destroy();
                         img.load("{{ asset("photo")."/" }}"+resp.url, function (){
@@ -137,7 +137,7 @@
                     if (!data.error){
                         url = "{{ asset("photo") }}/" + data.url;
                         $(".cropx").fadeIn();
-                        image.src = "{{ asset("icon/16x9_pulse.svg") }}";
+                        image.src = "{{ asset("icon/1x1_pulse.svg") }}";
                         img.load("{{ asset("photo")."/" }}"+data.url, function (){
                             image.src = url;
                             setTimeout(function (){
@@ -155,7 +155,7 @@
                         setTimeout(function (){
                             $("#prog").addClass("ts_050");
                         },1000);
-                        $("#newimg").attr("src", "{{ asset("icon/blank_16x9.svg") }}").next().show();
+                        $("#newimg").attr("src", "{{ asset("icon/blank.svg") }}").next().show();
                         $("#error").text(data.upload[0]);
                     }
                 },

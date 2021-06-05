@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image;
 
@@ -147,21 +148,16 @@ class AdminController extends Controller
 
     public function photo(Request $request){
         $user = User::query()->find(Auth::id());
-        $validator = Validator::make($request->all(),[
-            "photo" => ["required", "image", "mimes:jpeg", "max:5125", "min:1", "dimensions:ratio=1"]
-        ]);
-        if ($validator->fails()){
-            $error = $validator->errors()->add("error", true);
-            return response($error);
-        }else{
-            $name = "users/".Auth::id();
-            $url = $request->photo->storeAs('images', $name.".jpg", 'local');
-            $photo = Image::make("photo/".$name. ".jpg");
-            $photo->resize(250, 250);
-            $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
-            $user->photo = $name;
-            $user->save();
-            return response(["url"=>$name.".jpg?ver=".date("his"), "error"=>false]);
+        $name = "photo/upload_".Auth::id();
+        $file = "cache/upload_".Auth::id();
+        if (Storage::disk("local")->exists("image/".$file)){
+
         }
+        $photo = Image::make("photo/".$file. ".jpg");
+        $photo->resize(250, 250);
+        $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
+        $user->photo = $name;
+        $user->save();
+        return response(["url"=>$name.".jpg?ver=".date("his"), "error"=>false]);
     }
 }
