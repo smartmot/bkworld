@@ -148,7 +148,7 @@ class AdminController extends Controller
 
     public function photo(){
         $user = User::query()->find(Auth::id());
-        $name = "users/".Auth::id()."/".date("Y/m/dmhis");
+        $name = "users/".date("Y/m/dmhis");
         $file = "cache/upload_".Auth::id().".jpg";
         if (Storage::disk("local")->exists("images/".$file)){
             Storage::disk("local")->move("images/".$file,"images/".$name.".jpg");
