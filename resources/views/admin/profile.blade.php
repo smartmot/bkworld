@@ -96,7 +96,16 @@
     <script>
         var url = "{{ asset("icon/16x9_pulse.svg") }}",
             image = document.getElementById("tocrop"),
-            crop, cdata ={};
+            crop, cdata ={},
+            save = function (){
+            f.r({
+                d:function (resp){
+                    if (resp.error){
+                        $("#error").text("Update failed!");
+                    }
+                }
+            },{m:"post", t:"json", target:"{{ route("admin.photo") }}"});
+            };
         $("#cropbtn").click(function (){
             f.r({
                 d:function (resp){
