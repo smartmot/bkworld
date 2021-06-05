@@ -100,17 +100,14 @@
             save = function (){
             f.r({
                 d:function (resp){
-                    alert(resp);
                     if (resp.error){
                         $("#error").text("Update failed!");
                         setTimeout(function (){
                             $("#error").text("");
                         },5000);
-                    }else{
-                        $("#error").text("Saved!");
                     }
                 }
-            },{x:f.s({_token: "{{csrf_token()}}",_method:"post"}),m:"post", t:"text", target:"{{ route("admin.photo") }}"});
+            },{x:f.s({_token: "{{csrf_token()}}",_method:"post"}),m:"post", t:"json", target:"{{ route("admin.photo") }}"});
             };
         $("#cropbtn").click(function (){
             f.r({
