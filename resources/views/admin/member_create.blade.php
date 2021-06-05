@@ -200,7 +200,7 @@
             f.r({
                 d:function (resp){
                     if (!resp.error){
-                        $("#newimg").attr("src", "{{ asset("icon/16x9_pulse.svg") }}").next().hide();
+                        $("#newimg").attr("src", "{{ asset("icon/30x35_pulse.svg") }}").next().hide();
                         $(".cropx").fadeOut();
                         crop.destroy();
                         img.load("{{ asset("photo")."/" }}"+resp.url, function (){
@@ -255,7 +255,7 @@
                         setTimeout(function (){
                             $("#prog").addClass("ts_050");
                         },1000);
-                        $("#newimg").attr("src", "{{ asset("icon/blank_16x9.svg") }}").next().show();
+                        $("#newimg").attr("src", "{{ asset("icon/30x35_pulse.svg") }}").next().show();
                         $("#error").text(data.upload[0]);
                     }
                 },
