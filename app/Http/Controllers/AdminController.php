@@ -150,6 +150,12 @@ class AdminController extends Controller
         $user = User::query()->find(Auth::id());
         $name = "users/".Auth::id();
         $file = "cache/upload_".Auth::id().".jpg";
+        if (Storage::disk("local")->exists("images/".$name.".jpg")){
+            Storage::disk("local")->delete([
+                "images/".$name.".jpg",
+                "images/".$name."_thumb.jpg",
+            ]);
+        }
         if (Storage::disk("local")->exists("images/".$file)){
             Storage::disk("local")->move("images/".$file,"images/".$name.".jpg");
             $photo = Image::make("photo/".$name. ".jpg");
