@@ -100,7 +100,6 @@
             save = function (){
             f.r({
                 d:function (resp){
-                    alert(JSON.stringify(resp))
                     if (resp.error){
                         $("#error").text("Update failed!");
                     }

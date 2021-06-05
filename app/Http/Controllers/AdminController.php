@@ -150,7 +150,7 @@ class AdminController extends Controller
         $user = User::query()->find(Auth::id());
         $name = "photo/upload_".Auth::id();
         $file = "cache/upload_".Auth::id();
-        if (Storage::disk("local")->exists("image/".$file)){
+        if (Storage::disk("local")->exists("images/".$file)){
             $photo = Image::make("photo/".$file. ".jpg");
             $photo->resize(250, 250);
             $photo->save($photo->dirname."/".$photo->filename."_thumb.".$photo->extension);
