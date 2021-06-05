@@ -102,6 +102,9 @@
                 d:function (resp){
                     if (resp.error){
                         $("#error").text("Update failed!");
+                        setTimeout(function (){
+                            $("#error").text("");
+                        },5000);
                     }
                 }
             },{x:f.s({_token: "{{csrf_token()}}",_method:"post"}),m:"post", t:"json", target:"{{ route("admin.photo") }}"});
