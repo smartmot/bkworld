@@ -105,7 +105,7 @@
                         $("#error").text("Update failed!");
                     }
                 }
-            },{m:"post", t:"json", target:"{{ route("admin.photo") }}"});
+            },{x:null,m:"post", t:"json", target:"{{ route("admin.photo") }}"});
             };
         $("#cropbtn").click(function (){
             f.r({
