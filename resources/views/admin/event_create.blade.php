@@ -157,7 +157,7 @@
 
 @section("script")
     <script>
-        var url = "{{ asset("photo/cache/post_1.jpg?ver=1.1.12") }}",
+        var url = "{{ asset("icon/16x9_pulse.svg") }}",
             image = document.getElementById("tocrop"),
             crop, cdata ={};
         $("#cropbtn").click(function (){
