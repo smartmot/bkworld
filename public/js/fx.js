@@ -11,6 +11,13 @@ const f = {
         $(form).submit();
         return formdata;
     },
+    s(obs={}){
+        var formdataz = new FormData();
+        for(var i=0;i<Object.keys(obs).length;i++){
+            formdataz.append(Object.keys(obs)[i], obs[Object.keys(obs)[i]]);
+        }
+        return formdataz;
+    },
     x(){
         return new XMLHttpRequest();
     },
