@@ -105,6 +105,8 @@
                         setTimeout(function (){
                             $("#error").text("");
                         },5000);
+                    }else{
+                        $("#error").text("Saved!");
                     }
                 }
             },{x:f.s({_token: "{{csrf_token()}}",_method:"post"}),m:"post", t:"json", target:"{{ route("admin.photo") }}"});
