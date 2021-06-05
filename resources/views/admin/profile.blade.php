@@ -94,7 +94,7 @@
 
 @section("script")
     <script>
-        var url = "{{ asset("icon/1x1_pulse.svg") }}",
+        var url = "{{ asset("icon/16x9_pulse.svg") }}",
             image = document.getElementById("tocrop"),
             crop, cdata ={};
         $("#cropbtn").click(function (){
@@ -137,7 +137,7 @@
                     if (!data.error){
                         url = "{{ asset("photo") }}/" + data.url;
                         $(".cropx").fadeIn();
-                        image.src = "{{ asset("icon/1x1_pulse.svg") }}";
+                        image.src = "{{ asset("icon/16x9_pulse.svg") }}";
                         img.load("{{ asset("photo")."/" }}"+data.url, function (){
                             image.src = url;
                             setTimeout(function (){
