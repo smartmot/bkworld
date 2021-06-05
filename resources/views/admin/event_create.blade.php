@@ -110,7 +110,7 @@
     <form id="coverf" action="javascript:void(0)" method="post" enctype="multipart/form-data">
         @csrf
         @method("post")
-        <input id="thumb" onchange="$('#coverf').submit()" type="file" name="thumbnail" accept="image/jpeg" hidden>
+        <input id="thumb" onchange="$('#coverf').submit()" type="file" name="upload" accept="image/jpeg" hidden>
         <input type="reset" hidden>
     </form>
 @endsection
