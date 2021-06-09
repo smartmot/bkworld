@@ -58,6 +58,8 @@
                     for (var i =0; i < res.failed.length; i++){
                         $(_e.n(res.failed[i])).addClass('i-error').prev().children('span').text(" Invalid");
                     }
+                }else{
+                    window.location.reload();
                 }
                 reload();
             })
