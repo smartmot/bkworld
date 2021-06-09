@@ -59,7 +59,7 @@
                         $(_e.n(res.failed[i])).addClass('i-error').prev().children('span').text(" Invalid");
                     }
                 }else{
-                    location.reload();
+                    window.location.href = "{{ route("setting.index") }}";
                 }
                 reload();
             })
