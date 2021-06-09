@@ -98,7 +98,7 @@ class SettingController extends Controller
                     );
                     $setting->content = $data["content"];
                     $setting->save();
-                    $resp["error"] = $data;
+                    $resp["error"] = false;
                 }
                 return response($resp);
                 break;

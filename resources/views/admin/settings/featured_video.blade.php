@@ -31,6 +31,7 @@
                         <button class="oln_n bd_n pd-2x15 b_r_3 bcolor_5 color_1 hbcolor_4 abcolor_4 us_n csr-p fm-popp" type="submit">Save</button>
                     </div>
                 </form>
+                <a id="goback" href="{{ route("setting.index") }}" class="ds_n"></a>
             </div>
         </div>
     </div>
@@ -58,10 +59,10 @@
                     for (var i =0; i < res.failed.length; i++){
                         $(_e.n(res.failed[i])).addClass('i-error').prev().children('span').text(" Invalid");
                     }
+                    reload();
                 }else{
                     window.location.href = "{{ route("setting.index") }}";
                 }
-                reload();
             })
         });
     </script>
