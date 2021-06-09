@@ -9,7 +9,7 @@
         <div class="pr_10 pl_10 pt_20 pb_20">
             <div class="fm-ubt t_t_c">{{ request("setting") }}</div>
             <div>
-                <form action="{{ route("setting.item_update", request("setting")) }}" method="post" autocomplete="off">
+                <form action="{{ route("setting.item_update", request("setting")) }}" method="post" autocomplete="off" enctype="application/x-www-form-urlencoded">
                     @csrf
                     @method("put")
                     <label class="ds_f mt_5 mb_10">
