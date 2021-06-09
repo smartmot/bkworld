@@ -94,3 +94,8 @@ const $f = {
         });
     }
 }
+const _e = {
+    n(name,index=0){
+        return document.getElementsByName(name)[index];
+    }
+}

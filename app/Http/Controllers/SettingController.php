@@ -76,6 +76,9 @@ class SettingController extends Controller
      */
     public function update(Request $request, Setting $setting)
     {
+        $resp=[
+            "error" => true,
+        ];
         switch ($setting->name){
             case "featured_video":
                 $validator = Validator::make($request->all(),[
@@ -83,16 +86,21 @@ class SettingController extends Controller
                     "video" => ["required"],
                     "content" => ["required"]
                 ]);
-                $data = $validator->validate();
-                $setting->json = json_encode(
-                    [
-                        "title" => $data["title"],
-                        "video" => $data["video"]
-                    ]
-                );
-                $setting->content = $data["content"];
-                $setting->save();
-                return redirect(route("setting.index"));
+                if ($validator->fails()){
+                    $resp["failed"] = array_keys($validator->errors()->toArray());
+                }else{
+                    $data = $validator->validate();
+                    $setting->json = json_encode(
+                        [
+                            "title" => $data["title"],
+                            "video" => $data["video"]
+                        ]
+                    );
+                    $setting->content = $data["content"];
+                    $setting->save();
+                    $resp["error"] = $data;
+                }
+                return response($resp);
                 break;
             default:abort(404);
         }
@@ -142,5 +150,9 @@ class SettingController extends Controller
         fwrite($fp, '<?php return ' . var_export(config('settings'), true) . ';');
         fclose($fp);
         return redirect(route("setting.index"));
+    }
+
+    public function config(Request $request){
+
     }
 }
