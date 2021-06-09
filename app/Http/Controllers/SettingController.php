@@ -138,7 +138,7 @@ class SettingController extends Controller
             "instagram" => ["max:255", "min:3"],
             "notifications" => ["max:255", "min:3", "email"],
             "description" => ["max:500", "min:3"],
-            "map" => ["max:500", "min:3"],
+            "map" => ["max:500"],
             "keywords" => ["max:255", "min:3"],
             "admin" => ["in:default"],
             "theme" => ["in:default"],

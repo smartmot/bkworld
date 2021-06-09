@@ -7,9 +7,13 @@
 @section("content")
     <div class="cwc bc_whi mt_10 b_r_5">
         <div class="pr_10 pl_10 pt_20 pb_20">
-            <div class="fm-ubt t_t_c">{{ request("setting") }}</div>
+            <div class="fm-ubt t_t_c">{{ request("setting") }} :&nbsp;
+                @error(request("setting"))
+                <span class="color_4 fs_12">{{ $message }}</span>
+                @enderror
+            </div>
             <div>
-                <form action="{{ route("setting.item_update", request("setting")) }}" method="post" autocomplete="off" enctype="application/x-www-form-urlencoded">
+                <form id="ajx" action="{{ route("setting.item_update", request("setting")) }}" method="post" autocomplete="off">
                     @csrf
                     @method("put")
                     <label class="ds_f mt_5 mb_10">
@@ -24,3 +28,5 @@
         </div>
     </div>
 @endsection
+
+
