@@ -59,7 +59,7 @@
                         $(_e.n(res.failed[i])).addClass('i-error').prev().children('span').text(" Invalid");
                     }
                 }else{
-                    window.location.reload();
+                    location.reload();
                 }
                 reload();
             })
